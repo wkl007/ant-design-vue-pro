@@ -2,13 +2,21 @@ import type { App } from 'vue'
 import {
   AppstoreAddOutlined,
   CheckCircleOutlined,
+  CopyrightOutlined,
   FormOutlined,
   HeartOutlined,
   HistoryOutlined,
   HomeOutlined,
   TableOutlined,
   UnorderedListOutlined,
-  WarningOutlined
+  WarningOutlined,
+  UserOutlined,
+  LockOutlined,
+  MobileOutlined,
+  MailOutlined,
+  AlipayCircleOutlined,
+  TaobaoCircleOutlined,
+  WeiboCircleOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -18,6 +26,7 @@ import {
 export function setupIcons (app: App<Element>): void {
   app.component(AppstoreAddOutlined.displayName, AppstoreAddOutlined)
   app.component(CheckCircleOutlined.displayName, CheckCircleOutlined)
+  app.component(CopyrightOutlined.displayName, CopyrightOutlined)
   app.component(FormOutlined.displayName, FormOutlined)
   app.component(HeartOutlined.displayName, HeartOutlined)
   app.component(HistoryOutlined.displayName, HistoryOutlined)
@@ -25,4 +34,11 @@ export function setupIcons (app: App<Element>): void {
   app.component(TableOutlined.displayName, TableOutlined)
   app.component(UnorderedListOutlined.displayName, UnorderedListOutlined)
   app.component(WarningOutlined.displayName, WarningOutlined)
+  app.component(UserOutlined.displayName, UserOutlined)
+  app.component(LockOutlined.displayName, LockOutlined)
+  app.component(MobileOutlined.displayName, MobileOutlined)
+  app.component(MailOutlined.displayName, MailOutlined)
+  app.component(AlipayCircleOutlined.displayName, AlipayCircleOutlined)
+  app.component(TaobaoCircleOutlined.displayName, TaobaoCircleOutlined)
+  app.component(WeiboCircleOutlined.displayName, WeiboCircleOutlined)
 }

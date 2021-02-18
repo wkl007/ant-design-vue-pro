@@ -1,22 +1,10 @@
 import type { App } from 'vue'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */'@/views/Home.vue')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */'@/views/About.vue')
-  }
-]
+import { constantRoutes } from '@/router/router.config'
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: constantRoutes,
   scrollBehavior: (to, from, savedPosition) => {
     if (savedPosition) {
       return savedPosition

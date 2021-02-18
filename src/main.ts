@@ -6,6 +6,8 @@ import { setupAntd } from '@/configs/antd'
 import { setupIcons } from '@/configs/icons'
 import '@/configs/registerServiceWorker'
 
+import '@/assets/styles/index.less'
+
 const app = createApp(App)
 
 setupRouter(app) // vue-router
