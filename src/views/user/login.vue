@@ -1,8 +1,9 @@
 <template>
-  <div class="main">
+  <div class="main login">
     <a-form
       layout="vertical"
       :model="form"
+      @submit="handleSubmit"
     >
       <a-tabs
         :active-key="activeKey"
@@ -70,6 +71,7 @@
               <a-button
                 size="large"
                 block
+                @click="getCaptcha"
               >
                 获取验证码
               </a-button>
@@ -160,7 +162,7 @@ export default defineComponent({
         { required: true, message: '请输入验证码' }
       ]
     })
-    const { validateInfos, validateField, validate, resetFields } = useForm(form, rules)
+    const { validateInfos, validate, resetFields } = useForm(form, rules)
 
     // tab点击
     function handleTabClick (key: number): void {
@@ -168,18 +170,43 @@ export default defineComponent({
       resetFields()
     }
 
+    // 获取验证码
+    async function getCaptcha (e: Event): Promise<void> {
+      try {
+        e.preventDefault()
+        await validate('mobile')
+        console.log(form.mobile)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    // 登录
+    async function handleSubmit (e: Event): Promise<void> {
+      try {
+        e.preventDefault()
+        const validateNames = state.activeKey === 0 ? ['username', 'password'] : ['mobile', 'captcha']
+        await validate(validateNames)
+        console.log(form)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
     return {
       ...toRefs(state),
       form,
       validateInfos,
-      handleTabClick
+      handleTabClick,
+      getCaptcha,
+      handleSubmit
     }
   }
 })
 </script>
 
 <style scoped lang="less">
-.main {
+.login {
   .user-login-other {
     margin-top: 24px;
     line-height: 22px;
