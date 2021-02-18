@@ -1,5 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
+const { IgnorePlugin } = require('webpack')
 
 const TerserPlugin = require('terser-webpack-plugin')// 去console插件
 const CompressionWebpackPlugin = require('compression-webpack-plugin')// gzip压缩插件
@@ -36,7 +36,7 @@ module.exports = {
     // config.name = name
     const plugins = [
       // 忽略moment locale文件
-      new webpack.IgnorePlugin({
+      new IgnorePlugin({
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/
       }),
