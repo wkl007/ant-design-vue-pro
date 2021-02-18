@@ -1,6 +1,7 @@
 const path = require('path')
 const { IgnorePlugin } = require('webpack')
 
+const { createMockMiddleware } = require('umi-mock-middleware')
 const TerserPlugin = require('terser-webpack-plugin')// 去console插件
 const CompressionWebpackPlugin = require('compression-webpack-plugin')// gzip压缩插件
 
@@ -135,7 +136,10 @@ module.exports = {
     https: false,
     hotOnly: false,
     proxy: null, // 设置代理
-    before: app => {}
+    before: app => {
+      // mock服务
+      app.use(createMockMiddleware())
+    }
   },
   // enabled by default if the machine has more than 1 cores
   parallel: require('os').cpus().length > 1,
