@@ -1,7 +1,7 @@
 <template>
   <a-result
     status="success"
-    title="标题"
+    :title="email"
     sub-title="'激活邮件已发送到你的邮箱中，邮件有效期为24小时。请及时登录邮箱，点击邮件中的链接激活帐户。'"
   >
     <template #extra>
@@ -31,6 +31,7 @@ export default defineComponent({
     }
 
     return {
+      email: computed(() => `您的账户：${route.query.email}注册成功`),
       goBack
     }
   }
