@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 import {
+  AlipayCircleOutlined,
   AppstoreAddOutlined,
   CheckCircleOutlined,
   CopyrightOutlined,
@@ -7,15 +8,14 @@ import {
   HeartOutlined,
   HistoryOutlined,
   HomeOutlined,
-  TableOutlined,
-  UnorderedListOutlined,
-  WarningOutlined,
-  UserOutlined,
   LockOutlined,
-  MobileOutlined,
   MailOutlined,
-  AlipayCircleOutlined,
+  MobileOutlined,
+  TableOutlined,
   TaobaoCircleOutlined,
+  UnorderedListOutlined,
+  UserOutlined,
+  WarningOutlined,
   WeiboCircleOutlined
 } from '@ant-design/icons-vue'
 

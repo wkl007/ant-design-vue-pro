@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import { RolesReq, RolesResp, PermissionsReq, PermissionsResp } from '@/types/api/permission'
+import { PermissionsReq, PermissionsResp, RolesReq, RolesResp } from '@/types/api/permission'
 
 export default class PermissionServer {
   // 角色列表

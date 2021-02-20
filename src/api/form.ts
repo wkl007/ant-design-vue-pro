@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import { BaseFormDataReq, FormDataResp, FormDataReq } from '@/types/api/form'
+import { BaseFormDataReq, FormDataReq, FormDataResp } from '@/types/api/form'
 
 export default class FormServer {
   // 基础表单提交

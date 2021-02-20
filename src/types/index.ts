@@ -1,5 +1,5 @@
 import type { VNodeChild } from 'vue'
-import { RouteRecordRaw, RouteMeta } from 'vue-router'
+import { RouteMeta, RouteRecordRaw } from 'vue-router'
 
 export interface MenuRouteMeta {
   hideChildrenInMenu?: boolean;

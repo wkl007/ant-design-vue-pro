@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import type { LoginReq, LoginResp, LogoutResp, UserInfoResp, RegisterReq, RegisterResp } from '@/types/api/user'
+import type { LoginReq, LoginResp, LogoutResp, RegisterReq, RegisterResp, UserInfoResp } from '@/types/api/user'
 
 export default class UserServer {
   // 登录

@@ -3,7 +3,8 @@ module.exports = {
     '@vue/cli-plugin-babel/preset'
   ],
   plugins: [
-    ['import',
+    [
+      'import',
       {
         libraryName: 'ant-design-vue',
         libraryDirectory: 'es',

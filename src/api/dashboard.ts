@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import { ProjectNoticeResp, ActivitiesResp, ChartDataResp, TagsResp } from '@/types/api/dashboard'
+import { ActivitiesResp, ChartDataResp, ProjectNoticeResp, TagsResp } from '@/types/api/dashboard'
 
 export default class DashboardServer {
   // 进行中的项目

@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { computed, defineComponent } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'RegisterResult',
