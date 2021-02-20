@@ -1,4 +1,4 @@
-export type Lang = 'zh-CN' | 'en-US';
+export type Lang = 'zh-CN' | 'zh-TW' | 'en-US' | 'pt-BR';
 
 export type Device = 'desktop' | 'tablet' | 'mobile';
 

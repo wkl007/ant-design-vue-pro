@@ -3,6 +3,7 @@ import type { RootState } from '@/types/store'
 import type { AppState, Lang } from '@/types/store/app'
 import * as types from './mutationTypes'
 import { saveStorage } from '@/utils/cache'
+import { loadLanguageAsync } from '@/locales'
 import { APP_LANG } from '@/utils/constants'
 
 export const actions: ActionTree<AppState, RootState> = {
@@ -12,6 +13,13 @@ export const actions: ActionTree<AppState, RootState> = {
    * @param lang
    */
   setLang ({ commit }, lang: Lang) {
-    commit(types.SET_LANG, saveStorage(APP_LANG, lang))
+    return new Promise((resolve, reject) => {
+      loadLanguageAsync(lang).then(res => {
+        commit(types.SET_LANG, saveStorage(APP_LANG, lang))
+        resolve(lang)
+      }).catch(err => {
+        reject(err)
+      })
+    })
   }
 }
