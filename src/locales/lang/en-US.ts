@@ -7,7 +7,6 @@ const locales = {
   momentLocaleName: 'eu',
   antd,
   moment,
-
   ...routes
 }
 

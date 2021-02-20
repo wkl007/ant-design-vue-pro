@@ -47,8 +47,30 @@ export const asyncRoutes: Array<MenuDataItem> = [
     path: '/',
     name: 'index',
     component: GlobalLayout,
-    redirect: '/exception',
+    redirect: '/dashboard',
     children: [
+      // dashboard
+      {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: RouteView,
+        redirect: '/dashboard/workplace',
+        meta: {
+          icon: 'HeartOutlined',
+          title: 'pages.dashboard.title'
+        },
+        children: [
+          {
+            path: '/dashboard/workplace',
+            name: 'workplace',
+            component: () => import(/* webpackChunkName: "workplace" */ '@/views/dashboard/workplace/index.vue'),
+            meta: {
+              icon: 'HistoryOutlined',
+              title: 'pages.dashboard.workplace.title'
+            }
+          }
+        ]
+      },
       // exception
       {
         path: '/exception',

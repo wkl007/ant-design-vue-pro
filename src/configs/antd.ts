@@ -3,6 +3,7 @@ import {
   Alert,
   Avatar,
   Button,
+  Calendar,
   Card,
   Checkbox,
   Col,
@@ -19,6 +20,7 @@ import {
   List,
   Menu,
   Modal,
+  Pagination,
   Popconfirm,
   Popover,
   Progress,
@@ -48,6 +50,7 @@ export function setupAntd (app: App<Element>): void {
     .use(Alert)
     .use(Avatar)
     .use(Button)
+    .use(Calendar)
     .use(Card)
     .use(Checkbox)
     .use(Col)
@@ -64,6 +67,7 @@ export function setupAntd (app: App<Element>): void {
     .use(List)
     .use(Menu)
     .use(Modal)
+    .use(Pagination)
     .use(Popconfirm)
     .use(Popover)
     .use(Progress)
