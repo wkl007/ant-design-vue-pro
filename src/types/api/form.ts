@@ -1,6 +1,6 @@
 export interface BaseFormDataReq {
   title: string;
-  date: string[];
+  date: Array<string>;
   goal: string;
   standard: string;
 }

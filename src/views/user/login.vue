@@ -129,11 +129,17 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import { useForm } from '@ant-design-vue/use'
+import UserServer from '@/api/user'
+import { UserInfo } from '@/types/store/user'
 
 export default defineComponent({
   name: 'login',
   setup () {
+    const store = useStore()
+    const router = useRouter()
     const state = reactive({
       activeKey: 0,
       loading: false,
@@ -200,12 +206,33 @@ export default defineComponent({
     // 登录
     async function handleSubmit (e: Event): Promise<void> {
       try {
+        state.loading = true
         e.preventDefault()
         const validateNames = state.activeKey === 0 ? ['username', 'password'] : ['mobile', 'captcha']
-        await validate(validateNames)
-        console.log(form)
+        const values = await validate(validateNames)
+        values.type = state.activeKey === 0 ? 'account' : 'telephone'
+        const { token } = await UserServer.login(values)
+        const res = await UserServer.getUserInfo()
+        const {
+          name,
+          userid,
+          avatar
+        } = res
+        await store.dispatch('setLoginStatus', 1)
+        await store.dispatch('setAccessToken', token)
+        const userInfo: UserInfo = {
+          username: userid,
+          nickname: name,
+          avatar,
+          extra: res
+        }
+        await store.dispatch('setUserInfo', userInfo)
+        await router.push({
+          path: '/'
+        })
+        state.loading = false
       } catch (err) {
-        console.log(err)
+        state.loading = false
       }
     }
 

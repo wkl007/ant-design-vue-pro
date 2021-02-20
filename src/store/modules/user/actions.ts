@@ -3,7 +3,7 @@ import type { RootState } from '@/types/store'
 import type { UserInfo, UserState } from '@/types/store/user'
 import * as types from './mutationTypes'
 import { saveCookie, saveStorage } from '@/utils/cache'
-import { ACCESS_TOKEN, LOGIN_STATUS } from '@/utils/constants'
+import { ACCESS_TOKEN, LOGIN_STATUS, USER_INFO } from '@/utils/constants'
 
 export const actions: ActionTree<UserState, RootState> = {
   /**
@@ -27,8 +27,8 @@ export const actions: ActionTree<UserState, RootState> = {
    * @param commit
    * @param userInfo
    */
-  setUseInfo ({ commit }, userInfo: UserInfo) {
-    commit(types.SET_USER_INFO, userInfo)
+  setUserInfo ({ commit }, userInfo: UserInfo) {
+    commit(types.SET_USER_INFO, saveStorage(USER_INFO, userInfo))
   },
   /**
    * 设置权限路由

@@ -4,6 +4,7 @@ import { setupRouter } from '@/router'
 import { setupStore } from '@/store'
 import { setupAntd } from '@/configs/antd'
 import { setupIcons } from '@/configs/icons'
+import '@/configs/interceptor'
 import '@/configs/registerServiceWorker'
 
 import '@/assets/styles/index.less'

@@ -20,22 +20,11 @@ export interface Permission {
   actions?: Action[];
 }
 
-export interface Role {
-  /* 角色ID */
-  id: string | number;
-  /* 角色名称 */
-  name: string;
-  /* 角色描述 */
-  describe: string;
-  /* 角色绑定的权限 */
-  permissions?: Permission[];
-}
-
 export interface UserInfo {
   username: string;
   nickname: string;
   avatar: string;
-  role?: Role;
+  roles?: Array<string>;
   extra: {
     [key: string]: any;
   }

@@ -7,7 +7,7 @@ import { mutations } from './mutations'
 import { actions } from './actions'
 
 export const app: Module<AppState, RootState> = {
-  namespaced: true,
+  namespaced: false,
   state,
   getters,
   mutations,

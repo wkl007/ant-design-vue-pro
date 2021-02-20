@@ -34,7 +34,7 @@ export interface FakeListResp {
 export interface RuleReq {
   current?: number;
   pageSize?: number;
-  status?: string[];
+  status?: Array<string>;
 }
 
 export interface Datum {
@@ -55,7 +55,7 @@ export interface Datum {
 export interface Req {
   current: string;
   pageSize: string;
-  status?: string[];
+  status?: Array<string>;
 }
 
 export interface RuleResp {

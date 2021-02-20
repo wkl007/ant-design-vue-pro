@@ -36,7 +36,7 @@ export interface Permission {
   id: number;
   roleId: number;
   name: string;
-  actions: string[];
+  actions: Array<string>;
 }
 
 export interface Role {

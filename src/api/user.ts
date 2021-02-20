@@ -5,7 +5,7 @@ export default class UserServer {
   // 登录
   static login (data: LoginReq): Promise<LoginResp> {
     return request.request({
-      url: '/login/account',
+      url: '/login',
       method: 'post',
       data
     })

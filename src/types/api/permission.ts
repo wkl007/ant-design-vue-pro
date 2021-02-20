@@ -7,7 +7,7 @@ export interface Permission {
   id: number;
   name: string;
   label: string;
-  actions: string[];
+  actions: Array<string>;
 }
 
 export interface Datum {
@@ -34,7 +34,7 @@ export interface PermissionsData {
   id: number;
   name: string;
   label: string;
-  actions: string[];
+  actions: Array<string>;
 }
 
 export interface PermissionsResp {
