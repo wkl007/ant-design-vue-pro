@@ -7,7 +7,7 @@ import storage from 'good-storage'
  * @param value
  * @param options
  */
-export function saveCookie<T> (key: string, value: string, options: CookieAttributes): string {
+export function saveCookie (key: string, value: string, options?: CookieAttributes): string {
   Cookies.set(key, value, options)
   return value
 }
