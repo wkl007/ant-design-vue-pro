@@ -8,10 +8,7 @@ import { NODE_ENV } from '@/utils/constants'
 const debug = NODE_ENV !== 'production'
 
 const store = createStore({
-  modules: {
-    user,
-    app
-  },
+  modules: { user, app },
   plugins: debug ? [createLogger()] : []
 })
 

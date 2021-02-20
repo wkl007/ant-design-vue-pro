@@ -155,36 +155,19 @@ export default defineComponent({
     const rules = reactive({
       rememberMe: undefined,
       username: [
-        {
-          required: true,
-          message: '请输入帐户名'
-        }
+        { required: true, message: '请输入帐户名' }
       ],
       password: [
-        {
-          required: true,
-          message: '请输入密码'
-        }
+        { required: true, message: '请输入密码' }
       ],
       mobile: [
-        {
-          required: true,
-          pattern: /^1[34578]\d{9}$/,
-          message: '请输入正确的手机号'
-        }
+        { required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }
       ],
       captcha: [
-        {
-          required: true,
-          message: '请输入验证码'
-        }
+        { required: true, message: '请输入验证码' }
       ]
     })
-    const {
-      validateInfos,
-      validate,
-      resetFields
-    } = useForm(form, rules)
+    const { validateInfos, validate, resetFields } = useForm(form, rules)
 
     // tab点击
     function handleTabClick (key: number): void {
@@ -213,11 +196,7 @@ export default defineComponent({
         values.type = state.activeKey === 0 ? 'account' : 'telephone'
         const { token } = await UserServer.login(values)
         const res = await UserServer.getUserInfo()
-        const {
-          name,
-          userid,
-          avatar
-        } = res
+        const { name, userid, avatar } = res
         await store.dispatch('setLoginStatus', 1)
         await store.dispatch('setAccessToken', token)
         const userInfo: UserInfo = {

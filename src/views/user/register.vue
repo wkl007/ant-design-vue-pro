@@ -161,17 +161,10 @@ export default defineComponent({
     })
     const rules = reactive({
       email: [
-        {
-          required: true,
-          type: 'email',
-          message: '请输入邮箱地址'
-        }
+        { required: true, type: 'email', message: '请输入邮箱地址' }
       ],
       password: [
-        {
-          required: true,
-          message: '至少6位密码，区分大小写'
-        },
+        { required: true, message: '至少6位密码，区分大小写' },
         {
           validator: (rule: any, value: any) => {
             return new Promise((resolve, reject) => {
@@ -207,10 +200,7 @@ export default defineComponent({
         }
       ],
       confirmPassword: [
-        {
-          required: true,
-          message: '至少6位密码，区分大小写'
-        },
+        { required: true, message: '至少6位密码，区分大小写' },
         {
           validator: (rule: any, value: any) => {
             return new Promise((resolve, reject) => {
@@ -227,23 +217,13 @@ export default defineComponent({
         }
       ],
       mobile: [
-        {
-          required: true,
-          message: '请输入正确的手机号',
-          pattern: /^1[3456789]\d{9}$/
-        }
+        { required: true, message: '请输入正确的手机号', pattern: /^1[3456789]\d{9}$/ }
       ],
       captcha: [
-        {
-          required: true,
-          message: '请输入验证码'
-        }
+        { required: true, message: '请输入验证码' }
       ]
     })
-    const {
-      validateInfos,
-      validate
-    } = useForm(form, rules)
+    const { validateInfos, validate } = useForm(form, rules)
 
     async function getCaptcha (e: Event) {
       try {
@@ -278,7 +258,7 @@ export default defineComponent({
         state.registerBtn = true
         const values = await validate()
         const { data: { email } } = await UserServer.register(values)
-        console.log(email)
+
         message.info('注册成功')
         await router.push({
           path: '/user/registerResult',

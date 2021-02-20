@@ -1,6 +1,6 @@
 import type { MenuDataItem } from '@/types/router'
 import UserLayout from '@/layouts/user-layout.vue'
-import BasicLayout from '@/layouts/basic-layout.vue'
+import GlobalLayout from '@/layouts/global-layout.vue'
 import RouteView from '@/layouts/route-view.vue'
 
 /**
@@ -46,7 +46,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
   {
     path: '/',
     name: 'index',
-    component: BasicLayout,
+    component: GlobalLayout,
     redirect: '/exception',
     children: [
       // exception

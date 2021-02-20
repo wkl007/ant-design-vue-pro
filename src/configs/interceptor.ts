@@ -26,7 +26,12 @@ router.beforeEach(async (to, from, next) => {
         router.addRoute(route)
       })
 
-      next()
+      const redirect = decodeURIComponent(to.path)
+      if (to.path === redirect) {
+        next({ ...to, replace: true })
+      } else {
+        next({ path: redirect })
+      }
     }
   } else {
     if (WHITE_LIST.indexOf(to.path) >= 0) {
