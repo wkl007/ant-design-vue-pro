@@ -27,14 +27,6 @@ export function setupRouter (app: App<Element>): void {
 }
 
 /**
- * 过滤菜单路由
- * @param routes
- */
-export function filterMenu (routes: Array<RouteRecordRaw>): Array<RouteRecordRaw> {
-  return routes.find(item => item.name === 'index')?.children || []
-}
-
-/**
  * 使用meta.role确定当前用户是否具有权限
  * @param roles 角色数组
  * @param route 路由信息

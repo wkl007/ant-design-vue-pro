@@ -42,7 +42,7 @@ export interface AppState {
    */
   menu: { locale?: boolean; defaultOpenAll?: boolean };
   /**
-   * 自动分割菜单
+   * 自动分割菜单，只对 'mix' | 'side' 布局生效
    */
   splitMenus: boolean;
   /**
