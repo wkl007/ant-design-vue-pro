@@ -42,7 +42,7 @@ export default defineComponent({
   setup () {
     const { t } = useI18n()
     const store = useStore()
-    const locale = ref('zh-CN')
+    const locale = ref(store.getters.lang)
     watch(locale, async val => {
       await store.dispatch('setLang', val)
     })

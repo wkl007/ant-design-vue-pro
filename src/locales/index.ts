@@ -12,6 +12,7 @@ export const defaultLang: Lang = 'zh-CN'
 // 用于缓存记录已加载的语言化内容
 const loadedLanguages = ref<Array<Lang>>([defaultLang])
 
+// i18n实例
 export const i18n = createI18n({
   missingWarn: false,
   fallbackWarn: false,
@@ -39,11 +40,14 @@ function setI18nLanguage (lang: Lang): Lang {
 export function loadLanguageAsync (lang: Lang = defaultLang): Promise<Lang> {
   return new Promise<Lang>(resolve => {
     const currentLocale = i18n.global
-    if (currentLocale.locale === lang) return resolve(lang)
+    // 如果语言相同
+    if (currentLocale.locale === lang) return resolve(setI18nLanguage(lang))
+    // 如果语言已经加载
     if (loadedLanguages.value.includes(lang)) return resolve(setI18nLanguage(lang))
+    // 如果语言尚未加载
     return import(/* webpackChunkName: "lang-[request]" */`./lang/${lang}`).then(res => {
       const loadedLang = res.default
-      // 设置i18n语言
+      // 设置语言环境的 locale 信息
       currentLocale.setLocaleMessage(lang, loadedLang)
       // 设置moment语言
       moment.updateLocale(loadedLang.momentLocaleName, loadedLang.moment)
