@@ -42,7 +42,6 @@ export default defineComponent({
     watch(
       theme,
       () => {
-        console.log(theme.value)
         if (theme.value === 'realDark') {
           document
             .getElementsByTagName('html')[0]

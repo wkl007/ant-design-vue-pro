@@ -29,6 +29,7 @@ export type MenuDataItem = {
 
 export interface MetaRecord {
   icon?: string | VNodeChild | JSX.Element;
+  collapsedIcon?: string | VNodeChild | JSX.Element;
   title?: string;
   roles?: Array<string>;
 

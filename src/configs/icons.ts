@@ -16,7 +16,9 @@ import {
   UnorderedListOutlined,
   UserOutlined,
   WarningOutlined,
-  WeiboCircleOutlined
+  WeiboCircleOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -41,4 +43,6 @@ export function setupIcons (app: App<Element>): void {
   app.component(AlipayCircleOutlined.displayName, AlipayCircleOutlined)
   app.component(TaobaoCircleOutlined.displayName, TaobaoCircleOutlined)
   app.component(WeiboCircleOutlined.displayName, WeiboCircleOutlined)
+  app.component(MenuFoldOutlined.displayName, MenuFoldOutlined)
+  app.component(MenuUnfoldOutlined.displayName, MenuUnfoldOutlined)
 }
