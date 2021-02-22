@@ -26,7 +26,7 @@
     >
       <div v-if="!isMix" class="ant-pro-sider-logo">
         <router-link :to="{ name: 'index' }">
-          logo
+          <img :src="images.base_logo" alt="logo">
           <h1 v-if="!collapsed">Admin Pro</h1>
         </router-link>
       </div>
@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs, PropType } from 'vue'
+import { defineComponent, computed, toRefs, PropType, inject } from 'vue'
 import { useRoute } from 'vue-router'
 import { useProProvider } from '../pro-provider'
 import BaseMenu, { BaseMenuProps } from '../base-menu/index.vue'
@@ -159,6 +159,7 @@ export default defineComponent({
     const runtimeTheme = computed(() => (layout.value === 'mix' && 'light') || theme.value)
     const runtimeSideWidth = computed(() => collapsed.value ? collapsedWidth.value : sideWidth.value)
     const computedMenus = computed(() => splitMenus.value ? findMenuChildren(props.menus as RouteProps[], route.matched[1].name as string) : props.menus)
+    console.log(computedMenus.value)
 
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)
@@ -173,6 +174,7 @@ export default defineComponent({
     }
 
     return {
+      images: inject('images'),
       i18n,
       prefixCls,
       isMix,
@@ -188,8 +190,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped lang="less">
-@import "../index";
+<style lang="less">
+@import "../basic-layout";
 
 @pro-layout-sider-menu-prefix-cls: ~'@{ant-prefix}-pro-sider';
 
@@ -346,7 +348,7 @@ export default defineComponent({
     }
 
     .@{ant-prefix}-menu-submenu {
-      &-title {
+      .@{ant-prefix}-menu-submenu-title {
         width: 48px;
         padding: 0 16px !important;
       }

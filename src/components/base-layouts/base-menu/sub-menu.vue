@@ -16,7 +16,7 @@
       :key="index"
     >
       <a-menu-item
-        v-if="!item.children"
+        v-if="!item.children?.length"
         :key="item.path"
         @mouseenter="$emit('itemHover',$event)"
       >

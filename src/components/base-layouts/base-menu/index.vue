@@ -15,7 +15,7 @@
       :key="index"
     >
       <transform-v-node
-        v-if="(!menu.children || menu.meta?.hideChildrenInMenu) && !menu.meta?.hideInMenu"
+        v-if="(!menu.children?.length || menu.meta?.hideChildrenInMenu) && !menu.meta?.hideInMenu"
         :by="customItem"
         :opt="menu"
       >
@@ -35,7 +35,7 @@
         </a-menu-item>
       </transform-v-node>
       <sub-menu
-        v-else-if="menu.children"
+        v-else-if="menu.children?.length"
         :menu="menu"
         :key="menu.path"
         :i18n="i18n"
