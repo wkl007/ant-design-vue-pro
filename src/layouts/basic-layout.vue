@@ -58,10 +58,21 @@
             <select-lang/>
           </div>
         </header-view>
-        <div class="basic-layout">
-          <router-view/>
-        </div>
+        <multi-tab
+          v-if="multiTab"
+          :fixed="multiTabFixed"
+          :side-width="sideWidth"
+        />
+        <router-view v-slot="{Component}">
+          <transition v-if="Component" :name="transitionName">
+            <wrap-content>
+              <component :is="Component"/>
+            </wrap-content>
+          </transition>
+        </router-view>
+        <global-footer/>
       </a-layout>
+      <setting-drawer/>
     </a-layout>
   </pro-provider>
 </template>
@@ -74,6 +85,10 @@ import SideMenu from '@/components/base-layouts/side-menu/index.vue'
 import HeaderView from '@/components/base-layouts/header-view/index.vue'
 import AvatarDropdown from '@/components/avatar-dropdown/index.vue'
 import SelectLang from '@/components/select-lang/index.vue'
+import WrapContent from '@/components/base-layouts/wrap-content/index.vue'
+import GlobalFooter from '@/components/base-layouts/global-footer/index.vue'
+import MultiTab from '@/components/multi-tab/index.vue'
+import SettingDrawer from '@/components/setting-drawer/index.vue'
 import { injectMenuState, getMenuInfo, filterMenu } from '@/hooks/useMenuState'
 
 export default defineComponent({
@@ -82,7 +97,11 @@ export default defineComponent({
     SideMenu,
     HeaderView,
     AvatarDropdown,
-    SelectLang
+    SelectLang,
+    WrapContent,
+    GlobalFooter,
+    MultiTab,
+    SettingDrawer
   },
   setup () {
     const store = useStore()
