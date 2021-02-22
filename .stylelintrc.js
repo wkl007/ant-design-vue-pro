@@ -12,6 +12,7 @@ module.exports = {
     'at-rule-no-unknown': null,
     'font-family-no-missing-generic-family-keyword': null,
     'selector-type-no-unknown': null,
-    'function-calc-no-invalid': null
+    'function-calc-no-invalid': null,
+    'selector-pseudo-element-no-unknown': null
   }
 }

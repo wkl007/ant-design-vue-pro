@@ -159,7 +159,6 @@ export default defineComponent({
     const runtimeTheme = computed(() => (layout.value === 'mix' && 'light') || theme.value)
     const runtimeSideWidth = computed(() => collapsed.value ? collapsedWidth.value : sideWidth.value)
     const computedMenus = computed(() => splitMenus.value ? findMenuChildren(props.menus as RouteProps[], route.matched[1].name as string) : props.menus)
-    console.log(computedMenus.value)
 
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)

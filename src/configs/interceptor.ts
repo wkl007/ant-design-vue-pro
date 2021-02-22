@@ -7,11 +7,8 @@ const WHITE_LIST = ['/user/login', '/user/register', '/user/registerResult'] // 
 
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
-  const {
-    loginStatus,
-    userInfo: { roles }
-  } = store.getters
-  if (loginStatus) {
+  const { loginStatus, userInfo: { roles } } = store.getters
+  if (Number(loginStatus)) {
     const hasRoles = roles?.length
     if (hasRoles) {
       next()
@@ -37,7 +34,7 @@ router.beforeEach(async (to, from, next) => {
     if (WHITE_LIST.indexOf(to.path) >= 0) {
       next()
     } else {
-      next({ path: '/user/login' })
+      next({ path: '/user/login', replace: true })
     }
   }
 })

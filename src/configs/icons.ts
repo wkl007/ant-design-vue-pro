@@ -18,7 +18,10 @@ import {
   WarningOutlined,
   WeiboCircleOutlined,
   MenuFoldOutlined,
-  MenuUnfoldOutlined
+  MenuUnfoldOutlined,
+  GlobalOutlined,
+  SettingOutlined,
+  LogoutOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -45,4 +48,7 @@ export function setupIcons (app: App<Element>): void {
   app.component(WeiboCircleOutlined.displayName, WeiboCircleOutlined)
   app.component(MenuFoldOutlined.displayName, MenuFoldOutlined)
   app.component(MenuUnfoldOutlined.displayName, MenuUnfoldOutlined)
+  app.component(GlobalOutlined.displayName, GlobalOutlined)
+  app.component(SettingOutlined.displayName, SettingOutlined)
+  app.component(LogoutOutlined.displayName, LogoutOutlined)
 }

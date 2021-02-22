@@ -12,24 +12,25 @@ export const constantRoutes: Array<MenuDataItem> = [
     name: 'user',
     component: UserLayout,
     redirect: '/user/login',
+    meta: { title: 'pages.layout.userLayout.title' },
     children: [
       {
         path: '/user/login',
         name: 'login',
         component: () => import(/* webpackChunkName: "login" */'@/views/user/login.vue'),
-        meta: { title: 'pages.user.login' }
+        meta: { title: 'pages.login.accountLogin.tab' }
       },
       {
         path: '/user/register',
         name: 'register',
         component: () => import(/* webpackChunkName: "register" */'@/views/user/register.vue'),
-        meta: { title: 'pages.user.register' }
+        meta: { title: 'pages.login.registerAccount' }
       },
       {
         path: '/user/registerResult',
         name: 'registerResult',
         component: () => import(/* webpackChunkName: "registerResult" */'@/views/user/register-result.vue'),
-        meta: { title: 'pages.user.registerResult' }
+        meta: { title: 'pages.login.registerAccount' }
       }
     ]
   },

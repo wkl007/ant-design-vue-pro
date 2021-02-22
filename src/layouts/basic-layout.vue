@@ -8,7 +8,7 @@
         v-if="isMobile"
         placement="left"
         :body-style="{ padding: 0, height: '100%' }"
-        :wid="sideWidth"
+        :width="sideWidth"
         :closable="false"
         :visible="!collapsed"
         @update:visible="updateCollapsed"
@@ -41,6 +41,23 @@
         v-model:selected-keys="selectedKeys"
       />
       <a-layout>
+        <header-view
+          :theme="theme"
+          :layout="layout"
+          :menus="menus"
+          :side-width="sideWidth"
+          :has-side-menu="hasSideMenu"
+          :fixed-header="fixedHeader"
+          :split-menus="splitMenus"
+          v-model:collapsed="collapsed"
+          v-model:open-keys="openKeys"
+          v-model:selected-keys="selectedKeys"
+        >
+          <div style="text-align: right;">
+            <avatar-dropdown :user-info="userInfo"/>
+            <select-lang/>
+          </div>
+        </header-view>
         <div class="basic-layout">
           <router-view/>
         </div>
@@ -54,12 +71,18 @@ import { defineComponent, computed, inject, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import SideMenu from '@/components/base-layouts/side-menu/index.vue'
+import HeaderView from '@/components/base-layouts/header-view/index.vue'
+import AvatarDropdown from '@/components/avatar-dropdown/index.vue'
+import SelectLang from '@/components/select-lang/index.vue'
 import { injectMenuState, getMenuInfo, filterMenu } from '@/hooks/useMenuState'
 
 export default defineComponent({
   name: 'BasicLayout',
   components: {
-    SideMenu
+    SideMenu,
+    HeaderView,
+    AvatarDropdown,
+    SelectLang
   },
   setup () {
     const store = useStore()
@@ -69,11 +92,14 @@ export default defineComponent({
 
     const hasTopMenu = computed(() => menuState.layout.value === 'top')
 
+    const userInfo = computed(() => store.getters.userInfo)
+
     return {
       t,
       ...menuState,
       menus,
-      hasTopMenu
+      hasTopMenu,
+      userInfo
     }
   }
 })
