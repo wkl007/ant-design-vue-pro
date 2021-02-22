@@ -18,11 +18,21 @@
       right,
     }"
   >
-    <template
+    <top-nav-header
       v-if="(isTop || isMix) && !isMobile"
+      mode="horizontal"
+      :theme="theme"
+      :layout="layout"
+      :menus="needShowMenu ? computedMenus : []"
+      :open-keys="openKeys"
+      :selected-keys="splitMenus ? openKeys : selectedKeys"
+      @update:openKeys="handleOpenKeys"
+      @update:selectedKeys="handleSelectedKeys"
     >
-      222
-    </template>
+      <template #rightContent>
+        <slot/>
+      </template>
+    </top-nav-header>
     <global-header
       v-else
       :is-mobile="isMobile"
@@ -42,13 +52,15 @@
 import { defineComponent, ref, computed, toRefs, PropType, inject } from 'vue'
 import { useProProvider } from '../pro-provider'
 import GlobalHeader from '../global-header/index.vue'
+import TopNavHeader from '../top-nav-header/index.vue'
 import { getMenuFirstChildren } from '@/hooks/useMenuState'
 import type { RouteProps } from '@/types/router'
 
 export default defineComponent({
   name: 'HeaderView',
   components: {
-    GlobalHeader
+    GlobalHeader,
+    TopNavHeader
   },
   props: {
     fixedHeader: {
