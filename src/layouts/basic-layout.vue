@@ -72,8 +72,8 @@
         </router-view>
         <global-footer/>
       </a-layout>
-      <setting-drawer/>
     </a-layout>
+    <setting-drawer/>
   </pro-provider>
 </template>
 
