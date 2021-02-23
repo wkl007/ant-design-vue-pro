@@ -1,14 +1,14 @@
 <template>
   <div :class="prefixCls">
     <template
-      v-for="(item,index) in items"
+      v-for="(item,index) in list"
       :key="index"
     >
       <layout-block
         :theme="item.key"
         :checked="item.key === value"
         :disabled="item.disabled"
-        :title="item.title"
+        :title="i18n(item.title)"
         @click="handleChange(item.disabled,item.key)"
       />
     </template>
@@ -39,24 +39,6 @@ export default defineComponent({
   setup (props, { emit }) {
     const { i18n, getPrefixCls } = useProProvider()
     const prefixCls = getPrefixCls('setting-drawer-block-checkbox')
-    const items = props.list || [
-      {
-        key: 'side',
-        title: i18n('app.setting.layout.side')
-      },
-      {
-        key: 'top',
-        title: i18n('app.setting.layout.top')
-      },
-      {
-        key: 'mix',
-        title: i18n('app.setting.layout.mix')
-      },
-      {
-        key: 'left',
-        title: i18n('app.setting.layout.leftMenu')
-      }
-    ]
 
     function handleChange (disabled: boolean, key: string): void {
       if (disabled) return
@@ -64,7 +46,7 @@ export default defineComponent({
     }
 
     return {
-      items,
+      i18n,
       prefixCls,
       handleChange
     }

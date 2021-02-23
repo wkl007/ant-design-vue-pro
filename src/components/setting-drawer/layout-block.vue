@@ -3,7 +3,6 @@
     <div
       :class="className"
       :style="disabled ? disableStyle : null"
-      v-bind="$attrs"
     >
       <div class="inner"></div>
       <span
@@ -56,9 +55,8 @@ export default defineComponent({
       default: (key: string) => key
     }
   },
-  inheritAttrs: false,
   setup (props) {
-    const { i18n: locale, getPrefixCls } = useProProvider()
+    const { i18n, getPrefixCls } = useProProvider()
     const baseClassName = getPrefixCls('checkbox-item')
 
     const disableStyle = { cursor: 'not-allowed' }
@@ -75,7 +73,7 @@ export default defineComponent({
       baseClassName,
       className,
       disableStyle,
-      locale
+      i18n
     }
   }
 })

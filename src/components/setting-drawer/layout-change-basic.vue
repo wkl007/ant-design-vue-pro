@@ -5,7 +5,7 @@
         <span style="opacity: 1;">
           {{ i18n('app.setting.content-width') }}
         </span>
-        <template #action>
+        <template #actions>
           <a-select
             size="small"
             :value="contentWidth"

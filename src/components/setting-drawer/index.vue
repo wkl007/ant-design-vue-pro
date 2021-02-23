@@ -20,7 +20,7 @@
       <body-wrapper :title="i18n('app.setting.pagestyle')">
         <block-checkbox
           :value="navTheme"
-          :list="[]"
+          :list="themeList"
           @change="val=>handleChange('theme',val)"
         />
       </body-wrapper>
@@ -30,7 +30,7 @@
       <body-wrapper :title="i18n('app.setting.navigationmode')">
         <block-checkbox
           :value="layout"
-          :list="null"
+          :list="layoutList"
           @change="val=>handleChange('layout',val)"
         />
       </body-wrapper>
@@ -61,7 +61,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, ref, PropType } from 'vue'
+import { computed, defineComponent, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import BodyWrapper from './body-wrapper.vue'
 import BlockCheckbox from './block-checkbox.vue'
@@ -70,25 +70,11 @@ import LayoutChangeOther from './layout-change-other.vue'
 import { useProProvider } from '@/components/base-layouts/pro-provider'
 import { injectMenuState } from '@/hooks/useMenuState'
 import * as types from '@/store/modules/app/mutationTypes'
-import type { ContentWidth, Layout } from '@/types/store/app'
+import type { Layout } from '@/types/store/app'
 
 const iconStyle = {
   color: '#fff',
   fontSize: '20px'
-}
-
-export interface ThemeItem {
-  disabled?: boolean;
-  key: string;
-  url?: string;
-  title: string;
-}
-
-export interface ThemeConfig {
-  key: string;
-  fileName?: string;
-  theme: string;
-  modifyVars: Record<string, any>;
 }
 
 export default defineComponent({
@@ -106,6 +92,38 @@ export default defineComponent({
     const prefixCls = getPrefixCls('setting-drawer')
     const visible = ref(false)
     const navTheme = computed(() => store.getters.navTheme)
+    const layoutList = reactive([
+      {
+        key: 'side',
+        title: 'app.setting.layout.side'
+      },
+      {
+        key: 'top',
+        title: 'app.setting.layout.top'
+      },
+      {
+        key: 'mix',
+        title: 'app.setting.layout.mix'
+      },
+      {
+        key: 'left',
+        title: 'app.setting.layout.leftMenu'
+      }
+    ])
+    const themeList = reactive([
+      {
+        key: 'light',
+        title: 'app.setting.pagestyle.light'
+      },
+      {
+        key: 'dark',
+        title: 'app.setting.pagestyle.dark'
+      },
+      {
+        key: 'realDark',
+        title: 'app.setting.pagestyle.realdark'
+      }
+    ])
 
     function setShow (flag: boolean): void {
       visible.value = flag
@@ -168,6 +186,8 @@ export default defineComponent({
       i18n,
       prefixCls,
       iconStyle,
+      layoutList,
+      themeList,
 
       visible,
       setShow,
@@ -195,7 +215,7 @@ export default defineComponent({
     }
   }
 
-  &-block-checbox {
+  &-block-checkbox {
     display: flex;
 
     &-item {
