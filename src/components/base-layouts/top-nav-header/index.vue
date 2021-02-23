@@ -5,29 +5,38 @@
         :class="`${prefixedClassName}-main-left`"
         @click="handleMenuHeaderClick"
       >
-        <div :style="{ flex: 1 }" :class="`${prefixedClassName}-menu`">
-          <base-menu
-            v-if="menus.length"
-            mode="horizontal"
-            :i18n="i18n"
-            :theme="theme"
-            :menus="menus"
-            :open-keys="openKeys"
-            :selected-keys="selectedKeys"
-            @update:openKeys="handleOpenKeys"
-            @update:selectedKeys="handleSelectedKeys"
-          />
+        <div :class="`${prefixedClassName}-logo`">
+          <slot v-if="hasLogoSlot" name="logo"/>
+          <div v-else>
+            <router-link :to="{ name: 'index' }">
+              <img :src="images.base_logo" alt="logo"/>
+              <h1>Admin Pro</h1>
+            </router-link>
+          </div>
         </div>
-        <right-content>
-          <slot name="rightContent"/>
-        </right-content>
       </div>
+      <div :style="{ flex: 1 }" :class="`${prefixedClassName}-menu`">
+        <base-menu
+          v-if="menus.length"
+          mode="horizontal"
+          :i18n="i18n"
+          :theme="theme"
+          :menus="menus"
+          :open-keys="openKeys"
+          :selected-keys="selectedKeys"
+          @update:openKeys="handleOpenKeys"
+          @update:selectedKeys="handleSelectedKeys"
+        />
+      </div>
+      <right-content>
+        <slot name="rightContent"/>
+      </right-content>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs } from 'vue'
+import { defineComponent, computed, toRefs, inject } from 'vue'
 import BaseMenu from '@/components/base-layouts/base-menu/index.vue'
 import RightContent from './right-content.vue'
 import { useProProvider } from '../pro-provider'
@@ -100,6 +109,7 @@ export default defineComponent({
     function handleMenuHeaderClick (): void {}
 
     return {
+      images: inject('images'),
       i18n,
       classNames,
       headerClassName,
@@ -133,7 +143,7 @@ export default defineComponent({
 
   .ant-menu.ant-menu-dark .ant-menu-item-selected,
   .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-    background: @component-background;
+    color: @component-background;
   }
 
   .ant-menu {

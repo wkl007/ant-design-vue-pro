@@ -96,8 +96,8 @@
         </div>
       </a-layout>
     </a-layout>
+    <setting-drawer/>
   </pro-provider>
-  <setting-drawer/>
 </template>
 
 <script lang="ts">
@@ -153,7 +153,6 @@ export default defineComponent({
     ))
 
     function handleItemHover ({ key }: { key: string }): void {
-      console.log(key)
       cancelSetMenuHover()
       menuHover.value = true
       hoverMenuKey.value = key
@@ -174,6 +173,12 @@ export default defineComponent({
         class: opt.path === hoverMenuKey.value ? 'hover-menu-active' : ''
       })
     }
+
+    watch(menuHover, () => {
+      if (!menuHover.value) {
+        hoverMenuKey.value = ''
+      }
+    })
 
     return {
       t,

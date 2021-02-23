@@ -16,6 +16,7 @@
     >
       <transform-v-node
         v-if="(!menu.children?.length || menu.meta?.hideChildrenInMenu) && !menu.meta?.hideInMenu"
+        :key="menu.path"
         :by="customItem"
         :opt="menu"
       >
@@ -115,16 +116,11 @@ export default defineComponent({
       emit('update:selectedKeys', ctx.selectedKeys)
     }
 
-    function handleHover ($event) {
-      console.log($event, 222)
-    }
-
     return {
       isInline,
       dynamicProps,
       handleOpenChange,
-      handleSelect,
-      handleHover
+      handleSelect
     }
   }
 })

@@ -1,4 +1,4 @@
-import { onMounted, Ref, ref } from 'vue'
+import { onBeforeUnmount, Ref, ref } from 'vue'
 
 export function useDelayReset (timeout = 10): [Ref<boolean>, (val: boolean, callback?: () => void) => void, () => void] {
   const bool = ref(false)
@@ -15,6 +15,10 @@ export function useDelayReset (timeout = 10): [Ref<boolean>, (val: boolean, call
       if (callback) callback()
     }, timeout)
   }
+
+  onBeforeUnmount(() => {
+    cancelLatest()
+  })
 
   return [bool, delaySetBool, cancelLatest]
 }

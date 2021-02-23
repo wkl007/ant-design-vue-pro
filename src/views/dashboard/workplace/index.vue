@@ -28,6 +28,12 @@
         <a-calendar :fullscreen="false" :value="moment()"/>
       </div>
     </div>
+    <a-menu>
+      <a-menu-item key="mail" @mouseenter="handleEnter">
+        <mail-outlined/>
+        Navigation One
+      </a-menu-item>
+    </a-menu>
   </div>
 </template>
 
@@ -46,10 +52,16 @@ export default defineComponent({
     watch(locale, async val => {
       await store.dispatch('setLang', val)
     })
+
+    function handleEnter (e: any) {
+      console.log(e)
+    }
+
     return {
       t,
       locale,
-      moment
+      moment,
+      handleEnter
     }
   }
 })
