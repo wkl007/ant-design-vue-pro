@@ -1,13 +1,73 @@
 <template>
-  <div>
-    3
+  <div :class="prefixCls">
+    <template
+      v-for="(item,index) in items"
+      :key="index"
+    >
+      <layout-block
+        :theme="item.key"
+        :checked="item.key === value"
+        :disabled="item.disabled"
+        :title="item.title"
+        @click="handleChange(item.disabled,item.key)"
+      />
+    </template>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useProProvider } from '@/components/base-layouts/pro-provider'
+import LayoutBlock from './layout-block.vue'
 
 export default defineComponent({
-  name: 'BlockCheckbox'
+  name: 'BlockCheckbox',
+  props: {
+    value: {
+      type: String,
+      default: ''
+    },
+    list: {
+      type: Array,
+      default: () => []
+    }
+  },
+  components: {
+    LayoutBlock
+  },
+  emits: ['change'],
+  setup (props, { emit }) {
+    const { i18n, getPrefixCls } = useProProvider()
+    const prefixCls = getPrefixCls('setting-drawer-block-checkbox')
+    const items = props.list || [
+      {
+        key: 'side',
+        title: i18n('app.setting.layout.side')
+      },
+      {
+        key: 'top',
+        title: i18n('app.setting.layout.top')
+      },
+      {
+        key: 'mix',
+        title: i18n('app.setting.layout.mix')
+      },
+      {
+        key: 'left',
+        title: i18n('app.setting.layout.leftMenu')
+      }
+    ]
+
+    function handleChange (disabled: boolean, key: string): void {
+      if (disabled) return
+      emit('change', key)
+    }
+
+    return {
+      items,
+      prefixCls,
+      handleChange
+    }
+  }
 })
 </script>

@@ -1,14 +1,180 @@
 <template>
-  <a-drawer>
-    222111
+  <a-drawer
+    :visible="visible"
+    :width="300"
+    style="z-index: 99;"
+    placement="right"
+    @close="setShow(false)"
+  >
+    <template #handle>
+      <div
+        :class="`${prefixCls}-handle`"
+        @click="handleClickShowButton"
+      >
+        <close-outlined v-if="visible" :style="iconStyle"/>
+        <setting-outlined v-else :style="iconStyle"/>
+      </div>
+    </template>
+
+    <div :class="`${prefixCls}-content`">
+      <body-wrapper :title="i18n('app.setting.pagestyle')">
+        <block-checkbox
+          :value="navTheme"
+          :list="[]"
+          @change="val=>handleChange('theme',val)"
+        />
+      </body-wrapper>
+
+      <a-divider/>
+
+      <body-wrapper :title="i18n('app.setting.navigationmode')">
+        <block-checkbox
+          :value="layout"
+          :list="null"
+          @change="val=>handleChange('layout',val)"
+        />
+      </body-wrapper>
+
+      <layout-change-basic
+        :content-width="contentWidth"
+        :fixed-header="fixedHeader"
+        :fixed-sidebar="fixedSidebar"
+        :layout="layout"
+        :split-menus="splitMenus"
+        @change="({type,value})=>handleChange(type,value)"
+      />
+
+      <a-divider/>
+
+      <body-wrapper :title="i18n('app.setting.othersettings')">
+        <layout-change-other
+          :fixed-header="fixedHeader"
+          :transition-name="transitionName"
+          :multi-tab="multiTab"
+          :multi-tab-fixed="multiTabFixed"
+          :weak-mode="false"
+          @change="({type,value})=>handleChange(type,value)"
+        />
+      </body-wrapper>
+    </div>
   </a-drawer>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed, reactive, ref, PropType } from 'vue'
+import { useStore } from 'vuex'
+import BodyWrapper from './body-wrapper.vue'
+import BlockCheckbox from './block-checkbox.vue'
+import LayoutChangeBasic from './layout-change-basic.vue'
+import LayoutChangeOther from './layout-change-other.vue'
+import { useProProvider } from '@/components/base-layouts/pro-provider'
+import { injectMenuState } from '@/hooks/useMenuState'
+import * as types from '@/store/modules/app/mutationTypes'
+import type { ContentWidth, Layout } from '@/types/store/app'
+
+const iconStyle = {
+  color: '#fff',
+  fontSize: '20px'
+}
+
+export interface ThemeItem {
+  disabled?: boolean;
+  key: string;
+  url?: string;
+  title: string;
+}
+
+export interface ThemeConfig {
+  key: string;
+  fileName?: string;
+  theme: string;
+  modifyVars: Record<string, any>;
+}
 
 export default defineComponent({
-  name: 'SettingDrawer'
+  name: 'SettingDrawer',
+  components: {
+    BodyWrapper,
+    BlockCheckbox,
+    LayoutChangeBasic,
+    LayoutChangeOther
+  },
+  setup () {
+    const store = useStore()
+    const menuState = injectMenuState()
+    const { i18n, getPrefixCls } = useProProvider()
+    const prefixCls = getPrefixCls('setting-drawer')
+    const visible = ref(false)
+    const navTheme = computed(() => store.getters.navTheme)
+
+    function setShow (flag: boolean): void {
+      visible.value = flag
+    }
+
+    function handleClickShowButton (e: Event): void {
+      if (e) visible.value = !visible.value
+    }
+
+    function updateLayoutSetting (layout: Layout): void {
+      if (layout !== 'mix') {
+        // 强制停止使用分割菜单
+        store.commit(types.SET_SPLIT_MENUS, false)
+      } else {
+        // Mix 模式下，header 必须被锁定
+        store.commit(types.SET_FIXED_HEADER, true)
+      }
+      store.commit(types.SET_LAYOUT, layout)
+    }
+
+    function handleChange (type: string, val: string): void {
+      console.log('change', type, val)
+      switch (type) {
+        case 'layout':
+          updateLayoutSetting(val as Layout)
+          break
+        case 'theme':
+          store.commit(types.SET_NAV_THEME, val)
+          break
+        case 'splitMenus':
+          store.commit(types.SET_SPLIT_MENUS, val)
+          break
+        case 'fixSidebar':
+          store.commit(types.SET_FIXED_SIDEBAR, val)
+          break
+        case 'fixedHeader':
+          // 关闭 header 固定时，取消 multi-tab 固定
+          if (!val) store.commit(types.SET_FIXED_MULTI_TAB, false)
+          store.commit(types.SET_FIXED_HEADER, val)
+          break
+        case 'contentWidth':
+          store.commit(types.SET_CONTENT_WIDTH, val)
+          break
+        case 'transition':
+          store.commit(types.SET_TRANSITION_NAME, val || '')
+          break
+        case 'multiTab':
+          store.commit(types.SET_MULTI_TAB, val)
+          break
+        case 'multiTabFixed':
+          if (!menuState.fixedHeader) store.commit(types.SET_FIXED_HEADER, true)
+          store.commit(types.SET_FIXED_MULTI_TAB, val)
+          break
+      }
+    }
+
+    return {
+      navTheme,
+      ...menuState,
+      i18n,
+      prefixCls,
+      iconStyle,
+
+      visible,
+      setShow,
+      handleChange,
+      handleClickShowButton
+    }
+  }
 })
 </script>
 

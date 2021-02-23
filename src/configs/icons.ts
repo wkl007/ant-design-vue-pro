@@ -3,25 +3,26 @@ import {
   AlipayCircleOutlined,
   AppstoreAddOutlined,
   CheckCircleOutlined,
+  CloseOutlined,
   CopyrightOutlined,
   FormOutlined,
+  GlobalOutlined,
   HeartOutlined,
   HistoryOutlined,
   HomeOutlined,
   LockOutlined,
+  LogoutOutlined,
   MailOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
   MobileOutlined,
+  SettingOutlined,
   TableOutlined,
   TaobaoCircleOutlined,
   UnorderedListOutlined,
   UserOutlined,
   WarningOutlined,
-  WeiboCircleOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  GlobalOutlined,
-  SettingOutlined,
-  LogoutOutlined
+  WeiboCircleOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -51,4 +52,5 @@ export function setupIcons (app: App<Element>): void {
   app.component(GlobalOutlined.displayName, GlobalOutlined)
   app.component(SettingOutlined.displayName, SettingOutlined)
   app.component(LogoutOutlined.displayName, LogoutOutlined)
+  app.component(CloseOutlined.displayName, CloseOutlined)
 }
