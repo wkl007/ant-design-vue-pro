@@ -104,6 +104,70 @@ export const asyncRoutes: Array<MenuDataItem> = [
             meta: { title: 'pages.exception.500.title' }
           }
         ]
+      },
+      // nested
+      {
+        path: '/nested',
+        name: 'nested',
+        component: RouteView,
+        redirect: '/nested/menu1',
+        meta: {
+          title: 'pages.nested.title',
+          icon: 'AppstoreAddOutlined'
+        },
+        children: [
+          {
+            path: '/nested/menu1',
+            name: 'menu1',
+            component: () => import(/* webpackChunkName: "menu1" */ '@/views/examples/nested/menu1.vue'),
+            redirect: '/nested/menu1/menu1-1',
+            meta: { title: 'pages.nested.menu1.title' },
+            children: [
+              {
+                path: '/nested/menu1/menu1-1',
+                name: 'menu1-1',
+                component: () => import(/* webpackChunkName: "menu1-1" */'@/views/examples/nested/menu1-1.vue'),
+                meta: { title: 'pages.nested.menu1-1.title' }
+              },
+              {
+                path: '/nested/menu1/menu1-2',
+                name: 'menu1-2',
+                component: () => import(/* webpackChunkName: "menu1-2" */'@/views/examples/nested/menu1-2.vue'),
+                redirect: '/nested/menu1/menu1-2/menu1-2-1',
+                meta: { title: 'pages.nested.menu1-2.title' },
+                children: [
+                  {
+                    path: '/nested/menu1/menu1-2/menu1-2-1',
+                    name: 'menu1-2-1',
+                    component: () => import(/* webpackChunkName: "menu1-2-1" */'@/views/examples/nested/menu1-2-1.vue'),
+                    meta: { title: 'pages.nested.menu1-2-1.title' }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            path: '/nested/menu2',
+            name: 'menu2',
+            component: () => import(/* webpackChunkName: "menu2" */ '@/views/examples/nested/menu2.vue'),
+            meta: { title: 'pages.nested.menu2.title' }
+          },
+          {
+            path: '/nested/menu3',
+            name: 'menu3',
+            component: () => import(/* webpackChunkName: "menu3" */ '@/views/examples/nested/menu3.vue'),
+            redirect: '/nested/menu3/menu3-1',
+            meta: { title: 'pages.nested.menu3.title', hideChildrenInMenu: true },
+            children: [
+              {
+                path: '/nested/menu3/menu3-1',
+                name: 'menu3-1',
+                component: () => import(/* webpackChunkName: "menu3-1" */ '@/views/examples/nested/menu3-1.vue'),
+                meta: { title: 'pages.nested.menu3-1.title' }
+              }
+            ]
+          }
+        ]
       }
     ]
   }
