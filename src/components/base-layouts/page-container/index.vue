@@ -82,7 +82,7 @@ export default defineComponent({
   props: {
     // 注意：tabList 优先级低于 v-slot:footer
     tabList: {
-      type: Array as PropType<>,
+      type: Array as PropType<any>,
       default: (): Tab[] => []
     },
     // 支持 v-model:tabActiveKey
