@@ -34,6 +34,20 @@
         Navigation One
       </a-menu-item>
     </a-menu>
+    <grid-content>
+      <a-button>grid-content</a-button>
+    </grid-content>
+    <footer-toolbar>
+      <template #extra>
+        <a-button>
+          222
+        </a-button>
+      </template>
+      <a-button>
+        1111
+      </a-button>
+    </footer-toolbar>
+    <page-container/>
   </div>
 </template>
 
@@ -42,9 +56,15 @@ import { defineComponent, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import moment from 'moment'
+import GridContent from '@/components/base-layouts/grid-content/index.vue'
+import FooterToolbar from '@/components/base-layouts/footer-toolbar/index.vue'
 
 export default defineComponent({
   name: 'Workplace',
+  components: {
+    GridContent,
+    FooterToolbar
+  },
   setup () {
     const { t } = useI18n()
     const store = useStore()

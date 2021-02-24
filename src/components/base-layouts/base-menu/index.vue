@@ -106,7 +106,6 @@ export default defineComponent({
   setup (props, { emit }) {
     const isInline = props.mode === 'inline'
     const dynamicProps = ref({ inlineCollapsed: isInline ? props.collapsed : undefined })
-    console.log(props.menus)
 
     function handleOpenChange (openKeys: string[]): void {
       emit('update:openKeys', openKeys)

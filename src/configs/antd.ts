@@ -20,6 +20,7 @@ import {
   List,
   Menu,
   Modal,
+  PageHeader,
   Pagination,
   Popconfirm,
   Popover,
@@ -86,4 +87,5 @@ export function setupAntd (app: App<Element>): void {
     .use(Tag)
     .use(TimePicker)
     .use(Tooltip)
+    .use(PageHeader)
 }
