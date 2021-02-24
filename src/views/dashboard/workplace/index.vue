@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <page-container>
     <div class="operation-wrapper">
       <a-radio-group v-model:value="locale">
         <a-radio-button key="en" value="en-US">English</a-radio-button>
@@ -28,15 +28,19 @@
         <a-calendar :fullscreen="false" :value="moment()"/>
       </div>
     </div>
-    <a-menu>
-      <a-menu-item key="mail" @mouseenter="handleEnter">
-        <mail-outlined/>
-        Navigation One
-      </a-menu-item>
-    </a-menu>
-    <grid-content>
-      <a-button>grid-content</a-button>
-    </grid-content>
+    <container
+      lock-axis="y"
+      drag-class="ant-pro-table-drag-ghost"
+      drop-class="ant-pro-table-drop-ghost"
+      @drop="({removedIndex,addedIndex})=>move(removedIndex,addedIndex)"
+    >
+      <draggable
+        v-for="(item,index) in list"
+        :key="index"
+      >
+        <div>{{ item.label }}</div>
+      </draggable>
+    </container>
     <footer-toolbar>
       <template #extra>
         <a-button>
@@ -47,41 +51,77 @@
         1111
       </a-button>
     </footer-toolbar>
-    <page-container/>
-  </div>
+  </page-container>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, reactive, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import moment from 'moment'
-import GridContent from '@/components/base-layouts/grid-content/index.vue'
 import FooterToolbar from '@/components/base-layouts/footer-toolbar/index.vue'
+import { Container, Draggable } from '@/components/draggable'
 
 export default defineComponent({
   name: 'Workplace',
   components: {
-    GridContent,
-    FooterToolbar
+    FooterToolbar,
+    Container,
+    Draggable
   },
   setup () {
     const { t } = useI18n()
     const store = useStore()
     const locale = ref(store.getters.lang)
+    const list = reactive([
+      {
+        key: 1,
+        label: '描述'
+      },
+      {
+        key: 2,
+        label: '服务调用次数'
+      },
+      {
+        key: 3,
+        label: '状态'
+      },
+      {
+        key: 4,
+        label: '规则名称'
+      },
+      {
+        key: 5,
+        label: '上次调度时间'
+      },
+      {
+        key: 6,
+        label: '操作'
+      }
+    ])
+
     watch(locale, async val => {
       await store.dispatch('setLang', val)
     })
 
-    function handleEnter (e: any) {
-      console.log(e)
+    function move (removedIndex: number, addedIndex: number) {
+      const currentItem = list[removedIndex]
+      list.splice(removedIndex, 1)
+      if (addedIndex === 0) {
+        // 头部添加
+        list.unshift(currentItem)
+      } else {
+        // 添加元素
+        list.splice(addedIndex, 0, currentItem)
+      }
     }
 
     return {
       t,
       locale,
+      list,
       moment,
-      handleEnter
+      move
     }
   }
 })
