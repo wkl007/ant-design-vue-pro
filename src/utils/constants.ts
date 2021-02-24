@@ -10,4 +10,4 @@ export const USER_INFO = 'User_Info' // 用户信息
 
 export const ACCESS_TOKEN = 'Access_Token' // accessToken
 
-export const APP_LANG = 'App_Lang' // 语言
+export const APP_STATE = 'App_State' // app 状态

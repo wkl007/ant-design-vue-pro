@@ -1,9 +1,7 @@
-import type { AppState, Lang } from '@/types/store/app'
-import { loadStorage } from '@/utils/cache'
-import { APP_LANG } from '@/utils/constants'
+import type { AppState } from '@/types/store/app'
 
 export const state: AppState = {
-  lang: loadStorage(APP_LANG, 'zh-CN') as Lang,
+  lang: 'zh-CN',
   device: 'desktop',
   layout: 'side',
   navTheme: 'dark',

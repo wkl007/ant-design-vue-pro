@@ -1,15 +1,23 @@
 import type { App } from 'vue'
 import { createLogger, createStore } from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 import { user } from './modules/user'
 import { app } from './modules/app'
-import { NODE_ENV } from '@/utils/constants'
+import { NODE_ENV, APP_STATE } from '@/utils/constants'
 
 // 调试工具，开发环境使用，线上关闭
 const debug = NODE_ENV !== 'production'
 
+// 持久化存储
+const persistedPlugin = createPersistedState({
+  key: APP_STATE,
+  paths: ['app'],
+  storage: window.localStorage
+})
+
 const store = createStore({
   modules: { user, app },
-  plugins: debug ? [createLogger()] : []
+  plugins: debug ? [createLogger(), persistedPlugin] : []
 })
 
 /**
