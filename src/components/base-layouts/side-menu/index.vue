@@ -403,7 +403,7 @@ export default defineComponent({
       }
     }
 
-    background-color: @component-background;
+    background-color: @component-background !important;
     box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
 
     .@{pro-layout-sider-menu-prefix-cls}-logo {
