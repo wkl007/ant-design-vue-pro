@@ -75,12 +75,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs, PropType, inject } from 'vue'
+import { computed, defineComponent, inject, PropType, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
 import { injectProProvider } from '../pro-provider'
 import BaseMenu, { BaseMenuProps } from '../base-menu/index.vue'
 import { findMenuChildren } from '@/hooks/useMenuState'
-import type { Layout } from '@/types/store/app'
+import type { Layout, MenuTheme } from '@/types/store/app'
 import type { RouteProps } from '@/types/router'
 
 const SideMenuProps = Object.assign(
@@ -89,7 +89,7 @@ const SideMenuProps = Object.assign(
   {
     prefixCls: {
       type: String,
-      default: () => undefined
+      default: ''
     },
     breakpoint: {
       type: String,
@@ -116,8 +116,8 @@ const SideMenuProps = Object.assign(
       default: 48
     },
     theme: {
-      type: String,
-      default: undefined
+      type: String as PropType<MenuTheme>,
+      default: 'dark'
     },
     layout: {
       type: String as PropType<Layout>,
@@ -160,14 +160,17 @@ export default defineComponent({
     const runtimeSideWidth = computed(() => collapsed.value ? collapsedWidth.value : sideWidth.value)
     const computedMenus = computed(() => splitMenus.value ? findMenuChildren(props.menus as RouteProps[], route.matched[1].name as string) : props.menus)
 
+    // menu 选中
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)
     }
 
+    // SubMenu 展开/关闭
     function handleOpenKeys (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }
 
+    // 展开收缩
     function handleCollapse () {
       emit('update:collapsed', !collapsed.value)
     }

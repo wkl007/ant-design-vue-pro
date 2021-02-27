@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import { locales } from '@/locales'
 
@@ -60,6 +60,7 @@ export default defineComponent({
     const store = useStore()
     const currentLang = computed(() => store.getters.lang)
 
+    // 菜单选择
     function handleMenuClick ({ key }: MenuClick): void {
       store.dispatch('setLang', key)
     }

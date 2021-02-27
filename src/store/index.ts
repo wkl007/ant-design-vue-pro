@@ -3,7 +3,7 @@ import { createLogger, createStore } from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import { user } from './modules/user'
 import { app } from './modules/app'
-import { NODE_ENV, APP_STATE } from '@/utils/constants'
+import { APP_STATE, NODE_ENV } from '@/utils/constants'
 
 // 调试工具，开发环境使用，线上关闭
 const debug = NODE_ENV !== 'production'

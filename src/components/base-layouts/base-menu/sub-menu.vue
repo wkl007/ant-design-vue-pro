@@ -43,8 +43,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { RouteProps } from '@/types/router'
+import { defineComponent, PropType } from 'vue'
+import type { RouteProps } from '@/types/router'
 
 export default defineComponent({
   name: 'SubMenu',
@@ -54,7 +54,7 @@ export default defineComponent({
       default: (t: any): any => t
     },
     menu: {
-      type: Object,
+      type: Object as PropType<RouteProps>,
       required: true
     },
     collapsed: {

@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, toRefs, PropType, inject } from 'vue'
+import { computed, defineComponent, inject, PropType, ref, toRefs } from 'vue'
 import { injectProProvider } from '../pro-provider'
 import GlobalHeader from '../global-header/index.vue'
 import TopNavHeader from '../top-nav-header/index.vue'
@@ -63,6 +63,10 @@ export default defineComponent({
     TopNavHeader
   },
   props: {
+    isMobile: {
+      type: Boolean,
+      default: false
+    },
     fixedHeader: {
       type: Boolean,
       default: false
@@ -77,13 +81,15 @@ export default defineComponent({
     },
     menus: {
       type: Array as PropType<RouteProps[]>,
-      default: (): Record<string, unknown>[] => []
+      default: (): RouteProps[] => []
     },
     openKeys: {
-      type: Array
+      type: Array as PropType<string[]>,
+      default: (): string[] => []
     },
     selectedKeys: {
-      type: Array
+      type: Array as PropType<string[]>,
+      default: (): string[] => []
     },
     hasSideMenu: {
       type: Boolean,
@@ -115,15 +121,14 @@ export default defineComponent({
     },
     prefixCls: {
       type: String,
-      default: () => undefined
+      default: ''
     }
   },
   emits: ['update:openKeys', 'update:selectedKeys', 'update:collapsed'],
   setup (props, { emit }) {
-    const { prefixCls: propPrefixCls, collapsed, fixedHeader, hasSideMenu, sideWidth, collapsedWidth, splitMenus } = toRefs(props)
+    const { prefixCls: propPrefixCls, collapsed, fixedHeader, hasSideMenu, sideWidth, collapsedWidth, splitMenus, isMobile } = toRefs(props)
     const { i18n, getPrefixCls } = injectProProvider()
     const prefixCls = propPrefixCls.value || getPrefixCls()
-    const isMobile = inject('isMobile', ref(false))
     const isMix = computed(() => props.layout === 'mix')
     const isTop = computed(() => props.layout === 'top')
     const isLeft = computed(() => props.layout === 'left')
@@ -146,14 +151,17 @@ export default defineComponent({
     )
     const right = computed(() => (needFixedHeader.value ? 0 : undefined))
 
+    // menu 选中
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)
     }
 
+    // SubMenu 展开/关闭
     function handleOpenKeys (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }
 
+    // 收缩展开按钮点击
     function handleCollapse (collapsed: boolean): void {
       emit('update:collapsed', collapsed)
     }
@@ -170,7 +178,6 @@ export default defineComponent({
       needShowMenu,
       needSettingWidth,
       computedMenus,
-      isMobile,
 
       handleSelectedKeys,
       handleOpenKeys,

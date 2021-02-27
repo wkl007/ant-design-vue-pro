@@ -105,7 +105,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType, computed, inject, toRefs } from 'vue'
+import { computed, defineComponent, PropType, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { MultiTabStore, useMultiTab } from './index'
 import { injectMenuState } from '@/hooks/useMenuState'

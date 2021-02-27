@@ -1,12 +1,12 @@
-import { defineComponent, onMounted, onUpdated, onUnmounted, ref, reactive } from 'vue'
+import { defineComponent, onMounted, onUnmounted, onUpdated, reactive, ref } from 'vue'
 import {
-  smoothDnD,
-  dropHandlers,
-  DragStartParams,
-  DropResult,
   ContainerOptions,
   DragEndParams,
-  DropPlaceholderOptions
+  DragStartParams,
+  dropHandlers,
+  DropPlaceholderOptions,
+  DropResult,
+  smoothDnD
 } from 'smooth-dnd'
 
 smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler

@@ -22,7 +22,6 @@
               </svg>
             </span>
           </a>
-          <a href="https://store.antdv.com/pro/" target="_blank">Buy Now!</a>
         </slot>
       </div>
       <div class="ant-pro-global-footer-copyright">

@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import { injectProProvider } from '@/components/base-layouts/pro-provider'
 
 export type LayoutBlockTheme = 'light' | 'dark' | 'realDark' | 'side' | 'top' | 'mix' | 'left';

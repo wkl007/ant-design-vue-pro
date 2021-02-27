@@ -20,6 +20,7 @@ export default defineComponent({
   setup () {
     const { getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer-title')
+
     return {
       prefixCls
     }

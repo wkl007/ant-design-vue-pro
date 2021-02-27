@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRefs } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { injectProProvider } from '../pro-provider'
 
 export default defineComponent({
@@ -17,6 +17,7 @@ export default defineComponent({
       [`${prefixCls}-content`]: true,
       [`${prefixCls}-has-header`]: true
     })
+
     return {
       classNames
     }

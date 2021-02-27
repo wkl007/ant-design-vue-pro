@@ -125,14 +125,17 @@ export default defineComponent({
       }
     ])
 
+    // 抽屉展开/关闭
     function setShow (flag: boolean): void {
       visible.value = flag
     }
 
+    // 抽屉展开/关闭
     function handleClickShowButton (e: Event): void {
       if (e) visible.value = !visible.value
     }
 
+    // 更改layout
     function updateLayoutSetting (layout: Layout): void {
       if (layout !== 'mix') {
         // 强制停止使用分割菜单
@@ -144,6 +147,7 @@ export default defineComponent({
       store.commit(types.SET_LAYOUT, layout)
     }
 
+    // 设置更改
     function handleChange (type: string, val: string): void {
       console.log('change', type, val)
       switch (type) {
@@ -188,8 +192,8 @@ export default defineComponent({
       iconStyle,
       layoutList,
       themeList,
-
       visible,
+
       setShow,
       handleChange,
       handleClickShowButton

@@ -2,7 +2,7 @@ import { computed, ComputedRef, inject, onMounted, reactive, Ref, ref, toRefs, w
 import { RouteRecordRaw, useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
-import type { Layout, MenuTheme, ContentWidth } from '@/types/store/app'
+import type { ContentWidth, Layout, MenuTheme } from '@/types/store/app'
 import { xor } from 'lodash-es'
 import { asyncRoutes } from '@/router/router.config'
 import { RouteProps } from '@/types/router'
@@ -72,7 +72,6 @@ const state = reactive<MenuState>({
 
 let res: MenuStated | null = null
 
-// TODO 用 symbol 类型是最好的，但由于热更新会导致 symbol 更新，导致获取不到正确的 provide 值
 export const MenuStateSymbol = 'proGlobalMenuState'
 
 /**

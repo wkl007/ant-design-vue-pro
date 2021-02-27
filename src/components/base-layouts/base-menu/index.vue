@@ -48,25 +48,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ComputedRef, PropType, ref } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
 import SubMenu from './sub-menu.vue'
 import type { RouteProps } from '@/types/router'
+import type { MenuTheme } from '@/types/store/app'
 
 export const BaseMenuProps = {
-  locale: {
-    type: Boolean,
-    default: false
-  },
   menus: {
     type: Array as PropType<RouteProps[]>,
-    required: true
+    default: (): RouteProps[] => []
   },
   mode: {
-    type: String,
+    type: String as PropType<'vertical' | 'vertical-right' | 'horizontal' | 'inline'>,
     default: 'inline'
   },
   theme: {
-    type: String,
+    type: String as PropType<MenuTheme>,
     default: 'dark'
   },
   collapsed: {
@@ -74,12 +71,12 @@ export const BaseMenuProps = {
     default: false
   },
   openKeys: {
-    type: Array,
-    required: true
+    type: Array as PropType<string[]>,
+    default: (): string[] => []
   },
   selectedKeys: {
-    type: Array,
-    required: true
+    type: Array as PropType<string[]>,
+    default: (): string[] => []
   },
   customItem: {
     type: Function,
@@ -92,31 +89,28 @@ export default defineComponent({
   components: {
     SubMenu
   },
-  props: Object.assign(
-    {},
-    {
-      i18n: {
-        type: Function,
-        default: (t: any): any => t
-      }
+  props: {
+    i18n: {
+      type: Function,
+      default: (t: any): any => t
     },
-    BaseMenuProps
-  ),
+    ...BaseMenuProps
+  },
   emits: ['update:openKeys', 'update:selectedKeys', 'mouseenter', 'mouseleave', 'itemHover'],
   setup (props, { emit }) {
-    const isInline = props.mode === 'inline'
-    const dynamicProps = ref({ inlineCollapsed: isInline ? props.collapsed : undefined })
+    const dynamicProps = ref({ inlineCollapsed: props.mode === 'inline' ? props.collapsed : undefined })
 
+    // SubMenu 展开/关闭
     function handleOpenChange (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }
 
+    // menu 选中
     function handleSelect (ctx: { [key: string]: any }): void {
       emit('update:selectedKeys', ctx.selectedKeys)
     }
 
     return {
-      isInline,
       dynamicProps,
       handleOpenChange,
       handleSelect

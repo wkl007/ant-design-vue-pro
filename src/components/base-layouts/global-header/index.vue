@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, inject } from 'vue'
+import { computed, defineComponent, inject, ref } from 'vue'
 
 export default defineComponent({
   name: 'GlobalHeader',
@@ -71,6 +71,7 @@ export default defineComponent({
     const isSide = computed(() => props.layout === 'side')
     const isLeft = computed(() => props.layout === 'left')
 
+    // 收缩展开按钮点击
     function handleClick (): void {
       emit('collapse', !props.collapsed)
     }

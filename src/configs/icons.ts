@@ -5,6 +5,7 @@ import {
   CheckCircleOutlined,
   CloseOutlined,
   CopyrightOutlined,
+  EllipsisOutlined,
   FormOutlined,
   GlobalOutlined,
   HeartOutlined,
@@ -16,15 +17,14 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   MobileOutlined,
+  ReloadOutlined,
   SettingOutlined,
   TableOutlined,
   TaobaoCircleOutlined,
   UnorderedListOutlined,
   UserOutlined,
   WarningOutlined,
-  WeiboCircleOutlined,
-  ReloadOutlined,
-  EllipsisOutlined
+  WeiboCircleOutlined
 } from '@ant-design/icons-vue'
 
 /**

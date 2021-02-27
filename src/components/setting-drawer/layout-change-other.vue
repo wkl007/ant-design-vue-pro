@@ -122,6 +122,7 @@ export default defineComponent({
   setup (props, { emit }) {
     const { i18n } = injectProProvider()
 
+    // 选择更改
     function handleChange (type: string, value: string): void {
       emit('change', { type, value })
     }

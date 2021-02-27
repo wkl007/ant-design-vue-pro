@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { injectProProvider } from '@/components/base-layouts/pro-provider'
 import LayoutBlock from './layout-block.vue'
 
@@ -28,8 +28,8 @@ export default defineComponent({
       default: ''
     },
     list: {
-      type: Array,
-      default: () => []
+      type: Array as PropType<Array<{ key: string; title: string; }>>,
+      default: (): Array<{ key: string; title: string; }> => []
     }
   },
   components: {
@@ -40,6 +40,7 @@ export default defineComponent({
     const { i18n, getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer-block-checkbox')
 
+    // 更改
     function handleChange (disabled: boolean, key: string): void {
       if (disabled) return
       emit('change', key)

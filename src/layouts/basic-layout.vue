@@ -39,6 +39,7 @@
       />
       <a-layout>
         <header-view
+          :is-mobile="isMobile"
           :theme="theme"
           :layout="layout"
           :menus="menus"

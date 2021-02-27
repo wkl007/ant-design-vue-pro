@@ -15,8 +15,16 @@
         </template>
         <template v-if="hasFooter || tabList.length" #footer>
           <slot name="footer">
-            <a-tabs v-if="tabList.length > 0" :active-key="tabActiveKey" @change="handleTabChange">
-              <a-tab-pane v-for="tab in tabList" :key="tab.key" :tab="tab.tab"/>
+            <a-tabs
+              v-if="tabList.length"
+              :active-key="tabActiveKey"
+              @change="handleTabChange"
+            >
+              <a-tab-pane
+                v-for="tab in tabList"
+                :key="tab.key"
+                :tab="tab.tab"
+              />
             </a-tabs>
           </slot>
         </template>
@@ -130,6 +138,7 @@ export default defineComponent({
     // props 的 back 事件优先级高于 @back，需要注意
     const onBack = props.back || attrs.onBack
 
+    // 返回按钮点击
     const handleBack =
       (onBack &&
         ((): void => {
@@ -139,11 +148,13 @@ export default defineComponent({
         })) ||
       undefined
 
+    // tab更改
     function handleTabChange (activeKey: string): void {
       emit('tab-change', activeKey)
       emit('update:tab-active-key', activeKey)
     }
 
+    // 面包屑自定义渲染
     function customBreadcrumbRender ({ route, params, routes }: BreadcrumbItemRender): VNode {
       const breadcrumbName = route.breadcrumbName
       return (

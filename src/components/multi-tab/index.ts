@@ -1,5 +1,5 @@
-import { KeepAlive, cloneVNode, reactive, createVNode, toRaw, defineComponent, watch } from 'vue'
-import { RouteMeta, useRouter, useRoute } from 'vue-router'
+import { cloneVNode, createVNode, defineComponent, KeepAlive, reactive, toRaw, watch } from 'vue'
+import { RouteMeta, useRoute, useRouter } from 'vue-router'
 import { message } from 'ant-design-vue'
 import { flattenChildren } from '@/utils/vnode-util'
 import { generateUuid } from '@/utils'
@@ -46,10 +46,6 @@ export type Options = {
 }
 
 export type MultiTabType = CallerFunction;
-
-function getName (comp: any): string {
-  return comp.displayName || comp.name
-}
 
 function hasCache (path: CacheKey): CacheItem | undefined {
   return state.cacheList.find(item => item.path === path)

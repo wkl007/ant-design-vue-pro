@@ -1,10 +1,7 @@
 <template>
   <div :class="classNames">
     <div :class="headerClassName">
-      <div
-        :class="`${prefixedClassName}-main-left`"
-        @click="handleMenuHeaderClick"
-      >
+      <div :class="`${prefixedClassName}-main-left`">
         <div :class="`${prefixedClassName}-logo`">
           <slot v-if="hasLogoSlot" name="logo"/>
           <div v-else>
@@ -36,17 +33,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs, inject } from 'vue'
+import { computed, defineComponent, inject, PropType, toRefs } from 'vue'
 import BaseMenu from '@/components/base-layouts/base-menu/index.vue'
 import RightContent from './right-content.vue'
 import { injectProProvider } from '../pro-provider'
+import { RouteProps } from '@/types/router'
 
 export default defineComponent({
   name: 'TopNavHeader',
   props: {
     prefixCls: {
       type: String,
-      default: undefined
+      default: ''
     },
     layout: {
       type: String,
@@ -62,16 +60,16 @@ export default defineComponent({
     },
     // menu
     menus: {
-      type: Array,
-      default: (): Array<any> => []
+      type: Array as PropType<RouteProps[]>,
+      default: (): RouteProps[] => []
     },
     openKeys: {
-      type: Array,
-      required: true
+      type: Array as PropType<string[]>,
+      default: (): string[] => []
     },
     selectedKeys: {
-      type: Array,
-      required: true
+      type: Array as PropType<string[]>,
+      default: (): string[] => []
     }
   },
   components: {
@@ -98,15 +96,15 @@ export default defineComponent({
     })
     const { logo: hasLogoSlot } = slots
 
+    // menu 选中
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)
     }
 
+    // SubMenu 展开/关闭
     function handleOpenKeys (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }
-
-    function handleMenuHeaderClick (): void {}
 
     return {
       images: inject('images'),
@@ -118,8 +116,7 @@ export default defineComponent({
       hasLogoSlot,
 
       handleSelectedKeys,
-      handleOpenKeys,
-      handleMenuHeaderClick
+      handleOpenKeys
     }
   }
 })

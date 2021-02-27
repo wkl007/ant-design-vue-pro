@@ -19,6 +19,7 @@
       />
       <a-layout style="position: relative; flex-direction: column;">
         <header-view
+          :is-mobile="isMobile"
           :theme="theme"
           :layout="layout"
           :menus="menus"

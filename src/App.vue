@@ -9,7 +9,7 @@ import { computed, defineComponent, provide, reactive, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
-import { useMenuState, MenuStateSymbol } from '@/hooks/useMenuState'
+import { MenuStateSymbol, useMenuState } from '@/hooks/useMenuState'
 import images from '@/assets/images'
 
 export default defineComponent({

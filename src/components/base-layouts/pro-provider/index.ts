@@ -13,14 +13,16 @@ export interface ProProviderData {
   contentWidth: ComputedRef<ContentWidth>;
 }
 
-//  TODO 用 symbol 类型是最好的，但由于热更新会导致 symbol 更新，导致获取不到正确的 provide 值
 export const ProConfigSymbol = 'proGlobalConfig'
 
+/**
+ * 提供 i18n contentWidth getPrefixCls 供全局使用
+ */
 const ProProvider = {
   name: 'ProProvider',
   props: {
     prefixCls: {
-      type: String as PropType<string>,
+      type: String,
       default: 'ant-pro'
     }
   },
@@ -30,6 +32,7 @@ const ProProvider = {
     const { prefixCls } = toRefs(props)
     const contentWidth = computed(() => store.getters.contentWidth)
 
+    // 获取类名
     function getPrefixCls (suffixCls?: string, customizePrefixCls?: string): string {
       if (customizePrefixCls) return customizePrefixCls
       return suffixCls ? `${prefixCls.value}-${suffixCls}` : prefixCls.value
@@ -50,6 +53,9 @@ const ProProvider = {
   }
 }
 
+/**
+ * 获取 i18n contentWidth getPrefixCls
+ */
 export function injectProProvider (): ProProviderData {
   return inject(ProConfigSymbol, {} as ProProviderData)
 }

@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { ProProvider, TransformVNode, PageContainer } from '@/components'
+import { PageContainer, ProProvider, TransformVNode } from '@/components'
 
 /**
  * 全局组件配置
