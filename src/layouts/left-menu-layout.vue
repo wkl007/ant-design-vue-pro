@@ -1,5 +1,5 @@
 <template>
-  <pro-provider :i18n="t">
+  <pro-provider>
     <a-layout class="ant-pro-left-menu-layout">
       <side-menu
         theme="dark"
@@ -98,9 +98,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, cloneVNode, VNode } from 'vue'
+import { cloneVNode, computed, defineComponent, ref, VNode, watch } from 'vue'
 import { useStore } from 'vuex'
-import { useI18n } from 'vue-i18n'
 import SideMenu from '@/components/base-layouts/side-menu/index.vue'
 import HeaderView from '@/components/base-layouts/header-view/index.vue'
 import SelectLang from '@/components/select-lang/index.vue'
@@ -109,7 +108,7 @@ import AvatarDropdown from '@/components/avatar-dropdown/index.vue'
 import WrapContent from '@/components/base-layouts/wrap-content/index.vue'
 import GlobalFooter from '@/components/base-layouts/global-footer/index.vue'
 import SettingDrawer from '@/components/setting-drawer/index.vue'
-import { injectMenuState, getMenuInfo, getMenuFirstChildren, filterMenu } from '@/hooks/useMenuState'
+import { filterMenu, getMenuFirstChildren, getMenuInfo, injectMenuState } from '@/hooks/useMenuState'
 import { useDelayReset } from '@/hooks/useDelayReset'
 
 export default defineComponent({
@@ -125,7 +124,6 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-    const { t } = useI18n()
     const menuState = injectMenuState()
     const menus = computed(() => getMenuInfo(filterMenu(store.getters.allowRouters)).menus)
     const mainMenus = computed(() => getMenuFirstChildren(menus.value))
@@ -178,7 +176,6 @@ export default defineComponent({
     })
 
     return {
-      t,
       menus,
       mainMenus,
       firstSelectedKeys,

@@ -1,5 +1,5 @@
 <template>
-  <pro-provider :i18n="t">
+  <pro-provider>
     <a-layout class="ant-pro-basic-layout">
       <a-drawer
         v-if="isMobile"
@@ -76,9 +76,8 @@
 </template>
 
 <script>
-import { defineComponent, computed, inject, ref } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
-import { useI18n } from 'vue-i18n'
 import SideMenu from '@/components/base-layouts/side-menu/index.vue'
 import HeaderView from '@/components/base-layouts/header-view/index.vue'
 import AvatarDropdown from '@/components/avatar-dropdown/index.vue'
@@ -87,8 +86,8 @@ import WrapContent from '@/components/base-layouts/wrap-content/index.vue'
 import GlobalFooter from '@/components/base-layouts/global-footer/index.vue'
 import MultiTab from '@/components/multi-tab/index.vue'
 import SettingDrawer from '@/components/setting-drawer/index.vue'
-import { injectMenuState, getMenuInfo, filterMenu } from '@/hooks/useMenuState'
-import { MultiTabStoreProducer, createMultiTabStoreProducer } from '@/components/multi-tab/index'
+import { filterMenu, getMenuInfo, injectMenuState } from '@/hooks/useMenuState'
+import { createMultiTabStoreProducer, MultiTabStoreProducer } from '@/components/multi-tab/index'
 
 const multiTabStore = createMultiTabStoreProducer()
 
@@ -107,7 +106,6 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-    const { t } = useI18n()
     const menuState = injectMenuState()
     const menus = computed(() => getMenuInfo(filterMenu(store.getters.allowRouters)).menus)
 
@@ -116,7 +114,6 @@ export default defineComponent({
     const userInfo = computed(() => store.getters.userInfo)
 
     return {
-      t,
       ...menuState,
       menus,
       hasTopMenu,

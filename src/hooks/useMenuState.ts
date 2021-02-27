@@ -141,7 +141,7 @@ export function filterMenu (routes: Array<RouteRecordRaw>): Array<RouteRecordRaw
  * 获取菜单数据
  */
 export function injectMenuState (): MenuStated {
-  return inject(MenuStateSymbol, { ...toRefs(reactive({})) } as MenuStated)
+  return inject(MenuStateSymbol, {} as MenuStated)
 }
 
 /**
