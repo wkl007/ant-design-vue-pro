@@ -475,9 +475,19 @@ export default defineComponent({
 
 .@{pro-layout-sider-menu-prefix-cls} {
   position: relative;
+
+  &.ant-pro-has-left-menu {
+    .@{pro-layout-sider-menu-prefix-cls}-logo {
+      padding: 8px 16px;
+    }
+  }
 }
 
 .@{pro-layout-sider-menu-left-prefix-cls} {
   position: fixed;
+
+  .@{pro-layout-sider-menu-prefix-cls}-logo {
+    padding: 8px 16px !important;
+  }
 }
 </style>

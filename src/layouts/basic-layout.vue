@@ -142,7 +142,7 @@ export default defineComponent({
     }
   }
 
-  &-content {
+  .@{basic-layout-prefix-cls}-content {
     position: relative;
     margin: 24px;
 

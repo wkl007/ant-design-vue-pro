@@ -56,7 +56,7 @@
           />
           <section
             style="flex: auto; overflow-x: hidden;"
-            class="ant-pro-left-menu-layout-content"
+            class="ant-pro-layout-content"
           >
             <wrap-content>
               <router-view/>
@@ -204,10 +204,11 @@ export default defineComponent({
     color: #fff;
   }
 
-  &-content {
+  .@{layout-prefix-cls}-content {
+    position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    margin: 24px;
   }
 
   .menu-header-title {
