@@ -5,6 +5,9 @@ const { createMockMiddleware } = require('umi-mock-middleware')
 const TerserPlugin = require('terser-webpack-plugin')// 去console插件
 const CompressionWebpackPlugin = require('compression-webpack-plugin')// gzip压缩插件
 
+const { getThemeVariables } = require('ant-design-vue/dist/theme')
+const { additionalData } = require('./theme.config')
+
 const resolve = dir => path.join(__dirname, dir)
 
 module.exports = {
@@ -117,10 +120,12 @@ module.exports = {
       less: {
         lessOptions: {
           modifyVars: {
+            ...getThemeVariables()
             // 'primary-color': '#1DA57A'
           },
           javascriptEnabled: true
-        }
+        },
+        additionalData // 不需要多主题，可以注释
       }
     }
   },
