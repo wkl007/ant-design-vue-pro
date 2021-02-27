@@ -5,7 +5,7 @@ const { getThemeVariables } = require('ant-design-vue/dist/theme')
 const themeConfig = [
   {
     theme: 'dark',
-    htmlThemeAttr: 'antdv-pro-theme-dark',
+    htmlThemeAttr: 'dark',
     modifyVars: { ...getThemeVariables({ dark: true }), 'text-color': 'fade(@white, 65%)' }
   }
 ]
@@ -24,7 +24,7 @@ async function additionalData (content, loaderContext) {
       let res = ''
       if (htmlThemeAttr && css) {
         res = `
-        [data-pro-theme=${htmlThemeAttr}] {
+        [theme=${htmlThemeAttr}] {
           ${css}
         }
         `

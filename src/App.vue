@@ -45,11 +45,11 @@ export default defineComponent({
         if (theme.value === 'realDark') {
           document
             .getElementsByTagName('html')[0]
-            .setAttribute('data-pro-theme', 'antdv-pro-theme-dark')
+            .setAttribute('theme', 'dark')
         } else {
           document
             .getElementsByTagName('html')[0]
-            .setAttribute('data-pro-theme', 'antdv-pro-theme-light')
+            .setAttribute('theme', 'light')
         }
       },
       { immediate: true }
