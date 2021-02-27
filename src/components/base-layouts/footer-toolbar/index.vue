@@ -44,8 +44,6 @@ export default defineComponent({
 <style scoped lang="less">
 @import "~@/assets/styles/variables";
 
-@pro-footer-bar-prefix-cls: ~'@{ant-prefix}-pro-footer-bar';
-
 .@{pro-footer-bar-prefix-cls} {
   position: fixed;
   right: 0;

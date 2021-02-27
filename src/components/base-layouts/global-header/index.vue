@@ -89,13 +89,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "../basic-layout";
-
-@pro-layout-global-header-prefix-cls: ~'@{ant-prefix}-pro-global-header';
-
-@pro-layout-header-bg: @component-background;
-@pro-layout-header-hover-bg: @component-background;
-@pro-layout-header-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+@import "~@/assets/styles/variables";
 
 .@{pro-layout-global-header-prefix-cls} {
   position: relative;
@@ -103,8 +97,8 @@ export default defineComponent({
   align-items: center;
   height: 100%;
   padding: 0 16px;
-  background: @pro-layout-header-bg;
-  box-shadow: @pro-layout-header-box-shadow;
+  background: @component-background;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   > * {
     height: 100%;

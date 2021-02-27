@@ -189,9 +189,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-@import "../base-layouts/basic-layout";
-
-@multi-tab-height: 62px;
+@import "~@/assets/styles/variables";
 
 .ant-pro-multi-tab-wrap {
   background: @component-background;
@@ -203,7 +201,7 @@ export default defineComponent({
 
 .ant-pro-multi-tab-fixed {
   width: 100%;
-  height: @multi-tab-height;
+  height: 62px;
   background: transparent;
 }
 
@@ -213,7 +211,7 @@ export default defineComponent({
   right: 0;
   z-index: 9;
   width: 100%;
-  height: @multi-tab-height;
+  height: 62px;
   transition: width 0.2s;
 }
 

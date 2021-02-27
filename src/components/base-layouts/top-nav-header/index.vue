@@ -126,9 +126,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "../basic-layout";
-
-@top-nav-header-prefix-cls: ~'@{ant-prefix}-pro-top-nav-header';
+@import "~@/assets/styles/variables";
 
 .@{top-nav-header-prefix-cls} {
   position: relative;

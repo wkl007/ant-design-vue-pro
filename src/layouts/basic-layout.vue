@@ -1,6 +1,6 @@
 <template>
   <pro-provider>
-    <a-layout class="ant-pro-basic-layout">
+    <a-layout class="ant-pro-basic-layout ant-pro-layout">
       <a-drawer
         v-if="isMobile"
         placement="left"
@@ -125,5 +125,70 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "~@/components/base-layouts/basic-layout.less";
+@import "~@/assets/styles/variables";
+
+.@{layout-prefix-cls} {
+  // BFC
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh !important;
+
+  .@{ant-prefix}-layout-header {
+    &.@{ant-prefix}-pro-fixed-header {
+      position: fixed;
+      top: 0;
+      transition: width 0.2s;
+    }
+  }
+
+  &-content {
+    position: relative;
+    margin: 24px;
+
+    .@{ant-prefix}-pro-page-container {
+      margin: -24px -24px 0;
+    }
+
+    &-disable-margin {
+      margin: 0;
+
+      .@{ant-prefix}-pro-page-container {
+        margin: 0;
+      }
+    }
+
+    > .@{ant-prefix}-layout {
+      max-height: 100%;
+    }
+  }
+
+  // children should support fixed
+  .@{layout-prefix-cls}-is-children.@{layout-prefix-cls}-fix-siderbar {
+    height: 100vh;
+    overflow: hidden;
+    transform: rotate(0);
+  }
+
+  .@{layout-prefix-cls}-has-header {
+    // tech-page-container
+    .tech-page-container {
+      height: calc(100vh - @pro-layout-header-height);
+    }
+
+    .@{layout-prefix-cls}-is-children.@{layout-prefix-cls}-has-header {
+      .tech-page-container {
+        height: calc(100vh - @pro-layout-header-height - @pro-layout-header-height);
+      }
+
+      .@{layout-prefix-cls}-is-children {
+        min-height: calc(100vh - @pro-layout-header-height);
+
+        &.@{layout-prefix-cls}-fix-siderbar {
+          height: calc(100vh - @pro-layout-header-height);
+        }
+      }
+    }
+  }
+}
 </style>

@@ -183,8 +183,6 @@ export default defineComponent({
 <style scoped lang="less">
 @import "~@/assets/styles/variables";
 
-@pro-layout-fixed-header-prefix-cls: ~'@{ant-prefix}-pro-fixed-header';
-
 .@{pro-layout-fixed-header-prefix-cls} {
   z-index: 9;
   width: 100%;

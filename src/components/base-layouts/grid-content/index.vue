@@ -36,8 +36,6 @@ export default defineComponent({
 <style scoped lang="less">
 @import "~@/assets/styles/variables";
 
-@pro-layout-grid-content-prefix-cls: ~'@{ant-prefix}-pro-grid-content';
-
 .@{pro-layout-grid-content-prefix-cls} {
   width: 100%;
 

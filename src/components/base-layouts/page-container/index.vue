@@ -181,12 +181,6 @@ export default defineComponent({
 <style scoped lang="less">
 @import "~@/assets/styles/variables";
 
-@pro-layout-page-container: ~'@{ant-prefix}-pro-page-container';
-
-.@{pro-layout-page-container}-children-content {
-  margin: 24px 24px 0;
-}
-
 .@{pro-layout-page-container} {
   &-warp {
     background-color: @component-background;
@@ -206,6 +200,10 @@ export default defineComponent({
         margin: 9px 0;
       }
     }
+  }
+
+  &-children-content {
+    margin: 24px 24px 0;
   }
 
   &-ghost {

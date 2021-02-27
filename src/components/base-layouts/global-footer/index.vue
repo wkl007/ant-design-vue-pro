@@ -60,9 +60,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "../basic-layout";
-
-@pro-global-footer-prefix-cls: ~'@{ant-prefix}-pro-global-footer';
+@import "~@/assets/styles/variables";
 
 .@{pro-global-footer-prefix-cls} {
   margin: 48px 0 24px 0;

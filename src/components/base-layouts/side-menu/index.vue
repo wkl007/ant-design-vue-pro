@@ -190,18 +190,71 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "../basic-layout";
+@import "~@/assets/styles/variables";
 
-@pro-layout-sider-menu-prefix-cls: ~'@{ant-prefix}-pro-sider';
+@keyframes fade-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
 
-@nav-header-height: @pro-layout-header-height;
+  99% {
+    display: none;
+    opacity: 0;
+  }
 
-.@{pro-layout-sider-menu-prefix-cls} {
-  position: relative;
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.@{pro-layout-sider-menu-prefix-cls},
+.@{pro-layout-sider-menu-left-prefix-cls} {
   //transition: background-color 0.3s;
   z-index: 9;
   background-color: @layout-sider-background;
   border-right: 0;
+
+  &.@{ant-prefix}-layout-sider-collapsed {
+    .@{ant-prefix}-menu-inline-collapsed {
+      width: 48px;
+    }
+
+    .@{pro-layout-sider-menu-prefix-cls} {
+      &-logo {
+        padding: 16px 8px;
+      }
+    }
+  }
+
+  .@{ant-prefix}-menu-inline-collapsed {
+    & > .@{ant-prefix}-menu-item .sider-menu-item-img + span,
+    & > .@{ant-prefix}-menu-item-group > .@{ant-prefix}-menu-item-group-list > .@{ant-prefix}-menu-item .sider-menu-item-img + span,
+    & > .@{ant-prefix}-menu-submenu > .@{ant-prefix}-menu-submenu-title .sider-menu-item-img + span {
+      display: inline-block;
+      max-width: 0;
+      opacity: 0;
+    }
+
+    .@{ant-prefix}-menu-item {
+      width: 48px;
+      padding: 0 16px !important;
+      text-align: center;
+    }
+
+    // hide menu item text in collapsed
+    .@{ant-prefix}-pro-menu-item-title {
+      display: none;
+    }
+
+    .@{ant-prefix}-menu-submenu {
+      .@{ant-prefix}-menu-submenu-title {
+        width: 48px;
+        padding: 0 16px !important;
+      }
+    }
+  }
 
   &.@{ant-prefix}-menu-vertical .@{ant-prefix}-menu-item:not(:last-child),
   &.@{ant-prefix}-menu-vertical-left .@{ant-prefix}-menu-item:not(:last-child),
@@ -237,10 +290,11 @@ export default defineComponent({
     }
   }
 
-  &-logo {
+  .@{pro-layout-sider-menu-prefix-cls}-logo {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 16px 16px;
     line-height: 32px;
     cursor: pointer;
@@ -315,45 +369,6 @@ export default defineComponent({
     }
   }
 
-  &.@{ant-prefix}-layout-sider-collapsed {
-    .@{ant-prefix}-menu-inline-collapsed {
-      width: 48px;
-    }
-
-    .@{pro-layout-sider-menu-prefix-cls} {
-      &-logo {
-        padding: 16px 8px;
-      }
-    }
-  }
-
-  .@{ant-prefix}-menu-inline-collapsed {
-    & > .@{ant-prefix}-menu-item .sider-menu-item-img + span,
-    & > .@{ant-prefix}-menu-item-group > .@{ant-prefix}-menu-item-group-list > .@{ant-prefix}-menu-item .sider-menu-item-img + span,
-    & > .@{ant-prefix}-menu-submenu > .@{ant-prefix}-menu-submenu-title .sider-menu-item-img + span {
-      display: inline-block;
-      max-width: 0;
-      opacity: 0;
-    }
-
-    .@{ant-prefix}-menu-item {
-      width: 48px;
-      padding: 0 16px !important;
-    }
-
-    // hide menu item text in collapsed
-    .@{ant-prefix}-pro-menu-item-title {
-      display: none;
-    }
-
-    .@{ant-prefix}-menu-submenu {
-      .@{ant-prefix}-menu-submenu-title {
-        width: 48px;
-        padding: 0 16px !important;
-      }
-    }
-  }
-
   .@{ant-prefix}-menu-item,
   .@{ant-prefix}-menu-submenu-title {
     .anticon {
@@ -373,7 +388,7 @@ export default defineComponent({
 
     > .@{ant-prefix}-menu-root {
       :not(.@{pro-layout-sider-menu-prefix-cls}-link-menu) {
-        height: ~'calc(100vh - @{nav-header-height})';
+        height: ~'calc(100vh - @{pro-layout-header-height})';
         overflow-y: auto;
       }
     }
@@ -458,20 +473,11 @@ export default defineComponent({
   }
 }
 
-@keyframes fade-in {
-  0% {
-    display: none;
-    opacity: 0;
-  }
+.@{pro-layout-sider-menu-prefix-cls} {
+  position: relative;
+}
 
-  99% {
-    display: none;
-    opacity: 0;
-  }
-
-  100% {
-    display: block;
-    opacity: 1;
-  }
+.@{pro-layout-sider-menu-left-prefix-cls} {
+  position: fixed;
 }
 </style>

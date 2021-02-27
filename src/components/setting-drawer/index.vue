@@ -201,8 +201,6 @@ export default defineComponent({
 <style lang="less">
 @import "~@/assets/styles/variables";
 
-@ant-pro-setting-drawer: ~'@{ant-prefix}-pro-setting-drawer';
-
 .@{ant-pro-setting-drawer} {
   &-content {
     position: relative;
@@ -288,5 +286,4 @@ export default defineComponent({
     font-size: 12px;
   }
 }
-
 </style>

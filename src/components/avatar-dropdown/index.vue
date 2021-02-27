@@ -113,7 +113,57 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "../header-dropdown";
+@import "~@/assets/styles/variables";
+
+.@{pro-dropdown-prefix-cls} {
+  display: inline-block;
+  height: @pro-layout-header-height;
+  line-height: @pro-layout-header-height;
+  vertical-align: top;
+  cursor: pointer;
+
+  &.ant-pro-dropdown-action {
+    padding: 0 12px;
+    line-height: 48px;
+    vertical-align: top;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
+    }
+  }
+
+  > span {
+    font-size: 16px !important;
+    transform: none !important;
+
+    svg {
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+
+.@{pro-dropdown-prefix-cls}-menu {
+  ::v-deep(.anticon) {
+    margin-right: 8px;
+  }
+
+  ::v-deep(.ant-dropdown-menu-item) {
+    min-width: 160px;
+  }
+}
+
+.ant-pro-global-header-layout-side,
+.ant-pro-global-header-layout-left,
+.ant-pro-top-nav-header.light {
+  .@{pro-dropdown-prefix-cls} {
+    &.ant-pro-dropdown-action {
+      &:hover {
+        background: rgba(0, 0, 0, 0.025);
+      }
+    }
+  }
+}
 </style>
 
 <style scoped lang="less">

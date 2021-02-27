@@ -1,6 +1,6 @@
 <template>
   <pro-provider>
-    <a-layout class="ant-pro-left-menu-layout">
+    <a-layout class="ant-pro-left-menu-layout ant-pro-layout">
       <side-menu
         theme="dark"
         layout="left"
@@ -197,5 +197,21 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "~@/components/left-menu-layouts/index.less";
+@import "~@/assets/styles/variables";
+
+.@{left-menu-layout-prefix-cls} {
+  .hover-menu-active span {
+    color: #fff;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu-header-title {
+    font-size: 16px;
+  }
+}
 </style>

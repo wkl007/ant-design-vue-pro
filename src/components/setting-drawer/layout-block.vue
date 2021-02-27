@@ -82,8 +82,6 @@ export default defineComponent({
 <style scoped lang="less">
 @import "~@/assets/styles/variables";
 
-@block-item-prefix-cls: ~'@{ant-prefix}-pro-checkbox-item';
-
 .@{block-item-prefix-cls} {
   position: relative;
   width: 44px;
