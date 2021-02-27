@@ -1,8 +1,5 @@
 <template>
-  <pro-provider
-    :i18n="t"
-    :content-width="contentWidth"
-  >
+  <pro-provider :i18n="t">
     <a-layout class="ant-pro-left-menu-layout">
       <side-menu
         theme="dark"

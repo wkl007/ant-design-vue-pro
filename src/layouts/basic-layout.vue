@@ -1,8 +1,5 @@
 <template>
-  <pro-provider
-    :i18n="t"
-    :content-width="contentWidth"
-  >
+  <pro-provider :i18n="t">
     <a-layout class="ant-pro-basic-layout">
       <a-drawer
         v-if="isMobile"
@@ -60,6 +57,7 @@
         </header-view>
         <multi-tab
           v-if="multiTab"
+          :store="multiTabStore"
           :fixed="multiTabFixed"
           :side-width="sideWidth"
         />
@@ -90,6 +88,9 @@ import GlobalFooter from '@/components/base-layouts/global-footer/index.vue'
 import MultiTab from '@/components/multi-tab/index.vue'
 import SettingDrawer from '@/components/setting-drawer/index.vue'
 import { injectMenuState, getMenuInfo, filterMenu } from '@/hooks/useMenuState'
+import { MultiTabStoreProducer, createMultiTabStoreProducer } from '@/components/multi-tab/index'
+
+const multiTabStore = createMultiTabStoreProducer()
 
 export default defineComponent({
   name: 'BasicLayout',
@@ -101,7 +102,8 @@ export default defineComponent({
     WrapContent,
     GlobalFooter,
     MultiTab,
-    SettingDrawer
+    SettingDrawer,
+    MultiTabStoreProducer
   },
   setup () {
     const store = useStore()
@@ -118,7 +120,8 @@ export default defineComponent({
       ...menuState,
       menus,
       hasTopMenu,
-      userInfo
+      userInfo,
+      multiTabStore
     }
   }
 })

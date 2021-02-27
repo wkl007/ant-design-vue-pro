@@ -77,7 +77,7 @@
 <script lang="ts">
 import { defineComponent, computed, toRefs, PropType, inject } from 'vue'
 import { useRoute } from 'vue-router'
-import { useProProvider } from '../pro-provider'
+import { injectProProvider } from '../pro-provider'
 import BaseMenu, { BaseMenuProps } from '../base-menu/index.vue'
 import { findMenuChildren } from '@/hooks/useMenuState'
 import type { Layout } from '@/types/store/app'
@@ -153,7 +153,7 @@ export default defineComponent({
   setup (props, { emit }) {
     const { prefixCls: propPrefixCls, theme, layout, collapsed, collapsedWidth, sideWidth, splitMenus } = toRefs(props)
     const route = useRoute()
-    const { i18n, getPrefixCls } = useProProvider()
+    const { i18n, getPrefixCls } = injectProProvider()
     const prefixCls = propPrefixCls.value || getPrefixCls('sider')
     const isMix = computed(() => layout.value === 'mix')
     const runtimeTheme = computed(() => (layout.value === 'mix' && 'light') || theme.value)

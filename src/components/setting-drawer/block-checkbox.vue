@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components/base-layouts/pro-provider'
 import LayoutBlock from './layout-block.vue'
 
 export default defineComponent({
@@ -37,7 +37,7 @@ export default defineComponent({
   },
   emits: ['change'],
   setup (props, { emit }) {
-    const { i18n, getPrefixCls } = useProProvider()
+    const { i18n, getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer-block-checkbox')
 
     function handleChange (disabled: boolean, key: string): void {

@@ -45,9 +45,9 @@
 </template>
 
 <script lang="ts">
-import { createTextVNode, defineComponent, h, PropType, ref, toRefs, VNode, VNodeChild, withCtx } from 'vue'
+import { createTextVNode, defineComponent, h, PropType, ref, VNode, VNodeChild, withCtx } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useProProvider } from '../pro-provider'
+import { injectProProvider } from '../pro-provider'
 import GridContent from '../grid-content/index.vue'
 import PageHeaderContent from './page-header-content.vue'
 import { injectMenuState } from '@/hooks/useMenuState'
@@ -117,10 +117,9 @@ export default defineComponent({
   },
   emits: ['tab-change', 'update:tab-active-key'],
   setup (props, { attrs, slots, emit }) {
-    // 响应式处理
-    const { getPrefixCls, contentWidth } = toRefs(useProProvider())
+    const { getPrefixCls } = injectProProvider()
     const { breadcrumb } = injectMenuState()
-    const prefixedClassName = getPrefixCls.value('page-container')
+    const prefixedClassName = getPrefixCls('page-container')
     const classNames = ref({
       [prefixedClassName]: true,
       [`${prefixedClassName}-ghost`]: props.ghost
@@ -170,7 +169,6 @@ export default defineComponent({
       hasTags,
       classNames,
       prefixedClassName,
-      contentWidth,
 
       handleBack,
       handleTabChange,

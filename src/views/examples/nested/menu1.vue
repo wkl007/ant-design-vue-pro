@@ -13,12 +13,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components/base-layouts/pro-provider'
 
 export default defineComponent({
   name: 'Menu1',
   setup () {
-    const { i18n: t } = useProProvider()
+    const { i18n: t } = injectProProvider()
     return {
       t
     }

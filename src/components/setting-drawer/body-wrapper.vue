@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components/base-layouts/pro-provider'
 
 export default defineComponent({
   name: 'BodyWrapper',
@@ -18,7 +18,7 @@ export default defineComponent({
     }
   },
   setup () {
-    const { getPrefixCls } = useProProvider()
+    const { getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer-title')
     return {
       prefixCls

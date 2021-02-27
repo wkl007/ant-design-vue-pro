@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, VNodeChild } from 'vue'
-import { useProProvider } from '../pro-provider'
+import { injectProProvider } from '../pro-provider'
 import { injectMenuState } from '@/hooks/useMenuState'
 
 export default defineComponent({
@@ -23,7 +23,7 @@ export default defineComponent({
     }
   },
   setup () {
-    const { getPrefixCls } = useProProvider()
+    const { getPrefixCls } = injectProProvider()
     const { sideWidth, secondSideWidth, layout, isMobile } = injectMenuState()
     const baseClassName = getPrefixCls('footer-bar')
 

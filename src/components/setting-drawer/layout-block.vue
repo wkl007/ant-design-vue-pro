@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, PropType } from 'vue'
-import { useProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components/base-layouts/pro-provider'
 
 export type LayoutBlockTheme = 'light' | 'dark' | 'realDark' | 'side' | 'top' | 'mix' | 'left';
 
@@ -56,7 +56,7 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { i18n, getPrefixCls } = useProProvider()
+    const { i18n, getPrefixCls } = injectProProvider()
     const baseClassName = getPrefixCls('checkbox-item')
 
     const disableStyle = { cursor: 'not-allowed' }

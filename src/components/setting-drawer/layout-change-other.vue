@@ -87,7 +87,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { useProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components/base-layouts/pro-provider'
 import { Layout } from '@/types/store/app'
 
 export default defineComponent({
@@ -120,7 +120,7 @@ export default defineComponent({
   },
   emits: ['change'],
   setup (props, { emit }) {
-    const { i18n } = useProProvider()
+    const { i18n } = injectProProvider()
 
     function handleChange (type: string, value: string): void {
       emit('change', { type, value })

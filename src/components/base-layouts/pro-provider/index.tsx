@@ -1,14 +1,15 @@
+import { useStore } from 'vuex'
 import {
-  reactive,
-  readonly,
-  provide,
-  inject,
-  toRefs,
-  RenderFunction,
   App,
+  computed,
+  ComputedRef,
+  inject,
   PropType,
+  provide,
+  reactive,
+  RenderFunction,
   SetupContext,
-  InjectionKey
+  toRefs
 } from 'vue'
 import type { ContentWidth } from '@/types/store/app'
 
@@ -17,13 +18,12 @@ const defaultPrefixCls = 'ant-pro'
 export interface ProProviderProps {
   prefixCls: string;
   i18n: (t: string) => string;
-  contentWidth: ContentWidth;
 }
 
 export interface ProProviderData {
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => string;
   i18n: (t: string) => string;
-  contentWidth: ContentWidth;
+  contentWidth: ComputedRef<ContentWidth>;
 }
 
 export const defaultProProviderProps: ProProviderData = {
@@ -32,10 +32,11 @@ export const defaultProProviderProps: ProProviderData = {
     return `${defaultPrefixCls}-${suffixCls}`
   },
   i18n: (t: string): string => t,
-  contentWidth: 'Fluid'
+  contentWidth: computed(() => 'Fluid')
 }
 
-export const injectProConfigKey: InjectionKey<ProProviderData> = Symbol('some description')
+//  TODO 用 symbol 类型是最好的，但由于热更新会导致 symbol 更新，导致获取不到正确的 provide 值
+export const ProConfigSymbol = 'proGlobalConfig'
 
 const ProProvider = {
   name: 'ProProvider',
@@ -44,30 +45,28 @@ const ProProvider = {
       type: String as PropType<string>,
       default: 'ant-pro'
     },
-    contentWidth: {
-      type: String as PropType<ContentWidth>,
-      default: 'Fluid'
-    },
     i18n: {
       type: Function as PropType<(t: string) => string>,
       default: (t: string): string => t
     }
   },
   setup (props: ProProviderProps, { slots }: SetupContext): RenderFunction | void {
-    const { prefixCls, i18n, contentWidth } = toRefs(props)
+    const store = useStore()
+    const { prefixCls, i18n } = toRefs(props)
+    const contentWidth = computed(() => store.getters.contentWidth)
 
     function getPrefixCls (suffixCls?: string, customizePrefixCls?: string): string {
       if (customizePrefixCls) return customizePrefixCls
       return suffixCls ? `${prefixCls.value}-${suffixCls}` : prefixCls.value
     }
 
-    const proConfigProvider = reactive({
+    const proConfigProvider = {
       i18n,
       contentWidth,
       getPrefixCls
-    })
+    }
 
-    provide(injectProConfigKey, readonly(proConfigProvider))
+    provide(ProConfigSymbol, proConfigProvider)
 
     return () => slots.default?.()
   },
@@ -76,8 +75,8 @@ const ProProvider = {
   }
 }
 
-export function useProProvider (): ProProviderData {
-  return inject<ProProviderData>(injectProConfigKey, defaultProProviderProps)
+export function injectProProvider (): ProProviderData {
+  return inject(ProConfigSymbol, {} as ProProviderData)
 }
 
 export default ProProvider

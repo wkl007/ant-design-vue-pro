@@ -23,7 +23,7 @@ export interface Breadcrumb {
 type LayoutState = {
   layout: Ref<Layout>;
   theme: Ref<MenuTheme>;
-  contentWidth: Ref<ContentWidth>;
+  contentWidth: ComputedRef<ContentWidth>;
   fixedSidebar: Ref<boolean>;
   fixedHeader: Ref<boolean>;
   splitMenus: Ref<boolean>;
@@ -72,7 +72,7 @@ const state = reactive<MenuState>({
 
 let res: MenuStated | null = null
 
-// 用 symbol 类型是最好的，但由于热更新会导致 symbol 更新，导致获取不到正确的 provide 值
+// TODO 用 symbol 类型是最好的，但由于热更新会导致 symbol 更新，导致获取不到正确的 provide 值
 export const MenuStateSymbol = 'proGlobalMenuState'
 
 /**

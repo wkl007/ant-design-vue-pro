@@ -39,7 +39,7 @@
 import { defineComponent, computed, toRefs, inject } from 'vue'
 import BaseMenu from '@/components/base-layouts/base-menu/index.vue'
 import RightContent from './right-content.vue'
-import { useProProvider } from '../pro-provider'
+import { injectProProvider } from '../pro-provider'
 
 export default defineComponent({
   name: 'TopNavHeader',
@@ -81,7 +81,7 @@ export default defineComponent({
   emits: ['update:openKeys', 'update:selectedKeys'],
   setup (props, { slots, emit }) {
     const { theme, contentWidth, prefixCls: customizePrefixCls } = toRefs(props)
-    const { i18n, getPrefixCls } = useProProvider()
+    const { i18n, getPrefixCls } = injectProProvider()
     const prefixedClassName = customizePrefixCls.value || getPrefixCls('top-nav-header')
     const hasMix = computed(() => props.layout === 'mix')
     const classNames = computed(() => {

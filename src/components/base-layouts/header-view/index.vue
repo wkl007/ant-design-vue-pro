@@ -50,7 +50,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, toRefs, PropType, inject } from 'vue'
-import { useProProvider } from '../pro-provider'
+import { injectProProvider } from '../pro-provider'
 import GlobalHeader from '../global-header/index.vue'
 import TopNavHeader from '../top-nav-header/index.vue'
 import { getMenuFirstChildren } from '@/hooks/useMenuState'
@@ -121,7 +121,7 @@ export default defineComponent({
   emits: ['update:openKeys', 'update:selectedKeys', 'update:collapsed'],
   setup (props, { emit }) {
     const { prefixCls: propPrefixCls, collapsed, fixedHeader, hasSideMenu, sideWidth, collapsedWidth, splitMenus } = toRefs(props)
-    const { i18n, getPrefixCls } = useProProvider()
+    const { i18n, getPrefixCls } = injectProProvider()
     const prefixCls = propPrefixCls.value || getPrefixCls()
     const isMobile = inject('isMobile', ref(false))
     const isMix = computed(() => props.layout === 'mix')

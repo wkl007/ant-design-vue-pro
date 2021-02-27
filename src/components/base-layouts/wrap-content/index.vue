@@ -6,13 +6,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs } from 'vue'
-import { useProProvider } from '../pro-provider'
+import { injectProProvider } from '../pro-provider'
 
 export default defineComponent({
   name: 'WrapContent',
   setup () {
-    const { getPrefixCls } = toRefs(useProProvider())
-    const prefixCls = getPrefixCls.value('basic-layout')
+    const { getPrefixCls } = injectProProvider()
+    const prefixCls = getPrefixCls('basic-layout')
     const classNames = ref({
       [`${prefixCls}-content`]: true,
       [`${prefixCls}-has-header`]: true

@@ -22,7 +22,9 @@ import {
   UnorderedListOutlined,
   UserOutlined,
   WarningOutlined,
-  WeiboCircleOutlined
+  WeiboCircleOutlined,
+  ReloadOutlined,
+  EllipsisOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -53,4 +55,6 @@ export function setupIcons (app: App<Element>): void {
   app.component(SettingOutlined.displayName, SettingOutlined)
   app.component(LogoutOutlined.displayName, LogoutOutlined)
   app.component(CloseOutlined.displayName, CloseOutlined)
+  app.component(ReloadOutlined.displayName, ReloadOutlined)
+  app.component(EllipsisOutlined.displayName, EllipsisOutlined)
 }

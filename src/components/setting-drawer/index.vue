@@ -67,7 +67,7 @@ import BodyWrapper from './body-wrapper.vue'
 import BlockCheckbox from './block-checkbox.vue'
 import LayoutChangeBasic from './layout-change-basic.vue'
 import LayoutChangeOther from './layout-change-other.vue'
-import { useProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components/base-layouts/pro-provider'
 import { injectMenuState } from '@/hooks/useMenuState'
 import * as types from '@/store/modules/app/mutationTypes'
 import type { Layout } from '@/types/store/app'
@@ -88,7 +88,7 @@ export default defineComponent({
   setup () {
     const store = useStore()
     const menuState = injectMenuState()
-    const { i18n, getPrefixCls } = useProProvider()
+    const { i18n, getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer')
     const visible = ref(false)
     const navTheme = computed(() => store.getters.navTheme)

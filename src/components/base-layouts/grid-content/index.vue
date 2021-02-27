@@ -7,26 +7,21 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, toRefs } from 'vue'
-import { useProProvider } from '../pro-provider'
+import { computed, defineComponent, ref } from 'vue'
+import { injectProProvider } from '../pro-provider'
 
 export default defineComponent({
   name: 'GridContent',
   props: {
-    contentWidth: {
-      type: String,
-      default: ''
-    },
     prefixCls: {
       type: String,
       default: ''
     }
   },
   setup (props) {
-    // 响应式处理
-    const { getPrefixCls, contentWidth } = toRefs(useProProvider())
-    const prefixedCls = props.prefixCls || getPrefixCls.value('grid-content')
-    const wide = computed(() => (props.contentWidth || contentWidth.value) === 'Fixed')
+    const { getPrefixCls, contentWidth } = injectProProvider()
+    const prefixedCls = props.prefixCls || getPrefixCls('grid-content')
+    const wide = computed(() => (contentWidth.value) === 'Fixed')
     const childClassNames = ref(`${prefixedCls}-children`)
 
     return {
