@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
-import { injectProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components'
 
 export type LayoutBlockTheme = 'light' | 'dark' | 'realDark' | 'side' | 'top' | 'mix' | 'left';
 

@@ -49,9 +49,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue'
-import SubMenu from './sub-menu.vue'
 import type { RouteProps } from '@/types/router'
 import type { MenuTheme } from '@/types/store/app'
+import SubMenu from './sub-menu.vue'
 
 export const BaseMenuProps = {
   menus: {

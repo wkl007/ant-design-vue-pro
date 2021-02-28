@@ -77,11 +77,11 @@
 <script lang="ts">
 import { computed, defineComponent, inject, PropType, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
-import { injectProProvider } from '../pro-provider'
-import BaseMenu, { BaseMenuProps } from '../base-menu/index.vue'
 import { findMenuChildren } from '@/hooks/useMenuState'
 import type { Layout, MenuTheme } from '@/types/store/app'
 import type { RouteProps } from '@/types/router'
+import { BaseMenu, injectProProvider } from '@/components'
+import { BaseMenuProps } from '../base-menu/index.vue'
 
 const SideMenuProps = Object.assign(
   {},

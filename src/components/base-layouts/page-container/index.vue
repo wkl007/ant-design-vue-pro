@@ -55,10 +55,9 @@
 <script lang="ts">
 import { createTextVNode, defineComponent, h, PropType, ref, VNode, VNodeChild, withCtx } from 'vue'
 import { RouterLink } from 'vue-router'
-import { injectProProvider } from '../pro-provider'
-import GridContent from '../grid-content/index.vue'
-import PageHeaderContent from './page-header-content.vue'
+import { injectProProvider, GridContent } from '@/components'
 import { injectMenuState } from '@/hooks/useMenuState'
+import PageHeaderContent from './page-header-content.vue'
 
 export interface Tab {
   key: string;

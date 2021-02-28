@@ -34,10 +34,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject, PropType, toRefs } from 'vue'
-import BaseMenu from '@/components/base-layouts/base-menu/index.vue'
-import RightContent from './right-content.vue'
-import { injectProProvider } from '../pro-provider'
+import { injectProProvider, BaseMenu } from '@/components'
 import { RouteProps } from '@/types/router'
+import RightContent from './right-content.vue'
 
 export default defineComponent({
   name: 'TopNavHeader',

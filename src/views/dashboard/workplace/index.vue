@@ -59,8 +59,7 @@ import { defineComponent, reactive, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import moment from 'moment'
-import FooterToolbar from '@/components/base-layouts/footer-toolbar/index.vue'
-import { Container, Draggable } from '@/components/draggable'
+import { Container, Draggable, FooterToolbar } from '@/components'
 
 export default defineComponent({
   name: 'Workplace',

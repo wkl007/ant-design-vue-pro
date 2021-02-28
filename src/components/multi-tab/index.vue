@@ -107,9 +107,9 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { MultiTabStore, useMultiTab } from './index'
 import { injectMenuState } from '@/hooks/useMenuState'
-import { injectProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider, useMultiTab } from '@/components'
+import type { MultiTabStore } from './index'
 
 export default defineComponent({
   name: 'MultiTab',
@@ -150,20 +150,24 @@ export default defineComponent({
 
     const { refresh, close, closeAll, closeLeft, closeRight, closeOther } = useMultiTab()
 
+    // 切换面板的回调
     function handleActiveKeyChange (key: string): void {
       menuState.selectedKeys && (menuState.selectedKeys.value = [key])
     }
 
+    // 刷新页面
     async function handleReloadPage (key?: string) {
       spin.value = true
       await refresh(key)
       spin.value = false
     }
 
+    // 关闭全部
     function handleCloseAll () {
       closeAll()
     }
 
+    // 新增和删除页签的回调
     function handleEdit (target: string, action: string): void {
       if (action === 'remove') close(target)
     }

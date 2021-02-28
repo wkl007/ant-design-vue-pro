@@ -27,8 +27,8 @@
   "dependencies": {
     "@ant-design-vue/use": "^0.0.1-alpha.9",
     "@ant-design/icons-vue": "^6.0.1",
-    "@vueuse/core": "^4.2.2",
-    "ant-design-vue": "^2.0.0",
+    "@vueuse/core": "^4.3.0",
+    "ant-design-vue": "^2.0.1",
     "axios": "^0.21.1",
     "core-js": "^3.8.3",
     "good-storage": "^1.1.1",
@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/good-storage": "^1.1.0",
     "@types/js-cookie": "^2.2.6",
     "@types/lodash-es": "^4.17.4",
@@ -73,7 +73,7 @@
     "commitizen": "^4.2.3",
     "compression-webpack-plugin": "^7.1.2",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.20.0",
+    "eslint": "^7.21.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
@@ -88,7 +88,7 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "terser-webpack-plugin": "^5.1.1",
-    "typescript": "~4.1.5",
+    "typescript": "~4.2.2",
     "umi-mock-middleware": "^1.0.0"
   }
 }

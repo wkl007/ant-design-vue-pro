@@ -120,6 +120,7 @@ export function createMultiTabStoreProducer (initCacheList: Omit<CacheItem, 'com
 export function useMultiTab (): MultiTabType {
   const router = useRouter()
 
+  // 清除缓存
   function clearCache (path: CacheKey): void {
     const cacheItem = state.cacheList.find(item => item.path === path) || ({ name: '' } as CacheItem)
     state.exclude = [cacheItem?.name as string]
@@ -128,6 +129,7 @@ export function useMultiTab (): MultiTabType {
     })
   }
 
+  // 关闭页签
   function close (path?: CacheKey): void {
     if (!path) path = state.current
     const currentPageIndex = state.cacheList.findIndex(item => item.path === path)
@@ -147,14 +149,17 @@ export function useMultiTab (): MultiTabType {
       .catch()
   }
 
+  // 打开页面
   function open (path: CacheKey): void {
     router.push({ path }).then().catch()
   }
 
+  // 获取缓存
   function getCaches (): Map<CacheKey, CacheItem> {
     return state.caches
   }
 
+  // 刷新页面
   function refresh (path?: CacheKey | undefined): Promise<void> {
     if (!path) path = state.current
     clearCache(path)
@@ -175,11 +180,13 @@ export function useMultiTab (): MultiTabType {
     })
   }
 
+  // 关闭所有
   function closeAll () {
     state.cacheList = []
     state.caches = new Map<CacheKey, CacheItem>()
   }
 
+  // 关闭左侧
   function closeLeft (selectedPath: CacheKey): void {
     const index = state.cacheList.findIndex(item => item.path === selectedPath)
     const closed = state.cacheList.splice(0, index)
@@ -188,6 +195,7 @@ export function useMultiTab (): MultiTabType {
     })
   }
 
+  // 关闭右侧
   function closeRight (selectedPath: CacheKey): void {
     const index = state.cacheList.findIndex(item => item.path === selectedPath)
     const closed = state.cacheList.splice(index, state.cacheList.length - index)
@@ -196,6 +204,7 @@ export function useMultiTab (): MultiTabType {
     })
   }
 
+  // 关闭其他
   function closeOther (selectedPath: CacheKey): void {
     const index = state.cacheList.findIndex(cached => cached.path === selectedPath)
     const cacheItem = state.cacheList[index]

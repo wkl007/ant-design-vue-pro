@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, VNodeChild } from 'vue'
-import { injectProProvider } from '../pro-provider'
+import { injectProProvider } from '@/components'
 import { injectMenuState } from '@/hooks/useMenuState'
 
 export default defineComponent({

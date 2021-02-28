@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { injectProProvider } from '../pro-provider'
+import { injectProProvider } from '@/components'
 
 export default defineComponent({
   name: 'WrapContent',

@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import { injectProProvider } from '../pro-provider'
+import { injectProProvider } from '@/components'
 
 export default defineComponent({
   name: 'GridContent',

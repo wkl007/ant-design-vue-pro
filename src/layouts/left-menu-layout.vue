@@ -101,14 +101,15 @@
 <script lang="ts">
 import { cloneVNode, computed, defineComponent, ref, VNode, watch } from 'vue'
 import { useStore } from 'vuex'
-import SideMenu from '@/components/base-layouts/side-menu/index.vue'
-import HeaderView from '@/components/base-layouts/header-view/index.vue'
-import SelectLang from '@/components/select-lang/index.vue'
-import AvatarDropdown from '@/components/avatar-dropdown/index.vue'
-
-import WrapContent from '@/components/base-layouts/wrap-content/index.vue'
-import GlobalFooter from '@/components/base-layouts/global-footer/index.vue'
-import SettingDrawer from '@/components/setting-drawer/index.vue'
+import {
+  AvatarDropdown,
+  GlobalFooter,
+  HeaderView,
+  SelectLang,
+  SettingDrawer,
+  SideMenu,
+  WrapContent
+} from '@/components'
 import { filterMenu, getMenuFirstChildren, getMenuInfo, injectMenuState } from '@/hooks/useMenuState'
 import { useDelayReset } from '@/hooks/useDelayReset'
 

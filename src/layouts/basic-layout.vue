@@ -79,16 +79,19 @@
 <script>
 import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
-import SideMenu from '@/components/base-layouts/side-menu/index.vue'
-import HeaderView from '@/components/base-layouts/header-view/index.vue'
-import AvatarDropdown from '@/components/avatar-dropdown/index.vue'
-import SelectLang from '@/components/select-lang/index.vue'
-import WrapContent from '@/components/base-layouts/wrap-content/index.vue'
-import GlobalFooter from '@/components/base-layouts/global-footer/index.vue'
-import MultiTab from '@/components/multi-tab/index.vue'
-import SettingDrawer from '@/components/setting-drawer/index.vue'
+import {
+  SideMenu,
+  HeaderView,
+  AvatarDropdown,
+  SelectLang,
+  WrapContent,
+  GlobalFooter,
+  MultiTab,
+  SettingDrawer,
+  createMultiTabStoreProducer,
+  MultiTabStoreProducer
+} from '@/components'
 import { filterMenu, getMenuInfo, injectMenuState } from '@/hooks/useMenuState'
-import { createMultiTabStoreProducer, MultiTabStoreProducer } from '@/components/multi-tab/index'
 
 const multiTabStore = createMultiTabStoreProducer()
 

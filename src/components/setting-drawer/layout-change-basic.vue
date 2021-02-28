@@ -86,7 +86,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { injectProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components'
 import { ContentWidth, Layout } from '@/types/store/app'
 
 export default defineComponent({

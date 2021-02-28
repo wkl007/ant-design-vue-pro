@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { injectProProvider } from '@/components/base-layouts/pro-provider'
+import { injectProProvider } from '@/components'
 
 export default defineComponent({
   name: 'Menu3',

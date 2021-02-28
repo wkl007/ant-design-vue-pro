@@ -1,7 +1,5 @@
 import type { MenuDataItem } from '@/types/router'
-import UserLayout from '@/layouts/user-layout.vue'
-import GlobalLayout from '@/layouts/global-layout.vue'
-import RouteView from '@/layouts/route-view.vue'
+import { UserLayout, GlobalLayout, RouteView } from '@/layouts'
 
 /**
  * 基础路由

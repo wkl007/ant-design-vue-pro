@@ -9,7 +9,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { MultiTabStoreProducer } from '@/components/multi-tab/index'
+import { MultiTabStoreProducer } from '@/components'
 import { injectMenuState } from '@/hooks/useMenuState'
 
 export default defineComponent({

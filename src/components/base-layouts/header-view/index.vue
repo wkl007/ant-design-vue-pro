@@ -49,12 +49,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref, toRefs } from 'vue'
-import { injectProProvider } from '../pro-provider'
-import GlobalHeader from '../global-header/index.vue'
-import TopNavHeader from '../top-nav-header/index.vue'
+import { computed, defineComponent, PropType, ref, toRefs } from 'vue'
+import { injectProProvider } from '@/components'
 import { getMenuFirstChildren } from '@/hooks/useMenuState'
 import type { RouteProps } from '@/types/router'
+import GlobalHeader from '../global-header/index.vue'
+import TopNavHeader from '../top-nav-header/index.vue'
 
 export default defineComponent({
   name: 'HeaderView',
