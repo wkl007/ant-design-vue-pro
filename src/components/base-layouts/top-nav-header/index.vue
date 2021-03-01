@@ -135,11 +135,6 @@ export default defineComponent({
     background: transparent;
   }
 
-  .ant-menu.ant-menu-dark .ant-menu-item-selected,
-  .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-    color: @component-background;
-  }
-
   .ant-menu {
     line-height: inherit;
   }

@@ -119,6 +119,7 @@ export function createMultiTabStoreProducer (initCacheList: Omit<CacheItem, 'com
 
 export function useMultiTab (): MultiTabType {
   const router = useRouter()
+  const route = useRoute()
 
   // 清除缓存
   function clearCache (path: CacheKey): void {
@@ -186,36 +187,54 @@ export function useMultiTab (): MultiTabType {
     state.caches = new Map<CacheKey, CacheItem>()
   }
 
-  // 关闭左侧
-  function closeLeft (selectedPath: CacheKey): void {
-    const index = state.cacheList.findIndex(item => item.path === selectedPath)
-    const closed = state.cacheList.splice(0, index)
+  // 清除缓存
+  function deleteCaches (start: number, index: number): void {
+    const closed = state.cacheList.splice(start, index)
     closed.forEach(item => {
       state.caches.delete(item.path)
     })
+  }
+
+  // 关闭左侧
+  function closeLeft (selectedPath: CacheKey): void {
+    const index = state.cacheList.findIndex(item => item.path === selectedPath)
+    const currentIndex = state.cacheList.findIndex(item => item.path === route.path)
+    if (currentIndex < index) {
+      router
+        .replace({ path: selectedPath })
+        .then(() => {
+          deleteCaches(0, index)
+        })
+        .catch()
+    } else {
+      deleteCaches(0, index)
+    }
   }
 
   // 关闭右侧
   function closeRight (selectedPath: CacheKey): void {
     const index = state.cacheList.findIndex(item => item.path === selectedPath)
-    const closed = state.cacheList.splice(index, state.cacheList.length - index)
-    closed.forEach(item => {
-      state.caches.delete(item.path)
-    })
+    const currentIndex = state.cacheList.findIndex(item => item.path === route.path)
+    if (currentIndex > index) {
+      router
+        .replace({ path: selectedPath })
+        .then(() => {
+          deleteCaches(index + 1, state.cacheList.length - index - 1)
+        })
+        .catch()
+    } else {
+      deleteCaches(index + 1, state.cacheList.length - index - 1)
+    }
   }
 
   // 关闭其他
   function closeOther (selectedPath: CacheKey): void {
     const index = state.cacheList.findIndex(cached => cached.path === selectedPath)
-    const cacheItem = state.cacheList[index]
-    const cachedComponent = state.caches.get(selectedPath) as CacheItem
-    // 设置到剩下的最后一个标签页
     router
-      .replace({ path: cacheItem.path })
+      .replace({ path: selectedPath })
       .then(() => {
-        state.cacheList = [cacheItem]
-        state.caches = new Map<CacheKey, CacheItem>()
-        state.caches.set(selectedPath, cachedComponent)
+        deleteCaches(index + 1, state.cacheList.length - index - 1)
+        deleteCaches(0, index)
       })
       .catch()
   }
