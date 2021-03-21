@@ -53,7 +53,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
       {
         path: '/welcome',
         name: 'welcome',
-        component: h(RouteView, {}, () => h(AsyncWelcome)),
+        component: h(RouteView, {}, () => h(AsyncWelcome)), // 一级菜单并且开启多标签需要作此处理
         meta: {
           icon: 'HistoryOutlined',
           title: 'pages.welcome.title'
