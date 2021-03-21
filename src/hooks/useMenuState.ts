@@ -184,6 +184,10 @@ export function useMenuState (initialState?: MenuState): MenuStated {
 
   const breadcrumb = ref<Breadcrumb[]>([])
 
+  const query = ref({})
+  const hash = ref('')
+  let timer = 0
+
   // 获取展开的菜单
   function getOpenKeysBySelectKey (key: string): string[] {
     return menuKeyMap[key]?.parentKeys || []
@@ -228,9 +232,12 @@ export function useMenuState (initialState?: MenuState): MenuStated {
   )
 
   // 布局发生变化展开的菜单置空
-  watch([computed(() => layoutState.layout), computed(() => layoutState.splitMenus)], () => {
-    state.openKeys = []
-  })
+  watch(
+    [computed(() => layoutState.layout), computed(() => layoutState.splitMenus)],
+    () => {
+      state.openKeys = []
+    }
+  )
 
   watch(
     () => state.selectedKeys,
@@ -259,7 +266,9 @@ export function useMenuState (initialState?: MenuState): MenuStated {
         }
 
         router.push({
-          path
+          path,
+          query: query.value,
+          hash: hash.value
         })
       }
     }
@@ -267,10 +276,17 @@ export function useMenuState (initialState?: MenuState): MenuStated {
 
   onMounted(() => {
     watch(
-      () => route.path,
+      [() => route.path, () => route.query, () => route.hash],
       () => {
+        timer && clearTimeout(timer)
+        query.value = route.query
+        hash.value = route.hash
         updateMenuState(route.path)
         updateBreadcrumb()
+        timer = setTimeout(() => {
+          query.value = {}
+          hash.value = ''
+        })
       }
     )
 

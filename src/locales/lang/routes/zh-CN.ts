@@ -18,5 +18,6 @@ export default {
   'pages.nested.menu3-1.title': 'Menu 3-1',
 
   'pages.jumpUrl.title': '跳转',
+  'pages.jumpUrl.router.title': '路由',
   'pages.jumpUrl.github.title': '外链 Github'
 }

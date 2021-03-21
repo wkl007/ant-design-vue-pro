@@ -172,12 +172,20 @@ export const asyncRoutes: Array<MenuDataItem> = [
         path: '/jumpUrl',
         name: 'jumpUrl',
         component: RouteView,
-        // redirect: '/jumpUrl/router',
+        redirect: '/jumpUrl/router',
         meta: {
           title: 'pages.jumpUrl.title',
           icon: 'LinkOutlined'
         },
         children: [
+          {
+            path: '/jumpUrl/router',
+            name: 'router',
+            component: () => import(/* webpackChunkName: "router" */'@/views/examples/jump-url/router.vue'),
+            meta: {
+              title: 'pages.jumpUrl.router.title'
+            }
+          },
           {
             path: 'https://github.com/vueComponent/ant-design-vue',
             name: 'github',
