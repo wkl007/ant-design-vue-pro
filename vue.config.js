@@ -86,7 +86,7 @@ module.exports = {
         css: [],
         js: [
           // babel-polyfill
-          `${cdnUrl}babel-polyfill@6.26.0/dist/polyfill.js`
+          // `${cdnUrl}babel-polyfill@6.26.0/dist/polyfill.js`
         ]
       },
       // 生产环境
@@ -94,7 +94,7 @@ module.exports = {
         css: [],
         js: [
           // babel-polyfill
-          `${cdnUrl}babel-polyfill@6.26.0/dist/polyfill.min.js`
+          // `${cdnUrl}babel-polyfill@6.26.0/dist/polyfill.min.js`
         ]
       }
     }
@@ -111,8 +111,6 @@ module.exports = {
   },
   // css相关配置
   css: {
-    // 启用 CSS modules
-    requireModuleExtension: true,
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
