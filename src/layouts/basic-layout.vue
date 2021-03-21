@@ -58,7 +58,6 @@
         </header-view>
         <multi-tab
           v-if="multiTab"
-          :store="multiTabStore"
           :fixed="multiTabFixed"
           :side-width="sideWidth"
         />
@@ -87,13 +86,9 @@ import {
   WrapContent,
   GlobalFooter,
   MultiTab,
-  SettingDrawer,
-  createMultiTabStoreProducer,
-  MultiTabStoreProducer
+  SettingDrawer
 } from '@/components'
 import { filterMenu, getMenuInfo, injectMenuState } from '@/hooks/useMenuState'
-
-const multiTabStore = createMultiTabStoreProducer()
 
 export default defineComponent({
   name: 'BasicLayout',
@@ -105,8 +100,7 @@ export default defineComponent({
     WrapContent,
     GlobalFooter,
     MultiTab,
-    SettingDrawer,
-    MultiTabStoreProducer
+    SettingDrawer
   },
   setup () {
     const store = useStore()
@@ -121,8 +115,7 @@ export default defineComponent({
       ...menuState,
       menus,
       hasTopMenu,
-      userInfo,
-      multiTabStore
+      userInfo
     }
   }
 })

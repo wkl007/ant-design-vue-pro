@@ -1,4 +1,15 @@
-import { cloneVNode, createVNode, defineComponent, KeepAlive, reactive, toRaw, watch } from 'vue'
+import {
+  cloneVNode,
+  createVNode,
+  defineComponent,
+  inject,
+  InjectionKey,
+  KeepAlive,
+  provide,
+  reactive,
+  toRaw,
+  watch
+} from 'vue'
 import { RouteMeta, useRoute, useRouter } from 'vue-router'
 import { message } from 'ant-design-vue'
 import { flattenChildren } from '@/utils/vnode-util'
@@ -47,32 +58,47 @@ export type Options = {
 
 export type MultiTabType = CallerFunction;
 
-function hasCache (path: CacheKey): CacheItem | undefined {
-  return state.cacheList.find(item => item.path === path)
-}
-
-const state = reactive<MultiTabStore>({
-  cacheList: [],
-  caches: new Map<CacheKey, CacheItem>(),
-  current: '',
-  exclude: [],
-  include: [],
-  add: (item: CacheItem) => {
-    if (!state.cacheList.find(c => c.path === item.path)) state.cacheList.push(item)
-  }
-})
+// const MULTI_TAB_STORE_KEY: InjectionKey<MultiTabStore> = Symbol('multiTabStore')
+const MULTI_TAB_STORE_KEY = 'multiTabStore'
 
 // 创建生产者
-export const MultiTabStoreProducer = defineComponent({
-  name: 'MultiTabStoreProducer',
-  setup (props, { slots }) {
+export function useMultiTabStateProvider (initCacheList: Omit<CacheItem, 'component' | 'key'>[] = []): void {
+  // 定义保留的多标签状态
+  const state = reactive<MultiTabStore>({
+    cacheList: [],
+    caches: new Map<CacheKey, CacheItem>(),
+    current: '',
+    exclude: [],
+    include: [],
+    add: (item: CacheItem) => {
+      if (!state.cacheList.find(c => c.path === item.path)) state.cacheList.push(item)
+    }
+  })
+  state.cacheList.push(...initCacheList.map(item => ({ ...item, key: generateUuid() } as CacheItem)))
+  provide(MULTI_TAB_STORE_KEY, state)
+}
+
+// 提供多标签数据
+export function injectMultiTabStore (): MultiTabStore {
+  return inject(MULTI_TAB_STORE_KEY, {} as MultiTabStore)
+}
+
+// 创建消费端
+export const MultiTabStoreConsumer = defineComponent({
+  name: 'MultiTabStoreConsumer',
+  setup (props, { slots = {} }) {
     const route = useRoute()
+    const state = injectMultiTabStore()
 
     watch(
       () => route.path,
       () => { state.current = route.path },
       { immediate: true }
     )
+
+    function hasCache (path: CacheKey): CacheItem | undefined {
+      return state.cacheList.find(item => item.path === path)
+    }
 
     return () => {
       const component = flattenChildren((slots.default && slots.default()) || [])[0]
@@ -84,7 +110,6 @@ export const MultiTabStoreProducer = defineComponent({
         // 没有设置组件名字
         name = route.name
       }
-
       // 是否存在cache
       let cacheItem = hasCache(route.path)
       if (!cacheItem) {
@@ -96,8 +121,7 @@ export const MultiTabStoreProducer = defineComponent({
         }
         state.cacheList.push(cacheItem)
       }
-
-      newVNode.type.displayName = name
+      newVNode.type.name = name
       const key = `${name}-${cacheItem.key}`
       return createVNode(
         KeepAlive,
@@ -108,18 +132,11 @@ export const MultiTabStoreProducer = defineComponent({
   }
 })
 
-let initStore = false
-
-export function createMultiTabStoreProducer (initCacheList: Omit<CacheItem, 'component' | 'key'>[] = []): MultiTabStore {
-  if (initStore) return state
-  state.cacheList.push(...initCacheList.map(item => ({ ...item, key: generateUuid() } as CacheItem)))
-  initStore = true
-  return state
-}
-
+// 多标签封装
 export function useMultiTab (): MultiTabType {
   const router = useRouter()
   const route = useRoute()
+  const state = injectMultiTabStore()
 
   // 清除缓存
   function clearCache (path: CacheKey): void {

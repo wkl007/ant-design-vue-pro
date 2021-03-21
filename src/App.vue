@@ -9,7 +9,8 @@ import { computed, defineComponent, provide, reactive, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
-import { MenuStateSymbol, useMenuState } from '@/hooks/useMenuState'
+import { MENU_STATE_STORE_KEY, useMenuState } from '@/hooks/useMenuState'
+import { useMultiTabStateProvider } from '@/components'
 import images from '@/assets/images'
 
 export default defineComponent({
@@ -38,6 +39,9 @@ export default defineComponent({
     // 主题
     const theme = computed(() => store.getters.navTheme)
 
+    // 多标签
+    useMultiTabStateProvider()
+
     // 主题设置
     watch(
       theme,
@@ -57,7 +61,7 @@ export default defineComponent({
 
     provide('images', reactive(images))
     provide('isMobile', isMobile)
-    provide(MenuStateSymbol, menuState)
+    provide(MENU_STATE_STORE_KEY, menuState)
     provide('isRealDark', computed(() => theme.value === 'realDark'))
 
     return {

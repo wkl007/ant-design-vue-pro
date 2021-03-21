@@ -1,3 +1,4 @@
+import { defineAsyncComponent, h } from 'vue'
 import type { MenuDataItem } from '@/types/router'
 import { UserLayout, GlobalLayout, RouteView } from '@/layouts'
 
@@ -38,6 +39,7 @@ export const constantRoutes: Array<MenuDataItem> = [
   }
 ]
 
+const AsyncWelcome = defineAsyncComponent(() => import('@/views/welcome/index.vue'))
 /**
  * 异步路由
  */
@@ -46,8 +48,17 @@ export const asyncRoutes: Array<MenuDataItem> = [
     path: '/',
     name: 'index',
     component: GlobalLayout,
-    redirect: '/dashboard',
+    redirect: '/welcome',
     children: [
+      {
+        path: '/welcome',
+        name: 'welcome',
+        component: h(RouteView, {}, () => h(AsyncWelcome)),
+        meta: {
+          icon: 'HistoryOutlined',
+          title: 'pages.welcome.title'
+        }
+      },
       // dashboard
       {
         path: '/dashboard',

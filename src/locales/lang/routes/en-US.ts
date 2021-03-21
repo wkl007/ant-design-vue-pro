@@ -1,5 +1,6 @@
 export default {
   'pages.home': 'Home',
+  'pages.welcome.title': 'Welcome',
   'pages.dashboard.title': 'Dashboard',
   'pages.dashboard.workplace.title': 'Workplace',
 

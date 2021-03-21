@@ -1,21 +1,22 @@
 <template>
   <router-view v-slot="{Component}">
-    <multi-tab-store-producer v-if="multiTab">
-      <component :is="Component"/>
-    </multi-tab-store-producer>
+    <multi-tab-store-consumer v-if="multiTab">
+      <component v-if="Component" :is="Component"/>
+      <slot v-else/>
+    </multi-tab-store-consumer>
     <component v-else :is="Component"/>
   </router-view>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { MultiTabStoreProducer } from '@/components'
+import { MultiTabStoreConsumer } from '@/components'
 import { injectMenuState } from '@/hooks/useMenuState'
 
 export default defineComponent({
   name: 'RouteView',
   components: {
-    MultiTabStoreProducer
+    MultiTabStoreConsumer
   },
   setup () {
     const { multiTab } = injectMenuState()

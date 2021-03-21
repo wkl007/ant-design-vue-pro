@@ -108,32 +108,29 @@
 import { computed, defineComponent, PropType, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { injectMenuState } from '@/hooks/useMenuState'
-import { injectProProvider, useMultiTab } from '@/components'
+import { injectProProvider, useMultiTab, injectMultiTabStore } from '@/components'
 import type { MultiTabStore } from './index'
 
 export default defineComponent({
   name: 'MultiTab',
   inheritAttrs: false,
   props: {
-    store: {
-      type: Object as PropType<MultiTabStore>,
-      default: () => undefined
-    },
     fixed: {
       type: Boolean,
       default: false
     },
     defaultHomePage: {
       type: String,
-      default: '/dashboard/workplace'
+      default: '/welcome'
     }
   },
   setup (props) {
     const route = useRoute()
+    const store = injectMultiTabStore()
     const { i18n: t } = injectProProvider()
     const menuState = injectMenuState()
     const { isMobile } = menuState
-    const cacheListLength = computed(() => (props.store?.cacheList?.length || 0))
+    const cacheListLength = computed(() => (store ? store.cacheList.length : 0))
     const activeKey = computed(() => {
       return menuState.selectedKeys && menuState.selectedKeys.value[menuState.selectedKeys.value.length - 1]
     })
@@ -176,6 +173,7 @@ export default defineComponent({
       t,
       activeKey,
       route,
+      store,
       spin,
       sideWidth,
       cacheListLength,

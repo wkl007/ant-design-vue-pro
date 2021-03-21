@@ -12,7 +12,7 @@ import WrapContent from './base-layouts/wrap-content/index.vue'
 import Container from './draggable/container'
 import Draggable from './draggable/draggable'
 import MultiTab from './multi-tab/index.vue'
-import { createMultiTabStoreProducer, MultiTabStoreProducer, useMultiTab } from './multi-tab'
+import { injectMultiTabStore, useMultiTabStateProvider, useMultiTab, MultiTabStoreConsumer } from './multi-tab'
 import SelectLang from './select-lang/index.vue'
 import SettingDrawer from './setting-drawer/index.vue'
 import TransformVNode from './transform-vnode'
@@ -33,9 +33,10 @@ export {
   Container,
   Draggable,
   MultiTab,
-  createMultiTabStoreProducer,
-  MultiTabStoreProducer,
   useMultiTab,
+  injectMultiTabStore,
+  useMultiTabStateProvider,
+  MultiTabStoreConsumer,
   SelectLang,
   SettingDrawer,
   TransformVNode

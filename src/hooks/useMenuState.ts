@@ -73,7 +73,7 @@ const state = reactive<MenuState>({
 
 let res: MenuStated | null = null
 
-export const MenuStateSymbol = 'proGlobalMenuState'
+export const MENU_STATE_STORE_KEY = 'menuStateStore'
 
 /**
  * 获取菜单信息
@@ -141,7 +141,7 @@ export function filterMenu (routes: Array<RouteRecordRaw>): Array<RouteRecordRaw
  * 获取菜单数据
  */
 export function injectMenuState (): MenuStated {
-  return inject(MenuStateSymbol, {} as MenuStated)
+  return inject(MENU_STATE_STORE_KEY, {} as MenuStated)
 }
 
 /**
