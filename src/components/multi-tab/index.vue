@@ -13,7 +13,6 @@
       hide-add
       :class="{ 'ant-pro-multi-tab-wrap': true, 'ant-pro-multi-tab-wrap-fixed': fixed }"
       @change="handleActiveKeyChange"
-      @edit="handleEdit"
     >
       <template #tabBarExtraContent>
         <a-dropdown>
@@ -51,17 +50,24 @@
         class="contextmenu-wrap"
         v-for="(item, index) in store.cacheList"
         :key="item.route.path"
-        :closable="cacheListLength > 1 && !item.lock"
+        :closable="false"
       >
         <template #tab>
           <a-dropdown :trigger="['contextmenu']">
-            <span>
+            <span class="ant-pro-multi-tab-title">
               {{ t(`${item.route.meta.title}`) }}
               <reload-outlined
+                key="reload"
                 v-if="store.current === item.route.path"
                 class="ant-pro-multi-tab-reload-btn"
                 :spin="spin"
                 @click="handleReloadPage(item.route.path)"
+              />
+              <close-outlined
+                key="close"
+                v-if="cacheListLength > 1 && !item.lock"
+                class="ant-pro-multi-tab-close-btn"
+                @click="e => handleClose(e, item.route.path)"
               />
             </span>
             <template #overlay>
@@ -105,11 +111,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { injectMenuState } from '@/hooks/useMenuState'
-import { injectProProvider, useMultiTab, injectMultiTabStore } from '@/components'
-import type { MultiTabStore } from './index'
+import { injectMultiTabStore, injectProProvider, useMultiTab } from '@/components'
 
 export default defineComponent({
   name: 'MultiTab',
@@ -164,9 +169,10 @@ export default defineComponent({
       closeAll()
     }
 
-    // 新增和删除页签的回调
-    function handleEdit (target: string, action: string): void {
-      if (action === 'remove') close(target)
+    // 关闭单个标签
+    function handleClose (e: Event, target: string): void {
+      e.stopPropagation()
+      close(target)
     }
 
     return {
@@ -184,7 +190,7 @@ export default defineComponent({
       closeLeft,
       closeRight,
       closeOther,
-      handleEdit
+      handleClose
     }
   }
 })
@@ -197,8 +203,32 @@ export default defineComponent({
   background: @component-background;
 }
 
-.ant-pro-multi-tab-wrap :deep(.ant-tabs-bar) {
+.ant-pro-multi-tab-wrap ::v-deep(.ant-tabs-bar) {
   padding-left: 16px;
+
+  .ant-tabs-tab {
+    padding: 0 !important;
+
+    > div {
+      display: flex;
+    }
+
+    .ant-pro-multi-tab-reload-btn,
+    .ant-pro-multi-tab-close-btn {
+      margin-right: 0;
+      margin-left: 8px;
+      color: @text-color-secondary;
+      font-size: 12px;
+
+      &:hover {
+        color: @primary-color;
+      }
+    }
+  }
+
+  .ant-pro-multi-tab-title {
+    padding: 0 16px;
+  }
 }
 
 .ant-pro-multi-tab-fixed {
