@@ -20,6 +20,10 @@ export interface MenuRouteMeta {
    * 允许访问的角色
    */
   roles?: Array<string>;
+  /**
+   * 外链跳转方式
+   */
+  target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
 export type MenuDataItem = {

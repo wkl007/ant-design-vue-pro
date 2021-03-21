@@ -166,6 +166,28 @@ export const asyncRoutes: Array<MenuDataItem> = [
             ]
           }
         ]
+      },
+      // jump url
+      {
+        path: '/jumpUrl',
+        name: 'jumpUrl',
+        component: RouteView,
+        // redirect: '/jumpUrl/router',
+        meta: {
+          title: 'pages.jumpUrl.title',
+          icon: 'LinkOutlined'
+        },
+        children: [
+          {
+            path: 'https://github.com/vueComponent/ant-design-vue',
+            name: 'github',
+            meta: {
+              title: 'pages.jumpUrl.github.title',
+              target: '_blank'
+            },
+            component: () => null
+          }
+        ]
       }
     ]
   }

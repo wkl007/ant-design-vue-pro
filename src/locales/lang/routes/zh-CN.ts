@@ -15,5 +15,8 @@ export default {
   'pages.nested.menu1-2-1.title': 'Menu 1-2-1',
   'pages.nested.menu2.title': 'Menu 2',
   'pages.nested.menu3.title': 'Menu 3',
-  'pages.nested.menu3-1.title': 'Menu 3-1'
+  'pages.nested.menu3-1.title': 'Menu 3-1',
+
+  'pages.jumpUrl.title': '跳转',
+  'pages.jumpUrl.github.title': '外链 Github'
 }

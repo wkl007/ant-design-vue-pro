@@ -6,6 +6,7 @@ import type { ContentWidth, Layout, MenuTheme } from '@/types/store/app'
 import { xor } from 'lodash-es'
 import { asyncRoutes } from '@/router/router.config'
 import { RouteProps } from '@/types/router'
+import { isUrl } from '@/utils'
 
 export interface MenuState {
   collapsed?: boolean;
@@ -233,14 +234,23 @@ export function useMenuState (initialState?: MenuState): MenuStated {
 
   watch(
     () => state.selectedKeys,
-    () => {
+    (val, oldVal = []) => {
       if (state.selectedKeys) {
         if (isMobile.value) state.collapsed = true
         const path = state.selectedKeys[state.selectedKeys.length - 1]
-
+        const isOtherUrl = isUrl(path)
+        const isOtherUrlForOldVal = isUrl(oldVal[oldVal.length - 1])
+        if (isOtherUrl) {
+          const routes = router.getRoutes()
+          const { target } = routes.find(r => r.path.includes(path))?.meta || {}
+          state.selectedKeys = oldVal
+          window.open(path, target as string)
+          return
+        }
         if (!state.collapsed &&
           layoutState.layout !== 'left' &&
-          (layoutState.layout === 'side' || layoutState.layout === 'mix' || layoutState.splitMenus === true)
+          (layoutState.layout === 'side' || layoutState.layout === 'mix' || layoutState.splitMenus === true) &&
+          !isOtherUrlForOldVal
         ) {
           const openKeys = getOpenKeysBySelectKey(path)
           if (xor(state.openKeys, openKeys).length) {

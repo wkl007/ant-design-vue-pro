@@ -11,6 +11,7 @@ import {
   HeartOutlined,
   HistoryOutlined,
   HomeOutlined,
+  LinkOutlined,
   LockOutlined,
   LogoutOutlined,
   MailOutlined,
@@ -57,4 +58,5 @@ export function setupIcons (app: App<Element>): void {
   app.component(CloseOutlined.displayName, CloseOutlined)
   app.component(ReloadOutlined.displayName, ReloadOutlined)
   app.component(EllipsisOutlined.displayName, EllipsisOutlined)
+  app.component(LinkOutlined.displayName, LinkOutlined)
 }
