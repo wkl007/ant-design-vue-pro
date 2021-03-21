@@ -157,8 +157,8 @@ export default defineComponent({
 
     function handleSelectedKeysChange (keys: string[]): void {
       const menu = menus.value.find(m => m.path === keys[0])
-      const toKey: string = menu ? menu.redirect : keys
-      menuState.updateSelectKeys([toKey])
+      const toKey = menu && menu.redirect ? [menu.redirect] : keys
+      menuState.updateSelectKeys(toKey)
     }
 
     function handleMouseLeave (): void {
