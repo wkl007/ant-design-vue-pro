@@ -16,6 +16,7 @@ import { injectMultiTabStore, useMultiTabStateProvider, useMultiTab, MultiTabSto
 import SelectLang from './select-lang/index.vue'
 import SettingDrawer from './setting-drawer/index.vue'
 import TransformVNode from './transform-vnode'
+import Watermark from './watermark/index.vue'
 
 export {
   AvatarDropdown,
@@ -39,5 +40,6 @@ export {
   MultiTabStoreConsumer,
   SelectLang,
   SettingDrawer,
-  TransformVNode
+  TransformVNode,
+  Watermark
 }

@@ -28,6 +28,18 @@ export interface ProProviderData {
 export const PRO_PROVIDER_STORE_KEY = 'proProviderStore'
 
 /**
+ * 默认值
+ */
+export const defaultProProvider: ProProviderData = {
+  getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
+    if (customizePrefixCls) return customizePrefixCls
+    return `ant-pro-${suffixCls}`
+  },
+  i18n: (t: string): string => t,
+  contentWidth: computed(() => 'Fluid')
+}
+
+/**
  * 提供 i18n contentWidth getPrefixCls 供全局使用
  */
 const ProProvider = {
@@ -69,7 +81,7 @@ const ProProvider = {
  * 获取 i18n contentWidth getPrefixCls
  */
 export function injectProProvider (): ProProviderData {
-  return inject(PRO_PROVIDER_STORE_KEY, {} as ProProviderData)
+  return inject(PRO_PROVIDER_STORE_KEY, defaultProProvider)
 }
 
 export default ProProvider
