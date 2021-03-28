@@ -5,9 +5,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
 
 export default defineComponent({
-  name: 'Welcome'
+  name: 'Welcome',
+  setup () {
+    onMounted(() => {
+      console.log('welcome')
+    })
+  }
 })
 </script>

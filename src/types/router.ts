@@ -23,7 +23,15 @@ export interface MenuRouteMeta {
   /**
    * 外链跳转方式
    */
-  target?: '_blank' | '_self' | '_parent' | '_top'
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  /**
+   * 是否缓存路由
+   */
+  keepAlive?: boolean;
+  /**
+   * 是否固定多页标签
+   */
+  lock?: boolean;
 }
 
 export type MenuDataItem = {

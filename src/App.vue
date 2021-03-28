@@ -19,6 +19,9 @@ export default defineComponent({
     const store = useStore()
     const i18n = useI18n()
 
+    // 多标签
+    const multiTabState = useMultiTabStateProvider()
+
     // 语言设置
     const lang = computed(() => store.getters.lang)
     if (lang.value) store.dispatch('setLang', lang.value)
@@ -29,18 +32,18 @@ export default defineComponent({
     const isMobile = computed(() => colSize.value === 'sm' || colSize.value === 'xs')
 
     // 菜单状态管理
-    const menuState = useMenuState({
-      collapsed: isMobile.value,
-      openKeys: [],
-      selectedKeys: [],
-      isMobile
-    })
+    const menuState = useMenuState(
+      {
+        collapsed: isMobile.value,
+        openKeys: [] as string[],
+        selectedKeys: [] as string[],
+        isMobile
+      },
+      multiTabState
+    )
 
     // 主题
     const theme = computed(() => store.getters.navTheme)
-
-    // 多标签
-    useMultiTabStateProvider()
 
     // 主题设置
     watch(

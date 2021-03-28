@@ -56,7 +56,8 @@ export const asyncRoutes: Array<MenuDataItem> = [
         component: h(RouteView, {}, () => h(AsyncWelcome)), // 一级菜单并且开启多标签需要作此处理
         meta: {
           icon: 'HistoryOutlined',
-          title: 'pages.welcome.title'
+          title: 'pages.welcome.title',
+          lock: true
         }
       },
       // dashboard
@@ -76,7 +77,8 @@ export const asyncRoutes: Array<MenuDataItem> = [
             component: () => import(/* webpackChunkName: "workplace" */ '@/views/dashboard/workplace/index.vue'),
             meta: {
               icon: 'HistoryOutlined',
-              title: 'pages.dashboard.workplace.title'
+              title: 'pages.dashboard.workplace.title',
+              keepAlive: false
             }
           }
         ]
@@ -166,7 +168,10 @@ export const asyncRoutes: Array<MenuDataItem> = [
             name: 'menu3',
             component: () => import(/* webpackChunkName: "menu3" */ '@/views/examples/nested/menu3.vue'),
             redirect: '/nested/menu3/menu3-1',
-            meta: { title: 'pages.nested.menu3.title', hideChildrenInMenu: true },
+            meta: {
+              title: 'pages.nested.menu3.title',
+              hideChildrenInMenu: true
+            },
             children: [
               {
                 path: '/nested/menu3/menu3-1',

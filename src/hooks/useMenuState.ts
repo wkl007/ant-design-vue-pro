@@ -1,5 +1,5 @@
-import { computed, ComputedRef, inject, onMounted, reactive, Ref, ref, toRefs, watch } from 'vue'
-import { RouteRecordRaw, useRoute, useRouter } from 'vue-router'
+import { computed, ComputedRef, inject, onMounted, reactive, Ref, ref, toRefs, UnwrapRef, watch } from 'vue'
+import { RouteLocationNormalized, RouteRecordRaw, useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import type { ContentWidth, Layout, MenuTheme } from '@/types/store/app'
@@ -7,6 +7,7 @@ import { xor } from 'lodash-es'
 import { asyncRoutes } from '@/router/router.config'
 import { RouteProps } from '@/types/router'
 import { isUrl } from '@/utils'
+import type { MultiTabStore } from '@/components/multi-tab'
 
 export interface MenuState {
   collapsed?: boolean;
@@ -147,8 +148,9 @@ export function injectMenuState (): MenuStated {
 /**
  * 菜单状态管理 hooks
  * @param initialState
+ * @param multiTabState
  */
-export function useMenuState (initialState?: MenuState): MenuStated {
+export function useMenuState (initialState?: MenuState, multiTabState?: UnwrapRef<MultiTabStore>): MenuStated {
   const { t, locale } = useI18n()
   const route = useRoute()
   const router = useRouter()
@@ -184,9 +186,11 @@ export function useMenuState (initialState?: MenuState): MenuStated {
 
   const breadcrumb = ref<Breadcrumb[]>([])
 
-  const query = ref({})
-  const hash = ref('')
-  let timer = 0
+  // 从多标签获取路由信息
+  function getRouteInfoFromMultiTab (path: string): RouteLocationNormalized {
+    const cacheList = multiTabState?.cacheList || []
+    return cacheList.find(cache => cache.path === path)?.route as RouteLocationNormalized
+  }
 
   // 获取展开的菜单
   function getOpenKeysBySelectKey (key: string): string[] {
@@ -265,10 +269,9 @@ export function useMenuState (initialState?: MenuState): MenuStated {
           }
         }
 
-        router.push({
-          path,
-          query: query.value,
-          hash: hash.value
+        router.isReady().then(() => {
+          const routeInfo = getRouteInfoFromMultiTab(path)
+          router.push(routeInfo || { path })
         })
       }
     }
@@ -276,17 +279,10 @@ export function useMenuState (initialState?: MenuState): MenuStated {
 
   onMounted(() => {
     watch(
-      [() => route.path, () => route.query, () => route.hash],
+      () => route.fullPath,
       () => {
-        timer && clearTimeout(timer)
-        query.value = route.query
-        hash.value = route.hash
         updateMenuState(route.path)
         updateBreadcrumb()
-        timer = setTimeout(() => {
-          query.value = {}
-          hash.value = ''
-        })
       }
     )
 
