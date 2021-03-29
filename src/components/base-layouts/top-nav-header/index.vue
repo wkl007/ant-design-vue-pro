@@ -5,7 +5,7 @@
         <div :class="`${prefixedClassName}-logo`">
           <slot v-if="hasLogoSlot" name="logo"/>
           <div v-else>
-            <router-link :to="{ name: 'index' }">
+            <router-link :to="{ name: 'Index' }">
               <img :src="images.base_logo" alt="logo"/>
               <h1>Admin Pro</h1>
             </router-link>

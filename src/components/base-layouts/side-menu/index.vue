@@ -25,7 +25,7 @@
       }"
     >
       <div v-if="!isMix" class="ant-pro-sider-logo">
-        <router-link :to="{ name: 'index' }">
+        <router-link :to="{ name: 'Index' }">
           <img :src="images.base_logo" alt="logo">
           <h1 v-if="!collapsed">Admin Pro</h1>
         </router-link>

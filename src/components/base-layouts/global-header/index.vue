@@ -1,7 +1,7 @@
 <template>
   <div :class="classNames">
     <span v-if="isMobile" :class="`${baseClassName}-logo`">
-      <router-link :to="{ name: 'index' }">
+      <router-link :to="{ name: 'Index' }">
         <img :src="images.base_logo" alt="logo"/>
       </router-link>
     </span>
@@ -18,7 +18,7 @@
       </slot>
     </div>
     <div v-if="layout === 'mix' && !isMobile" :class="`${baseClassName}-logo`">
-      <router-link :to="{ name: 'index' }">
+      <router-link :to="{ name: 'Index' }">
         <img :src="images.base_logo" alt="logo"/>
         <h1>Admin Pro</h1>
       </router-link>

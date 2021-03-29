@@ -135,7 +135,7 @@ export function findMenuChildren (menus: RouteProps[], key: string | symbol): Ro
  * @param routes
  */
 export function filterMenu (routes: Array<RouteRecordRaw>): Array<RouteRecordRaw> {
-  return routes.find(item => item.name === 'index')?.children || []
+  return routes.find(item => item.name === 'Index')?.children || []
 }
 
 /**
