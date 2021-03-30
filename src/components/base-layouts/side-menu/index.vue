@@ -3,7 +3,7 @@
     <div
       v-if="fixed"
       class="ant-pro-fixed-stuff"
-      :style="{ width: `${runtimeSideWidth}px`, overflow: 'hidden'}"
+      :style="{ width: `${runtimeSideWidth}px`, overflow: 'hidden',flexShrink:0,transition:'width 0.2s'}"
     />
     <a-layout-sider
       v-bind="$attrs"

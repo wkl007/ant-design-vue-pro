@@ -4,13 +4,18 @@ import {
   AppstoreAddOutlined,
   CheckCircleOutlined,
   CloseOutlined,
+  CloudDownloadOutlined,
+  CloudOutlined,
   CopyrightOutlined,
+  DownloadOutlined,
+  DownOutlined,
   EllipsisOutlined,
   FormOutlined,
   GlobalOutlined,
   HeartOutlined,
   HistoryOutlined,
   HomeOutlined,
+  LeftOutlined,
   LinkOutlined,
   LockOutlined,
   LogoutOutlined,
@@ -19,6 +24,7 @@ import {
   MenuUnfoldOutlined,
   MobileOutlined,
   ReloadOutlined,
+  RightOutlined,
   SettingOutlined,
   TableOutlined,
   TaobaoCircleOutlined,
@@ -59,4 +65,10 @@ export function setupIcons (app: App<Element>): void {
   app.component(ReloadOutlined.displayName, ReloadOutlined)
   app.component(EllipsisOutlined.displayName, EllipsisOutlined)
   app.component(LinkOutlined.displayName, LinkOutlined)
+  app.component(LeftOutlined.displayName, LeftOutlined)
+  app.component(RightOutlined.displayName, RightOutlined)
+  app.component(CloudDownloadOutlined.displayName, CloudDownloadOutlined)
+  app.component(CloudOutlined.displayName, CloudOutlined)
+  app.component(DownOutlined.displayName, DownOutlined)
+  app.component(DownloadOutlined.displayName, DownloadOutlined)
 }
