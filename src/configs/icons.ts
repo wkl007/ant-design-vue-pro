@@ -23,6 +23,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   MobileOutlined,
+  PlusOutlined,
   ReloadOutlined,
   RightOutlined,
   SettingOutlined,
@@ -31,7 +32,10 @@ import {
   UnorderedListOutlined,
   UserOutlined,
   WarningOutlined,
-  WeiboCircleOutlined
+  WeiboCircleOutlined,
+  ColumnHeightOutlined,
+  FullscreenExitOutlined,
+  FullscreenOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -71,4 +75,8 @@ export function setupIcons (app: App<Element>): void {
   app.component(CloudOutlined.displayName, CloudOutlined)
   app.component(DownOutlined.displayName, DownOutlined)
   app.component(DownloadOutlined.displayName, DownloadOutlined)
+  app.component(PlusOutlined.displayName, PlusOutlined)
+  app.component(ColumnHeightOutlined.displayName, ColumnHeightOutlined)
+  app.component(FullscreenExitOutlined.displayName, FullscreenExitOutlined)
+  app.component(FullscreenOutlined.displayName, FullscreenOutlined)
 }
