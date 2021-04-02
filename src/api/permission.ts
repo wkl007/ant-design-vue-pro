@@ -3,7 +3,7 @@ import { PermissionsReq, PermissionsResp, RolesReq, RolesResp } from '@/types/ap
 
 export default class PermissionServer {
   // 角色列表
-  static getRoles (params: RolesReq): Promise<RolesResp> {
+  static getRoles (params?: RolesReq): Promise<RolesResp> {
     return request.request({
       url: '/roles',
       method: 'get',
@@ -12,7 +12,7 @@ export default class PermissionServer {
   }
 
   // 权限列表
-  static getPermissions (params: PermissionsReq): Promise<PermissionsResp> {
+  static getPermissions (params?: PermissionsReq): Promise<PermissionsResp> {
     return request.request({
       url: '/permissions',
       method: 'get',
