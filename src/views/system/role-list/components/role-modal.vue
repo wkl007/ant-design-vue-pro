@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, PropType, watchEffect, toRaw } from 'vue'
+import { defineComponent, PropType, reactive, ref } from 'vue'
 import { useForm } from '@ant-design-vue/use'
 import { Role } from '@/types/api/user'
 import { Action, Permission } from '@/types/store/user'
@@ -57,16 +57,6 @@ import { Action, Permission } from '@/types/store/user'
 type Tag = {
   key: string;
   describe: string;
-}
-const formLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 7 }
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 13 }
-  }
 }
 
 export default defineComponent({
@@ -82,7 +72,7 @@ export default defineComponent({
     }
   },
   emits: ['cancel'],
-  setup (props) {
+  setup () {
     const modelRef = reactive<Role>({
       id: undefined,
       name: undefined,
@@ -122,7 +112,6 @@ export default defineComponent({
     }
 
     return {
-      ...formLayout,
       tags,
       rolePermissions,
 

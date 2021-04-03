@@ -98,7 +98,7 @@
       ref="roleModal"
       :model="currentData"
       :visible="visible"
-      @cancel="visible=false"
+      @cancel="handleModalVisible(false,currentData)"
     ></role-modal>
   </page-container>
 </template>
