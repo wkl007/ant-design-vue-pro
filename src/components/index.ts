@@ -19,8 +19,12 @@ import TransformVNode from './transform-vnode'
 import Watermark from './watermark/index.vue'
 import DragIcon from './drag-icon/index.vue'
 import TableToolbar from './table-toolbar/index.vue'
+import AvatarList from './avatar-list/index.vue'
+import AvatarListItem from './avatar-list/item.vue'
 
 export {
+  AvatarList,
+  AvatarListItem,
   AvatarDropdown,
   BaseMenu,
   SubMenu,

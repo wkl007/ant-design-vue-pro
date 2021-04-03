@@ -3,41 +3,47 @@ import {
   AlipayCircleOutlined,
   AppstoreAddOutlined,
   CheckCircleOutlined,
+  CloseCircleOutlined,
   CloseOutlined,
   CloudDownloadOutlined,
   CloudOutlined,
+  ColumnHeightOutlined,
   CopyrightOutlined,
+  DingdingOutlined,
   DownloadOutlined,
   DownOutlined,
   EllipsisOutlined,
   FormOutlined,
+  FullscreenExitOutlined,
+  FullscreenOutlined,
   GlobalOutlined,
   HeartOutlined,
   HistoryOutlined,
   HomeOutlined,
   LeftOutlined,
+  LikeOutlined,
   LinkOutlined,
   LockOutlined,
   LogoutOutlined,
   MailOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  MessageFilled,
   MobileOutlined,
   PlusOutlined,
   ReloadOutlined,
   RightOutlined,
   SettingOutlined,
+  StarTwoTone,
   TableOutlined,
   TaobaoCircleOutlined,
   UnorderedListOutlined,
+  UploadOutlined,
   UserOutlined,
   WarningOutlined,
   WeiboCircleOutlined,
-  ColumnHeightOutlined,
-  FullscreenExitOutlined,
-  FullscreenOutlined,
-  CloseCircleOutlined,
-  DingdingOutlined
+  EditOutlined,
+  ShareAltOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -83,4 +89,10 @@ export function setupIcons (app: App<Element>): void {
   app.component(FullscreenOutlined.displayName, FullscreenOutlined)
   app.component(CloseCircleOutlined.displayName, CloseCircleOutlined)
   app.component(DingdingOutlined.displayName, DingdingOutlined)
+  app.component(UploadOutlined.displayName, UploadOutlined)
+  app.component(StarTwoTone.displayName, StarTwoTone)
+  app.component(LikeOutlined.displayName, LikeOutlined)
+  app.component(MessageFilled.displayName, MessageFilled)
+  app.component(EditOutlined.displayName, EditOutlined)
+  app.component(ShareAltOutlined.displayName, ShareAltOutlined)
 }

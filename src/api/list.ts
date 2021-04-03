@@ -3,7 +3,7 @@ import { FakeListReq, FakeListResp, RuleReq, RuleResp } from '@/types/api/list'
 
 export default class ListServer {
   // 标准列表/卡片列表
-  static getFakeList (params: FakeListReq): Promise<FakeListResp> {
+  static getFakeList (params: FakeListReq): Promise<FakeListResp[]> {
     return request.request({
       url: '/fake_list',
       method: 'get',

@@ -3,7 +3,7 @@ import { ActivitiesResp, ChartDataResp, ProjectNoticeResp, TagsResp } from '@/ty
 
 export default class DashboardServer {
   // 进行中的项目
-  static getProjectNotice (): Promise<ProjectNoticeResp> {
+  static getProjectNotice (): Promise<ProjectNoticeResp[]> {
     return request.request({
       url: '/project/notice',
       method: 'get'

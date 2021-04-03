@@ -5,6 +5,7 @@ import {
   Button,
   Calendar,
   Card,
+  Cascader,
   Checkbox,
   Col,
   ConfigProvider,
@@ -39,7 +40,8 @@ import {
   Tabs,
   Tag,
   TimePicker,
-  Tooltip
+  Tooltip,
+  Upload
 } from 'ant-design-vue'
 
 /**
@@ -53,6 +55,7 @@ export function setupAntd (app: App<Element>): void {
     .use(Button)
     .use(Calendar)
     .use(Card)
+    .use(Cascader)
     .use(Checkbox)
     .use(Col)
     .use(ConfigProvider)
@@ -88,4 +91,5 @@ export function setupAntd (app: App<Element>): void {
     .use(TimePicker)
     .use(Tooltip)
     .use(PageHeader)
+    .use(Upload)
 }

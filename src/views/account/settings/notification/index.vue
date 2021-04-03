@@ -1,5 +1,5 @@
 <template>
-  <page-container></page-container>
+  <a-list item-layout="horizontal" :data-source="[]"></a-list>
 </template>
 
 <script lang="ts">
