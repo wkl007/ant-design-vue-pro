@@ -35,7 +35,9 @@ import {
   WeiboCircleOutlined,
   ColumnHeightOutlined,
   FullscreenExitOutlined,
-  FullscreenOutlined
+  FullscreenOutlined,
+  CloseCircleOutlined,
+  DingdingOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -79,4 +81,6 @@ export function setupIcons (app: App<Element>): void {
   app.component(ColumnHeightOutlined.displayName, ColumnHeightOutlined)
   app.component(FullscreenExitOutlined.displayName, FullscreenExitOutlined)
   app.component(FullscreenOutlined.displayName, FullscreenOutlined)
+  app.component(CloseCircleOutlined.displayName, CloseCircleOutlined)
+  app.component(DingdingOutlined.displayName, DingdingOutlined)
 }
