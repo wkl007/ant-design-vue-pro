@@ -13,9 +13,9 @@ export interface Permission {
   /* 权限归属的角色 */
   roleId?: string | number;
   /* 权限名称 */
-  name: string;
+  name: string | undefined;
   /* 权限显示的名字 */
-  label?: string;
+  label?: string | undefined;
   /* 权限拥有的操作 [增,删,改,查] */
   actions?: Action[];
 }

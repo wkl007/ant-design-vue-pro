@@ -6,12 +6,12 @@
           <a-row :gutter="16" type="flex" justfy="start">
             <a-col :xs="24" :sm="24" :md="12">
               <a-form-item label="角色名称">
-                <a-input placeholder="please enter"/>
+                <a-input placeholder="角色名称"/>
               </a-form-item>
             </a-col>
             <a-col :xs="24" :sm="24" :md="12">
               <a-form-item label="描述">
-                <a-input placeholdre="please enter"/>
+                <a-input placeholder="描述"/>
               </a-form-item>
             </a-col>
           </a-row>

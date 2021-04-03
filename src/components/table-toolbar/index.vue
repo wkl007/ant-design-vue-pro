@@ -157,7 +157,7 @@ export default defineComponent({
       default: false
     },
     columnItems: {
-      type: Array as DynamicColumnItem[],
+      type: Array as PropType<DynamicColumnItem[]>,
       default: () => []
     }
   },

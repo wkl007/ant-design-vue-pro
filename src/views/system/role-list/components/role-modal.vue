@@ -16,13 +16,20 @@
         v-show="modelRef.id>0"
         v-bind="validateInfos.id"
       >
-        <a-input :value="modelRef.id" disabled/>
+        <a-input
+          :value="modelRef.id"
+          disabled
+          placeholder="唯一编号"
+        />
       </a-form-item>
       <a-form-item
         label="角色名称"
         v-bind="validateInfos.name"
       >
-        <a-input v-model:value="modelRef.name"/>
+        <a-input
+          v-model:value="modelRef.name"
+          placeholder="角色名称"
+        />
       </a-form-item>
       <a-form-item label="角色权限表">
         <p
@@ -74,7 +81,7 @@ export default defineComponent({
   emits: ['cancel'],
   setup () {
     const modelRef = reactive<Role>({
-      id: undefined,
+      id: 0,
       name: undefined,
       describe: undefined,
       permissions: []

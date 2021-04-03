@@ -12,16 +12,31 @@
   >
     <a-form v-bind="formLayout">
       <a-form-item label="编号" disabled="" v-bind="validateInfos.id">
-        <a-input disabled v-model:value="modelRef.id"/>
+        <a-input
+          disabled
+          v-model:value="modelRef.id"
+          placeholder="编号"
+        />
       </a-form-item>
       <a-form-item label="权限名称" v-bind="validateInfos.name">
-        <a-input v-model:value="modelRef.name"/>
+        <a-input
+          v-model:value="modelRef.name"
+          placeholder="权限名称"
+        />
       </a-form-item>
       <a-form-item label="显示名称" v-bind="validateInfos.label">
-        <a-input v-model:value="modelRef.label"/>
+        <a-input
+          v-model:value="modelRef.label"
+          placeholder="显示名称"
+        />
       </a-form-item>
       <a-form-item label="操作类型">
-        <a-select v-model:value="modelRef.actions" mode="tags" style="width: 100%;">
+        <a-select
+          v-model:value="modelRef.actions"
+          placeholder="操作类型"
+          mode="tags"
+          style="width: 100%;"
+        >
           <a-select-option
             v-for="action in permissionActions"
             :key="action"
@@ -68,7 +83,6 @@ export default defineComponent({
     const modelRef = reactive<Permission>({
       id: -1,
       name: undefined,
-      describe: undefined,
       label: undefined,
       actions: []
     })

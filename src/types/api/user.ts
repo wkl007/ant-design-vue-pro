@@ -41,8 +41,8 @@ export interface Permission {
 
 export interface Role {
   id: number;
-  name: string;
-  describe: string;
+  name: string | undefined;
+  describe: string | undefined;
   permissions: Permission[];
 }
 
