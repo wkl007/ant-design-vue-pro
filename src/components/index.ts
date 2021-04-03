@@ -18,6 +18,7 @@ import SettingDrawer from './setting-drawer/index.vue'
 import TransformVNode from './transform-vnode'
 import Watermark from './watermark/index.vue'
 import DragIcon from './drag-icon/index.vue'
+import TableToolbar from './table-toolbar/index.vue'
 
 export {
   AvatarDropdown,
@@ -43,5 +44,6 @@ export {
   SettingDrawer,
   TransformVNode,
   Watermark,
-  DragIcon
+  DragIcon,
+  TableToolbar
 }

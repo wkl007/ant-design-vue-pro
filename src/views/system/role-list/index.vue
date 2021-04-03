@@ -18,119 +18,31 @@
         </a-form>
       </div>
       <a-card :body-style="{padding:0}" ref="elRef">
-        <div class="ant-pro-table-list-toolbar">
-          <div class="ant-pro-table-list-toolbar-container">
-            <div class="ant-pro-table-list-toolbar-left">
-              <div class="ant-pro-table-list-toolbar-title">角色列表</div>
-            </div>
-            <div class="ant-pro-table-list-toolbar-right">
-              <a-space align="center">
-                <a-button
-                  type="primary"
-                  @click="modalVisible=true"
-                >
-                  <plus-outlined/>
-                  新增角色
-                </a-button>
-              </a-space>
-              <div class="ant-pro-table-list-toolbar-divider">
-                <a-divider type="vertical"/>
-              </div>
-              <div class="ant-pro-table-list-toolbar-setting-item">
-                <a-tooltip title="刷新">
-                  <reload-outlined @click="handleTableChange"/>
-                </a-tooltip>
-              </div>
-              <div class="ant-pro-table-list-toolbar-setting-item">
-                <a-tooltip title="密度">
-                  <a-dropdown :trigger="['click']" placement="bottomRight">
-                    <column-height-outlined/>
-                    <template #overlay>
-                      <a-menu
-                        style="width: 80px;"
-                        :selected-keys="[state.tableSize]"
-                        @click="({key})=>{
-                          state.tableSize=key
-                        }"
-                      >
-                        <a-menu-item key="default">
-                          <a href="javascript:;">默认</a>
-                        </a-menu-item>
-                        <a-menu-item key="middle">
-                          <a href="javascript:;">中等</a>
-                        </a-menu-item>
-                        <a-menu-item key="small">
-                          <a href="javascript:;">紧凑</a>
-                        </a-menu-item>
-                      </a-menu>
-                    </template>
-                  </a-dropdown>
-                </a-tooltip>
-              </div>
-              <div class="ant-pro-table-list-toolbar-setting-item">
-                <a-popover
-                  placement="bottomRight"
-                  arrow-point-at-center
-                  trigger="click"
-                  overlay-class-name="ant-pro-table-column-setting-overlay"
-                >
-                  <template #title>
-                    <div class="ant-pro-table-column-setting-title">
-                      <a-checkbox
-                        v-model:checked="columnState.checkAll"
-                        :indeterminate="columnState.indeterminate"
-                        @change="handleColumnAllClick"
-                      >
-                        列展示
-                      </a-checkbox>
-                      <a href="javascript:;" @click="reset">重置</a>
-                    </div>
-                  </template>
-                  <template #content>
-                    <span class="ant-pro-table-column-setting-list">
-                      <drag-container
-                        lockAxis="y"
-                        dragClass="ant-pro-table-drag-ghost"
-                        dropClass="ant-pro-table-drop-ghost"
-                        @drop="({ removedIndex, addedIndex }) => move(removedIndex, addedIndex)"
-                      >
-                        <draggable
-                          v-for="item in dynamicColumnItems"
-                          :key="item.key"
-                        >
-                          <div class="ant-pro-table-column-setting-list-item">
-                            <drag-icon/>
-                            <a-checkbox
-                              :checked="item.checked"
-                              @change="handleColumnChange($event,item)"
-                            >
-                              {{ item.label }}
-                            </a-checkbox>
-                          </div>
-                        </draggable>
-                      </drag-container>
-                    </span>
-                  </template>
-                  <a-tooltip title="列设置">
-                    <setting-outlined/>
-                  </a-tooltip>
-                </a-popover>
-              </div>
-              <div class="ant-pro-table-list-toolbar-setting-item">
-                <a-tooltip :title="screenState?'退出全屏':'全屏'">
-                  <fullscreen-outlined
-                    v-if="!screenState"
-                    @click="setFull"
-                  />
-                  <fullscreen-exit-outlined
-                    v-else
-                    @click="exitFull"
-                  />
-                </a-tooltip>
-              </div>
-            </div>
-          </div>
-        </div>
+        <table-toolbar
+          title="角色列表"
+          :screen-state="screenState"
+          :indeterminate="columnState.indeterminate"
+          :column-items="dynamicColumnItems"
+          v-model:table-size="state.tableSize"
+          v-model:check-all="columnState.checkAll"
+          @reload="handleReload"
+          @reset="reset"
+          @setFull="setFull"
+          @exitFull="exitFull"
+          @change="handleColumnChange"
+          @changeAll="handleColumnAllClick"
+          @move="move"
+        >
+          <template #action>
+            <a-button
+              type="primary"
+              @click="modalVisible=true"
+            >
+              <plus-outlined/>
+              新增角色
+            </a-button>
+          </template>
+        </table-toolbar>
         <a-table
           row-key="id"
           :size="state.tableSize"
@@ -189,8 +101,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRaw } from 'vue'
-import { Container as DragContainer, Draggable, DragIcon } from '@/components'
+import { defineComponent, ref } from 'vue'
+import { TableToolbar } from '@/components'
 import { useFetchData, useFullscreen, useTableDynamicColumns } from '@/hooks'
 import PermissionServer from '@/api/permission'
 import { Pagination, TableColumn, TableFilters } from '@/types'
@@ -222,9 +134,7 @@ const baseColumns: TableColumn[] = [
 export default defineComponent({
   name: 'RoleList',
   components: {
-    DragContainer,
-    Draggable,
-    DragIcon
+    TableToolbar
   },
   setup () {
     const roleModalRef = ref({})
@@ -255,6 +165,14 @@ export default defineComponent({
       reload()
     }
 
+    function handleReload () {
+      setPageInfo({
+        current: 1,
+        pageSize: 10
+      })
+      reload()
+    }
+
     return {
       state,
       columnState,
@@ -273,7 +191,8 @@ export default defineComponent({
       move,
       handleTableChange,
       handleColumnChange,
-      handleColumnAllClick
+      handleColumnAllClick,
+      handleReload
     }
   }
 })
