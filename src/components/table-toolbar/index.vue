@@ -12,7 +12,9 @@
           <a-divider type="vertical"/>
         </div>
         <div class="ant-pro-table-list-toolbar-setting-item">
-          <a-tooltip title="刷新" :get-popup-container="trigger => trigger.parentNode"
+          <a-tooltip
+            title="刷新"
+            :get-popup-container="trigger => trigger.parentNode"
           >
             <reload-outlined @click="$emit('reload')"/>
           </a-tooltip>
@@ -181,6 +183,31 @@ export default defineComponent({
 <style scoped lang="less">
 @import "~@/assets/styles/variables";
 
+.@{pro-table-prefix-cls}-column-setting-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  margin-left: 4px;
+}
+
+.@{pro-table-prefix-cls}-column-setting-list-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px 16px 4px 0;
+
+  > span.anticon {
+    padding-right: 6px;
+    cursor: move;
+  }
+
+  .@{ant-prefix}-checkbox-wrapper {
+    flex: 1;
+    margin: 0;
+  }
+}
+
 .@{pro-table-prefix-cls}-list-toolbar {
   overflow-x: auto;
   overflow-y: hidden;
@@ -219,5 +246,19 @@ export default defineComponent({
     font-size: 16px;
     cursor: pointer;
   }
+}
+
+.@{pro-table-prefix-cls}-drag-ghost {
+  box-shadow: 1px 1px 5px 2px @shadow-color;
+  cursor: move;
+  transition: 0.18s ease;
+}
+
+.@{pro-table-prefix-cls}-drop-ghost {
+  box-shadow: 0 0 2px 5px rgba(0, 0, 0, 0);
+}
+
+.@{pro-table-prefix-cls}-column-drag-icon {
+  color: @text-color-secondary;
 }
 </style>

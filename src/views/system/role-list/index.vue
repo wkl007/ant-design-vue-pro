@@ -36,7 +36,7 @@
           <template #action>
             <a-button
               type="primary"
-              @click="modalVisible=true"
+              @click="handleModalVisible(true,{})"
             >
               <plus-outlined/>
               新增角色
@@ -86,10 +86,7 @@
           <template #action="{record}">
             <a
               href="javascript:;"
-              @click="()=>{
-                roleModalRef=record
-                modalVisible=true
-              }"
+              @click="handleModalVisible(true,record)"
             >
               编辑
             </a>
@@ -97,15 +94,23 @@
         </a-table>
       </a-card>
     </div>
+    <role-modal
+      ref="roleModal"
+      :model="currentData"
+      :visible="visible"
+      @cancel="visible=false"
+    ></role-modal>
   </page-container>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, nextTick, reactive, ref, toRefs } from 'vue'
 import { TableToolbar } from '@/components'
+import RoleModal from './components/role-modal.vue'
 import { useFetchData, useFullscreen, useTableDynamicColumns } from '@/hooks'
 import PermissionServer from '@/api/permission'
 import { Pagination, TableColumn, TableFilters } from '@/types'
+import { Role } from '@/types/api/user'
 
 const baseColumns: TableColumn[] = [
   {
@@ -134,11 +139,15 @@ const baseColumns: TableColumn[] = [
 export default defineComponent({
   name: 'RoleList',
   components: {
-    TableToolbar
+    TableToolbar,
+    RoleModal
   },
   setup () {
-    const roleModalRef = ref({})
-    const modalVisible = ref<boolean>(false)
+    const modalState = reactive({
+      roleModal: ref(),
+      visible: false,
+      currentData: {}
+    })
     const {
       state: columnState,
       dynamicColumns,
@@ -173,7 +182,21 @@ export default defineComponent({
       reload()
     }
 
+    function handleModalVisible (visible: boolean, record: Role): void {
+      modalState.visible = visible
+      modalState.currentData = record
+      if (visible && record.id) {
+        nextTick(() => {
+          modalState.roleModal.modelRef.id = record.id
+          modalState.roleModal.modelRef.name = record.name
+          modalState.roleModal.modelRef.describe = record.describe
+          modalState.roleModal.modelRef.permissions = record.permissions
+        })
+      }
+    }
+
     return {
+      ...toRefs(modalState),
       state,
       columnState,
       dynamicColumns,
@@ -184,15 +207,13 @@ export default defineComponent({
       setFull,
       exitFull,
 
-      modalVisible,
-      roleModalRef,
-
       reset,
       move,
       handleTableChange,
       handleColumnChange,
       handleColumnAllClick,
-      handleReload
+      handleReload,
+      handleModalVisible
     }
   }
 })
