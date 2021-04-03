@@ -19,6 +19,7 @@ import TransformVNode from './transform-vnode'
 import Watermark from './watermark/index.vue'
 import DragIcon from './drag-icon/index.vue'
 import TableToolbar from './table-toolbar/index.vue'
+import TableTotal from './table-total/index'
 import AvatarList from './avatar-list/index.vue'
 import AvatarListItem from './avatar-list/item.vue'
 
@@ -49,5 +50,6 @@ export {
   TransformVNode,
   Watermark,
   DragIcon,
-  TableToolbar
+  TableToolbar,
+  TableTotal
 }

@@ -2,6 +2,7 @@ import type { App } from 'vue'
 import {
   Alert,
   Avatar,
+  Badge,
   Button,
   Calendar,
   Card,
@@ -52,6 +53,7 @@ export function setupAntd (app: App<Element>): void {
   app
     .use(Alert)
     .use(Avatar)
+    .use(Badge)
     .use(Button)
     .use(Calendar)
     .use(Card)

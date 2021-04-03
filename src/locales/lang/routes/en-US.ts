@@ -19,8 +19,8 @@ export default {
   'pages.list.cardList.title': 'Card List',
 
   'pages.profile.title': 'Profile',
-  'pages.profile.basic.title': 'Basic Profile',
-  'pages.profile.advanced.title': 'Advanced Profile',
+  'pages.profile.basicProfile.title': 'Basic Profile',
+  'pages.profile.advanceProfile.title': 'Advanced Profile',
 
   'pages.exception.title': 'Exception',
   'pages.exception.403.title': '403',
