@@ -43,7 +43,8 @@ import {
   WarningOutlined,
   WeiboCircleOutlined,
   EditOutlined,
-  ShareAltOutlined
+  ShareAltOutlined,
+  InfoCircleOutlined
 } from '@ant-design/icons-vue'
 
 /**
@@ -95,4 +96,5 @@ export function setupIcons (app: App<Element>): void {
   app.component(MessageFilled.displayName, MessageFilled)
   app.component(EditOutlined.displayName, EditOutlined)
   app.component(ShareAltOutlined.displayName, ShareAltOutlined)
+  app.component(InfoCircleOutlined.displayName, InfoCircleOutlined)
 }

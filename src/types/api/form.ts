@@ -1,8 +1,8 @@
 export interface BaseFormDataReq {
-  title: string;
-  date: Array<string>;
-  goal: string;
-  standard: string;
+  title?: string;
+  date?: Array<string>;
+  goal?: string;
+  standard?: string;
 }
 
 export interface FormDataResp {

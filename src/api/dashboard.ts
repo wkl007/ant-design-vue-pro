@@ -11,7 +11,7 @@ export default class DashboardServer {
   }
 
   // 动态
-  static getActivities (): Promise<ActivitiesResp> {
+  static getActivities (): Promise<ActivitiesResp[]> {
     return request.request({
       url: '/activities',
       method: 'get'

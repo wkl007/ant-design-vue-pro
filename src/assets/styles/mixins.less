@@ -16,3 +16,12 @@
   text-overflow: ellipsis;
   word-break: break-all;
 }
+
+// 清除浮动
+.clear-fix {
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
