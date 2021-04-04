@@ -6,8 +6,9 @@ import { PageContainer, ProProvider, TransformVNode } from '@/components'
  * @param app
  */
 export function setupComponents (app: App<Element>): void {
-  app
-    .use(ProProvider)
-    .component(TransformVNode.name, TransformVNode)
-    .component(PageContainer.name, PageContainer)
+  const componentList = [PageContainer, ProProvider, TransformVNode]
+
+  componentList.forEach(component => {
+    app.component(component.name, component)
+  })
 }
