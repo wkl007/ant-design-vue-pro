@@ -33,7 +33,8 @@ export interface DynamicColumns {
   move: (index: number, targetIndex: number) => void;
 }
 
-const defaultRowIndexColumn = {
+const defaultRowIndexColumn: TableColumn = {
+  align: 'center',
   title: '序号',
   dataIndex: 'my-custom-show-index',
   customRender: ({ index }: { index: number }) => `${index + 1}`
