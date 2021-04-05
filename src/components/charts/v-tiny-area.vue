@@ -4,53 +4,48 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, PropType, reactive, ref, toRaw, watch } from 'vue'
-import { Radar, RadarOptions } from '@antv/g2plot'
+import { TinyArea, TinyAreaOptions } from '@antv/g2plot'
 
 export default defineComponent({
-  name: 'VRadar',
+  name: 'VTinyArea',
   props: {
     data: {
-      type: Array as PropType<Record<string, any>[]>,
+      type: Array as PropType<number[]>,
       default: () => []
     },
     width: {
       type: Number,
-      default: 560
+      default: 400
     },
     height: {
       type: Number,
-      default: 400
+      default: 64
     }
   },
   setup (props) {
     const isRealDark = inject('isRealDark', ref(false))
 
-    let chart: Radar | null = null
+    let chart: TinyArea | null = null
     const container = ref<HTMLDivElement | null>(null)
-    const config = reactive<RadarOptions>({
+    const config = reactive<TinyAreaOptions>({
       data: [],
-      legend: {
-        position: 'bottom'
-      },
+      autoFit: true,
+      smooth: true,
       width: props.width,
       height: props.height,
-      padding: [100, 50],
-      autoFit: true,
-      seriesField: 'name',
-      xField: 'label',
-      yField: 'value',
       theme: isRealDark.value ? 'dark' : 'default',
-      color: [
-        '#167CDB',
-        '#FACC14',
-        '#2FC25B'
-      ]
+      line: {
+        color: '#1089ff'
+      },
+      areaStyle: {
+        fill: 'rgba(24, 144, 255, 0.2)'
+      }
     })
 
     function initChart () {
       destroyChart()
       if (!container.value) return
-      chart = new Radar(toRaw(container.value), {
+      chart = new TinyArea(toRaw(container.value), {
         ...config,
         data: props.data
       })

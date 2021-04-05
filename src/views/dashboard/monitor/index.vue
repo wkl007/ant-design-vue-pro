@@ -87,20 +87,39 @@
         ></a-card>
       </a-col>
     </a-row>
+    <a-card>
+      <v-tiny-area :data="activeData"/>
+    </a-card>
   </grid-content>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { GridContent, injectProProvider } from '@/components'
+import { defineComponent, reactive } from 'vue'
+import { GridContent, injectProProvider, VTinyArea } from '@/components'
 import { useFetchData } from '@/hooks'
 import DashboardServer from '@/api/dashboard'
 import { numberFormat } from '@/utils'
 
+function fixedZero (val: number) {
+  return val * 1 < 10 ? `0${val}` : val
+}
+
+function getActiveData () {
+  const activeData = []
+  for (let i = 0; i < 24; i += 1) {
+    activeData.push({
+      x: `${fixedZero(i)}:00`,
+      y: Math.floor(Math.random() * 200) + i * 50
+    })
+  }
+  return activeData
+}
+
 export default defineComponent({
   name: 'Monitor',
   components: {
-    GridContent
+    GridContent,
+    VTinyArea
   },
   setup () {
     const { i18n: t } = injectProProvider()
@@ -113,9 +132,11 @@ export default defineComponent({
       }),
       { loading: false }
     )
+
     return {
       t,
       context,
+      activeData: [1, 2, 3, 4, 5],
 
       numberFormat
     }
