@@ -9958,7 +9958,7 @@ screenfull@^5.1.0:
   resolved "https://registry.npm.taobao.org/screenfull/download/screenfull-5.1.0.tgz?cache=0&sync_timestamp=1608796376040&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscreenfull%2Fdownload%2Fscreenfull-5.1.0.tgz#85c13c70f4ead4c1b8a935c70010dfdcd2c0e5c8"
   integrity sha1-hcE8cPTq1MG4qTXHABDf3NLA5cg=
 
-scroll-into-view-if-needed@^2.2.25:
+scroll-into-view-if-needed@^2.2.25, scroll-into-view-if-needed@^2.2.28:
   version "2.2.28"
   resolved "https://registry.npm.taobao.org/scroll-into-view-if-needed/download/scroll-into-view-if-needed-2.2.28.tgz#5a15b2f58a52642c88c8eca584644e01703d645a"
   integrity sha1-WhWy9YpSZCyIyOylhGROAXA9ZFo=

@@ -55,7 +55,7 @@ export interface TableColumn {
   align?: TableColumnAlign;
   ellipsis?: boolean;
   colSpan?: number;
-  dataIndex: string;
+  dataIndex?: string;
   defaultFilteredValue?: string[];
   filterDropdown?: VNode;
   filterDropdownVisible?: boolean;

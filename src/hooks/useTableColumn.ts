@@ -76,11 +76,11 @@ export function useTableDynamicColumns (columns: TableColumn[], defOptions: Tabl
     const keys = dynamicColumnItems.value.map(item => item.key)
 
     dynamicColumns.value = columns
-      .filter(item => state.checkedList.includes(item.dataIndex))
+      .filter(item => state.checkedList.includes(item.dataIndex as string))
       .sort((a, b) => {
         const aKey = a.key || a.dataIndex
         const bKey = b.key || b.dataIndex
-        return keys.indexOf(aKey) - keys.indexOf(bKey)
+        return keys.indexOf(aKey as string) - keys.indexOf(bKey as string)
       })
       .map(item => item)
 

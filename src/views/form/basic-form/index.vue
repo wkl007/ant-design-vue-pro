@@ -4,7 +4,7 @@
       {{ t('form.baseForm.basic.description') }}
     </template>
     <a-card :bordered="false">
-      <a-form hide-required-mark :label-col="labelCol" :wrapper-col="wrapperCol">
+      <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
         <a-form-item :label="t('form.baseForm.title.label')" v-bind="validateInfos.title">
           <a-input
             v-model:value="modelRef.title"

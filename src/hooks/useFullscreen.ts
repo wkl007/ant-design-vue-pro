@@ -1,4 +1,4 @@
-import { ref, Ref, onUnmounted, ComponentPublicInstance } from 'vue'
+import { ComponentPublicInstance, onUnmounted, ref, Ref } from 'vue'
 import screenFull from 'screenfull'
 import { getTargetElement } from '@/utils/dom'
 
