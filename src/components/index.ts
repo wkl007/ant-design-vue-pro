@@ -22,6 +22,7 @@ import TableToolbar from './table-toolbar/index.vue'
 import TableTotal from './table-total/index'
 import AvatarList from './avatar-list/index.vue'
 import AvatarListItem from './avatar-list/item.vue'
+import { VRadar } from './charts'
 
 export {
   AvatarList,
@@ -51,5 +52,6 @@ export {
   Watermark,
   DragIcon,
   TableToolbar,
-  TableTotal
+  TableTotal,
+  VRadar
 }

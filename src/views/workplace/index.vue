@@ -133,8 +133,7 @@
             :body-style="{ padding: 0 }"
           >
             <div style="min-height: 400px;">
-              <!-- :scale="scale" :axis1Opts="axis1Opts" :axis2Opts="axis2Opts"  -->
-              <!--<radar :data="radar.dataSource" :height="350" />-->
+              <v-radar :data="radar.dataSource"/>
             </div>
           </a-card>
           <a-card :loading="projects.loading" title="团队" :bordered="false">
@@ -165,12 +164,14 @@ import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import moment from 'moment'
 import { useFetchData } from '@/hooks'
-import { injectProProvider } from '@/components'
+import { injectProProvider, VRadar } from '@/components'
 import DashboardServer from '@/api/dashboard'
 
 export default defineComponent({
   name: 'Workplace',
-  components: {},
+  components: {
+    VRadar
+  },
   setup () {
     const store = useStore()
     const { i18n: t } = injectProProvider()

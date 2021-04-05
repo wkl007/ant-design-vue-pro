@@ -27,6 +27,7 @@
   "dependencies": {
     "@ant-design-vue/use": "^0.0.1-alpha.9",
     "@ant-design/icons-vue": "^6.0.1",
+    "@antv/g2plot": "^2.3.17",
     "@vueuse/core": "^4.7.0",
     "ant-design-vue": "^2.1.2",
     "axios": "^0.21.1",
