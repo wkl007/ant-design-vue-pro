@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, reactive, ref, toRaw, watch } from 'vue'
-import { Gauge, Liquid, LiquidOptions } from '@antv/g2plot'
+import { Datum, Gauge, Liquid, LiquidOptions } from '@antv/g2plot'
 
 export default defineComponent({
   name: 'VLiquid',
@@ -47,7 +47,7 @@ export default defineComponent({
             fontWeight: 'normal',
             color: '#363636'
           },
-          formatter: ({ percent }: { percent: number }) => `${(percent * 100).toFixed(0)}%`
+          formatter: (datum: Datum | undefined) => `${(datum?.percent * 100).toFixed(0)}%`
         }
       }
     })

@@ -4,78 +4,76 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, PropType, reactive, ref, toRaw, watch } from 'vue'
-import { Column, ColumnOptions } from '@antv/g2plot'
+import { DualAxes, DualAxesOptions } from '@antv/g2plot'
 
 export default defineComponent({
-  name: 'VColumn',
+  name: 'VLine',
   props: {
     data: {
       type: Array as PropType<Record<string, any>[]>,
       default: () => [
-        {
-          type: '家具家电',
-          sales: 38
-        },
-        {
-          type: '粮油副食',
-          sales: 52
-        },
-        {
-          type: '生鲜水果',
-          sales: 61
-        }
+        { year: '1991', value: 3, count: 10 },
+        { year: '1992', value: 4, count: 4 },
+        { year: '1993', value: 3.5, count: 5 },
+        { year: '1994', value: 5, count: 5 },
+        { year: '1995', value: 4.9, count: 4.9 },
+        { year: '1996', value: 6, count: 35 },
+        { year: '1997', value: 7, count: 7 },
+        { year: '1998', value: 9, count: 1 },
+        { year: '1999', value: 13, count: 20 },
+        { year: '2000', value: 3, count: 10 },
+        { year: '2001', value: 4, count: 4 },
+        { year: '2002', value: 3.5, count: 5 },
+        { year: '2003', value: 5, count: 5 },
+        { year: '2004', value: 4.9, count: 4.9 },
+        { year: '2005', value: 6, count: 35 },
+        { year: '2006', value: 7, count: 7 },
+        { year: '2007', value: 9, count: 1 },
+        { year: '2008', value: 13, count: 20 }
       ]
     },
     width: {
       type: Number,
-      default: 200
+      default: 0
     },
     height: {
       type: Number,
-      default: 200
+      default: 400
     }
   },
   setup (props) {
     const isRealDark = inject('isRealDark', ref(false))
-    let chart: Column | null = null
+
+    let chart: DualAxes | null = null
     const container = ref<HTMLDivElement | null>(null)
-    const config = reactive<ColumnOptions>({
-      data: props.data,
+    const config = reactive<DualAxesOptions>({
+      data: [props.data, props.data],
       width: props.width,
       height: props.height,
       theme: isRealDark.value ? 'dark' : 'default',
       autoFit: true,
-      xField: 'type',
-      yField: 'sales',
-      label: {
-        // 可手动配置 label 数据标签位置
-        position: 'middle', // 'top', 'bottom', 'middle',
-        // 配置样式
-        style: {
-          fill: '#FFFFFF',
-          opacity: 0.6
-        }
+      xField: 'year',
+      yField: ['value', 'count'],
+      slider: {
+        start: 0,
+        end: 0.5
       },
-      xAxis: {
-        label: {
-          autoHide: true,
-          autoRotate: false
-        }
-      },
-      meta: {
-        type: {
-          alias: '类别'
+      geometryOptions: [
+        {
+          geometry: 'line',
+          color: '#5B8FF9'
         },
-        sales: {
-          alias: '销售额'
+        {
+          geometry: 'line',
+          color: '#5AD8A6'
         }
-      }
+      ]
     })
 
     function initChart () {
       destroyChart()
       if (!container.value) return
-      chart = new Column(toRaw(container.value), {
+      chart = new DualAxes(toRaw(container.value), {
         ...config
       })
       chart.render()

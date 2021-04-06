@@ -3,14 +3,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, onMounted, onUnmounted, reactive, ref, toRaw, watch } from 'vue'
+import { defineComponent, inject, onMounted, onUnmounted, PropType, reactive, ref, toRaw, watch } from 'vue'
 import { WordCloud, WordCloudOptions } from '@antv/g2plot'
 
 export default defineComponent({
   name: 'VWordCloud',
   props: {
     data: {
-      type: Array,
+      type: Array as PropType<Record<string, any>[]>,
       default: () => [
         { value: 9, name: 'AntV' },
 

@@ -26,14 +26,15 @@ import {
   VBullet,
   VColumn,
   VGauge,
-  VLine,
+  VDualAxes,
   VLiquid,
   VPie,
   VRadar,
   VRingProgress,
   VTinyArea,
   VTinyColumn,
-  VWordCloud
+  VWordCloud,
+  VMap
 } from './charts'
 
 export {
@@ -73,7 +74,8 @@ export {
   VLiquid,
   VBullet,
   VColumn,
-  VLine,
+  VDualAxes,
   VPie,
-  VTinyColumn
+  VTinyColumn,
+  VMap
 }

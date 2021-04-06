@@ -5,7 +5,7 @@
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, reactive, ref, toRaw, watch } from 'vue'
 import { View } from '@antv/g2'
-import { Data, Gauge, GaugeOptions } from '@antv/g2plot'
+import { Data, Datum, Gauge, GaugeOptions } from '@antv/g2plot'
 
 export default defineComponent({
   name: 'VGauge',
@@ -61,7 +61,7 @@ export default defineComponent({
       },
       statistic: {
         content: {
-          customHtml: (container: HTMLElement, view: View, { percent }: { percent: number }, data: Data) => `<div><div style="font-size: 14px;color: rgba(0,0,0,0.43);">跳出率</div><br/><div style="font-size:24px;color: rgba(0,0,0,0.85);margin-top: -24px; ">${(percent * 100).toFixed(0)}%</div></div>`
+          customHtml: (container: HTMLElement, view: View, datum: Datum | undefined) => `<div><div style="font-size: 14px;color: rgba(0,0,0,0.43);">跳出率</div><br/><div style="font-size:24px;color: rgba(0,0,0,0.85);margin-top: -24px; ">${(datum?.percent * 100).toFixed(0)}%</div></div>`
         }
       }
     })
