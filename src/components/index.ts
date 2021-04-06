@@ -22,7 +22,19 @@ import TableToolbar from './table-toolbar/index.vue'
 import TableTotal from './table-total/index'
 import AvatarList from './avatar-list/index.vue'
 import AvatarListItem from './avatar-list/item.vue'
-import { VRadar, VTinyArea } from './charts'
+import {
+  VBullet,
+  VColumn,
+  VGauge,
+  VLine,
+  VLiquid,
+  VPie,
+  VRadar,
+  VRingProgress,
+  VTinyArea,
+  VTinyColumn,
+  VWordCloud
+} from './charts'
 
 export {
   AvatarList,
@@ -54,5 +66,14 @@ export {
   TableToolbar,
   TableTotal,
   VRadar,
-  VTinyArea
+  VTinyArea,
+  VGauge,
+  VRingProgress,
+  VWordCloud,
+  VLiquid,
+  VBullet,
+  VColumn,
+  VLine,
+  VPie,
+  VTinyColumn
 }

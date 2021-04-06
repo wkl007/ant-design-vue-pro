@@ -89,13 +89,17 @@
     </a-row>
     <a-card>
       <v-tiny-area :data="activeData"/>
+      <v-gauge/>
+      <v-ring-progress/>
+      <v-word-cloud/>
+      <v-liquid/>
     </a-card>
   </grid-content>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
-import { GridContent, injectProProvider, VTinyArea } from '@/components'
+import { GridContent, injectProProvider, VTinyArea, VGauge, VRingProgress, VWordCloud, VLiquid } from '@/components'
 import { useFetchData } from '@/hooks'
 import DashboardServer from '@/api/dashboard'
 import { numberFormat } from '@/utils'
@@ -119,7 +123,11 @@ export default defineComponent({
   name: 'Monitor',
   components: {
     GridContent,
-    VTinyArea
+    VTinyArea,
+    VGauge,
+    VRingProgress,
+    VWordCloud,
+    VLiquid
   },
   setup () {
     const { i18n: t } = injectProProvider()
