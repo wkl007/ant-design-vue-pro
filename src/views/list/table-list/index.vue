@@ -105,9 +105,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRaw, toRefs } from 'vue'
+import { defineComponent, reactive, toRaw, toRefs } from 'vue'
 import { TableToolbar } from '@/components'
-import { useTableDynamicColumns, useFetchData, useFullscreen } from '@/hooks'
+import { useFetchData, useFullscreen, useTableDynamicColumns } from '@/hooks'
 import { Pagination, TableColumn, TableFilters } from '@/types'
 import ListServer from '@/api/list'
 import { dateFormat } from '@/utils'

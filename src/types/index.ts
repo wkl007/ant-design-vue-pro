@@ -1,4 +1,4 @@
-import { VNodeChild, VNode } from 'vue'
+import { VNode, VNodeChild } from 'vue'
 
 export interface PaginationItem {
   page?: number;

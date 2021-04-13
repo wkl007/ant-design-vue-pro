@@ -1,4 +1,4 @@
-import { Ref, ComponentPublicInstance } from 'vue'
+import { ComponentPublicInstance, Ref } from 'vue'
 
 export type BasicTarget<T = HTMLElement> = (() => T | null) | T | null | Ref<T | null | undefined>;
 

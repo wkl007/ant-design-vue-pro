@@ -4,14 +4,14 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, reactive, ref, toRaw, watch } from 'vue'
-import { Datum, Gauge, Liquid, LiquidOptions } from '@antv/g2plot'
+import { Datum, Liquid, LiquidOptions } from '@antv/g2plot'
 
 export default defineComponent({
   name: 'VLiquid',
   props: {
     percent: {
       type: Number,
-      default: 0.75
+      default: 0.34
     },
     width: {
       type: Number,

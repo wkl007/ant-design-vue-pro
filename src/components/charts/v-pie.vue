@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import {
+  CSSProperties,
   defineComponent,
   inject,
   onMounted,
@@ -12,10 +13,9 @@ import {
   reactive,
   ref,
   toRaw,
-  watch,
-  CSSProperties
+  watch
 } from 'vue'
-import { Pie, PieOptions, measureTextWidth } from '@antv/g2plot'
+import { measureTextWidth, Pie, PieOptions } from '@antv/g2plot'
 
 function renderStatistic (containerWidth: number, text: string, style: CSSProperties) {
   const { width: textWidth, height: textHeight } = measureTextWidth(text, style)

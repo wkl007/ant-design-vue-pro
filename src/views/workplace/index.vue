@@ -159,10 +159,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, watch } from 'vue'
+import { computed, defineComponent, reactive } from 'vue'
 import { useStore } from 'vuex'
-import { useI18n } from 'vue-i18n'
-import moment from 'moment'
 import { useFetchData } from '@/hooks'
 import { injectProProvider, VRadar } from '@/components'
 import DashboardServer from '@/api/dashboard'

@@ -1,4 +1,4 @@
-import { ref, reactive, Ref, watch } from 'vue'
+import { reactive, ref, Ref, watch } from 'vue'
 import { TableColumn } from '@/types'
 
 export type TableOptions =

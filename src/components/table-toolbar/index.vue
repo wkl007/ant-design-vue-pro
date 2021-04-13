@@ -129,7 +129,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, watch } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { Container as DragContainer, Draggable, DragIcon } from '@/components'
 import { DynamicColumnItem } from '@/hooks/useTableColumn'
 

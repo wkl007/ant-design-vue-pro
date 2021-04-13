@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType, CSSProperties } from 'vue'
+import { computed, CSSProperties, defineComponent, PropType } from 'vue'
 
 export type PayType = 'bank' | 'alipay';
 

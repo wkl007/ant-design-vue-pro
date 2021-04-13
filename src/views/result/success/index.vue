@@ -70,7 +70,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, computed, PropType } from 'vue'
+import { computed, defineComponent, inject, PropType, ref } from 'vue'
 
 export interface Operator {
   name: string;

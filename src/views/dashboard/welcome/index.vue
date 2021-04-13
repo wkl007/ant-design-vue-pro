@@ -89,7 +89,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, toRefs } from 'vue'
+import { computed, defineComponent, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { GridContent } from '@/components'
 import Info from '@/views/list/basic-list/components/info.vue'

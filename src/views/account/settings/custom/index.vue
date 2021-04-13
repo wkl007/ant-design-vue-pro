@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
 
 const themeMap: { [key: string]: string } = {

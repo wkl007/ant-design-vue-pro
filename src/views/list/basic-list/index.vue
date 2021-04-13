@@ -97,7 +97,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, reactive } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import Info from './components/info.vue'
 import { useFetchData } from '@/hooks'
 import ListServer from '@/api/list'

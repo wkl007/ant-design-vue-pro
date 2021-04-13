@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { VTinyColumn, VBullet, VColumn, VPie, VDualAxes, VMap } from '@/components'
+import { VBullet, VColumn, VDualAxes, VMap, VPie, VTinyColumn } from '@/components'
 
 export default defineComponent({
   name: 'Analysis',

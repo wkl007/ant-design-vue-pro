@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, onMounted, watch, inject, ref, computed } from 'vue'
+import { computed, defineComponent, inject, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { GridContent, injectProProvider } from '@/components'
 import { useRoute, useRouter } from 'vue-router'
 

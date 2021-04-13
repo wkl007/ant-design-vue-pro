@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject, PropType, toRefs } from 'vue'
-import { injectProProvider, BaseMenu } from '@/components'
+import { BaseMenu, injectProProvider } from '@/components'
 import { RouteProps } from '@/types/router'
 import RightContent from './right-content.vue'
 

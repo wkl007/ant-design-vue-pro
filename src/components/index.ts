@@ -25,16 +25,16 @@ import AvatarListItem from './avatar-list/item.vue'
 import {
   VBullet,
   VColumn,
-  VGauge,
   VDualAxes,
+  VGauge,
   VLiquid,
+  VMap,
   VPie,
   VRadar,
   VRingProgress,
   VTinyArea,
   VTinyColumn,
-  VWordCloud,
-  VMap
+  VWordCloud
 } from './charts'
 
 export {

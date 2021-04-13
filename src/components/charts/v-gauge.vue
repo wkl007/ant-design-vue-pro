@@ -5,7 +5,7 @@
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, reactive, ref, toRaw, watch } from 'vue'
 import { View } from '@antv/g2'
-import { Data, Datum, Gauge, GaugeOptions } from '@antv/g2plot'
+import { Datum, Gauge, GaugeOptions } from '@antv/g2plot'
 
 export default defineComponent({
   name: 'VGauge',
@@ -35,7 +35,7 @@ export default defineComponent({
       theme: isRealDark.value ? 'dark' : 'default',
       autoFit: true,
       range: {
-        color: '#30BF78'
+        color: '#1890FF'
       },
       indicator: {
         pointer: {

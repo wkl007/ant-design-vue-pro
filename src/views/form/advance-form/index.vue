@@ -43,9 +43,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, RendererElement, reactive, toRaw } from 'vue'
+import { defineComponent, reactive, ref, RendererElement, toRaw } from 'vue'
 import scrollIntoView from 'scroll-into-view-if-needed'
-import { injectProProvider, FooterToolbar } from '@/components'
+import { FooterToolbar, injectProProvider } from '@/components'
 import RepositoryForm from './components/repository-form.vue'
 import TaskForm from './components/task-form.vue'
 import MemberList from './components/member-list.vue'

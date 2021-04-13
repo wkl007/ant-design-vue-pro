@@ -1,17 +1,6 @@
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
-import {
-  App,
-  computed,
-  ComputedRef,
-  inject,
-  InjectionKey,
-  PropType,
-  provide,
-  RenderFunction,
-  SetupContext,
-  toRefs
-} from 'vue'
+import { App, computed, ComputedRef, inject, provide, RenderFunction, SetupContext, toRefs } from 'vue'
 import type { ContentWidth } from '@/types/store/app'
 
 export interface ProProviderProps {

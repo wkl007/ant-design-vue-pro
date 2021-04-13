@@ -17,16 +17,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  provide,
-  reactive,
-  ref,
-  InjectionKey,
-  CSSProperties,
-  PropType,
-  readonly
-} from 'vue'
+import { CSSProperties, defineComponent, PropType, provide, reactive, readonly, ref } from 'vue'
 import AvatarListItem from './item.vue'
 import { filterEmpty } from '@/utils/vnode-util'
 

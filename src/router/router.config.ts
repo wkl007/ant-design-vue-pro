@@ -1,6 +1,6 @@
 import { defineAsyncComponent, h } from 'vue'
 import type { MenuDataItem } from '@/types/router'
-import { UserLayout, GlobalLayout, RouteView } from '@/layouts'
+import { GlobalLayout, RouteView, UserLayout } from '@/layouts'
 
 /**
  * 基础路由

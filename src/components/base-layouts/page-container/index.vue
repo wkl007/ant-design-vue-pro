@@ -55,7 +55,7 @@
 <script lang="ts">
 import { createTextVNode, defineComponent, h, PropType, ref, VNode, VNodeChild, withCtx } from 'vue'
 import { RouterLink } from 'vue-router'
-import { injectProProvider, GridContent } from '@/components'
+import { GridContent, injectProProvider } from '@/components'
 import { injectMenuState } from '@/hooks/useMenuState'
 import PageHeaderContent from './page-header-content.vue'
 

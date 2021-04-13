@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, reactive, ref, toRefs } from 'vue'
+import { defineComponent, inject, ref } from 'vue'
 import { injectProProvider } from '@/components'
 import { useFetchData } from '@/hooks'
 import { FakeListResp } from '@/types/api/list'

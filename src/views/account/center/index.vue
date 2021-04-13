@@ -104,7 +104,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, nextTick, computed, toRefs } from 'vue'
+import { computed, defineComponent, nextTick, reactive, ref, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { GridContent } from '@/components'
 import Applications from './components/applications.vue'

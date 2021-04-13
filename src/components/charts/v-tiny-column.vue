@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, PropType, reactive, ref, toRaw, watch } from 'vue'
-import { TinyColumn, TinyColumnOptions, WordCloud } from '@antv/g2plot'
+import { TinyColumn, TinyColumnOptions } from '@antv/g2plot'
 
 export default defineComponent({
   name: 'VTinyColumn',

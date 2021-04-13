@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue'
-import { Scene, HeatmapLayer, PointLayer } from '@antv/l7'
+import { HeatmapLayer, PointLayer, Scene } from '@antv/l7'
 import { Mapbox } from '@antv/l7-maps'
 
 const colors = ['#eff3ff', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#084594']
