@@ -14,7 +14,7 @@ export default defineComponent({
       default: () => [{
         title: '满意度',
         ranges: [100],
-        measures: [80],
+        measures: [60],
         target: 85
       }]
     },
@@ -25,6 +25,14 @@ export default defineComponent({
     height: {
       type: Number,
       default: 64
+    },
+    measure: {
+      type: String,
+      default: '#5B8FF9'
+    },
+    target: {
+      type: String,
+      default: '#3D76DD'
     }
   },
   setup (props) {
@@ -44,8 +52,13 @@ export default defineComponent({
       xField: 'title',
       color: {
         range: '#f0efff',
-        measure: '#5B8FF9',
-        target: '#3D76DD'
+        measure: props.measure,
+        target: props.target
+      },
+      size: {
+        range: 10,
+        measure: 10,
+        target: 10
       },
       xAxis: {
         line: null

@@ -4,25 +4,18 @@
       :loading="state.loading"
       :data="state.chartData.visitData"
     />
+    <sales-card/>
     <a-card>
-      <v-tiny-column/>
-      <v-bullet/>
-      <v-column/>
       <v-pie/>
       <v-dual-axes/>
-      <div
-        class="map-wrapper"
-        style="position: relative; width: 100%; height: 300px;"
-      >
-      </div>
     </a-card>
   </grid-content>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue'
-import { GridContent, VBullet, VColumn, VDualAxes, VPie, VTinyColumn } from '@/components'
-import { IntroduceRow } from './components'
+import { GridContent, VDualAxes, VPie } from '@/components'
+import { IntroduceRow, SalesCard } from './components'
 import DashboardServer from '@/api/dashboard'
 import { ChartDataResp } from '@/types/api/dashboard'
 
@@ -30,12 +23,10 @@ export default defineComponent({
   name: 'Analysis',
   components: {
     GridContent,
-    VTinyColumn,
-    VBullet,
-    VColumn,
     VPie,
     VDualAxes,
-    IntroduceRow
+    IntroduceRow,
+    SalesCard
   },
   setup () {
     const state = reactive({

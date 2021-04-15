@@ -52,6 +52,12 @@
             :value="`${numberFormat(12423,'0,0')}`"
           />
         </template>
+        <v-tiny-area
+          :height="24"
+          :data="areaData"
+          color="#B68FEC"
+          fill="#B68FEC"
+        />
       </chart-card>
     </a-col>
     <a-col v-bind="gridLayout" style="margin-bottom: 24px;">
@@ -72,6 +78,7 @@
         <template #footer>
           <field :label="$t('dashboard.analysis.conversion-rate')" value="60%"/>
         </template>
+        <v-tiny-column :data="areaData" :height="40"/>
       </chart-card>
     </a-col>
     <a-col v-bind="gridLayout" style="margin-bottom: 24px;">
@@ -99,19 +106,24 @@
             </trend>
           </div>
         </template>
+        <v-bullet
+          measure="#13C2C2"
+          target="#13C2C2"
+          :height="16"
+        />
       </chart-card>
     </a-col>
   </a-row>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import ChartCard from './chart-card.vue'
 import Yuan from './yuan.vue'
 import Trend from './trend.vue'
 import Field from './field.vue'
 import { VisitData } from '@/types/api/dashboard'
-import { injectProProvider } from '@/components'
+import { injectProProvider, VTinyArea, VTinyColumn, VBullet } from '@/components'
 import { numberFormat } from '@/utils'
 
 const gridLayout = {
@@ -128,7 +140,10 @@ export default defineComponent({
     ChartCard,
     Yuan,
     Trend,
-    Field
+    Field,
+    VTinyArea,
+    VTinyColumn,
+    VBullet
   },
   props: {
     loading: {
@@ -140,11 +155,14 @@ export default defineComponent({
       default: () => []
     }
   },
-  setup () {
+  setup (props) {
     const { i18n: t } = injectProProvider()
+    const areaData = computed(() => props.data.map(item => item.y))
+
     return {
       gridLayout,
       t,
+      areaData,
 
       numberFormat
     }

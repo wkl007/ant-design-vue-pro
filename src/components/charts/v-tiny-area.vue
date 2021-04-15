@@ -20,6 +20,14 @@ export default defineComponent({
     height: {
       type: Number,
       default: 64
+    },
+    color: {
+      type: String,
+      default: '#1089ff'
+    },
+    fill: {
+      type: String,
+      default: 'rgba(24, 144, 255, 0.2)'
     }
   },
   setup (props) {
@@ -35,10 +43,10 @@ export default defineComponent({
       height: props.height,
       theme: isRealDark.value ? 'dark' : 'default',
       line: {
-        color: '#1089ff'
+        color: props.color
       },
       areaStyle: {
-        fill: 'rgba(24, 144, 255, 0.2)'
+        fill: props.fill
       }
     })
 

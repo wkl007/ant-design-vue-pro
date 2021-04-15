@@ -13,16 +13,16 @@ export default defineComponent({
       type: Array as PropType<Record<string, any>[]>,
       default: () => [
         {
-          type: '家具家电',
-          sales: 38
+          x: '家具家电',
+          y: 38
         },
         {
-          type: '粮油副食',
-          sales: 52
+          x: '粮油副食',
+          y: 52
         },
         {
-          type: '生鲜水果',
-          sales: 61
+          x: '生鲜水果',
+          y: 61
         }
       ]
     },
@@ -32,7 +32,7 @@ export default defineComponent({
     },
     height: {
       type: Number,
-      default: 200
+      default: 260
     }
   },
   setup (props) {
@@ -45,8 +45,8 @@ export default defineComponent({
       height: props.height,
       theme: isRealDark.value ? 'dark' : 'default',
       autoFit: true,
-      xField: 'type',
-      yField: 'sales',
+      xField: 'x',
+      yField: 'y',
       label: {
         // 可手动配置 label 数据标签位置
         position: 'middle', // 'top', 'bottom', 'middle',
@@ -63,10 +63,10 @@ export default defineComponent({
         }
       },
       meta: {
-        type: {
+        x: {
           alias: '类别'
         },
-        sales: {
+        y: {
           alias: '销售额'
         }
       }
