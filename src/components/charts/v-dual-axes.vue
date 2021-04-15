@@ -5,32 +5,14 @@
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, PropType, reactive, ref, toRaw, watch } from 'vue'
 import { DualAxes, DualAxesOptions } from '@antv/g2plot'
+import { dateFormat } from '@/utils'
 
 export default defineComponent({
   name: 'VLine',
   props: {
     data: {
       type: Array as PropType<Record<string, any>[]>,
-      default: () => [
-        { year: '1991', value: 3, count: 10 },
-        { year: '1992', value: 4, count: 4 },
-        { year: '1993', value: 3.5, count: 5 },
-        { year: '1994', value: 5, count: 5 },
-        { year: '1995', value: 4.9, count: 4.9 },
-        { year: '1996', value: 6, count: 35 },
-        { year: '1997', value: 7, count: 7 },
-        { year: '1998', value: 9, count: 1 },
-        { year: '1999', value: 13, count: 20 },
-        { year: '2000', value: 3, count: 10 },
-        { year: '2001', value: 4, count: 4 },
-        { year: '2002', value: 3.5, count: 5 },
-        { year: '2003', value: 5, count: 5 },
-        { year: '2004', value: 4.9, count: 4.9 },
-        { year: '2005', value: 6, count: 35 },
-        { year: '2006', value: 7, count: 7 },
-        { year: '2007', value: 9, count: 1 },
-        { year: '2008', value: 13, count: 20 }
-      ]
+      default: () => []
     },
     width: {
       type: Number,
@@ -52,11 +34,33 @@ export default defineComponent({
       height: props.height,
       theme: isRealDark.value ? 'dark' : 'default',
       autoFit: true,
-      xField: 'year',
-      yField: ['value', 'count'],
-      slider: {
+      xField: 'x',
+      yField: ['y1', 'y2'],
+      /* slider: {
         start: 0,
-        end: 0.5
+        end: 1,
+        formatter: v => dateFormat(v, 'HH:ss')
+      }, */
+      yAxis: {
+        y1: {
+          min: -20,
+          max: 120
+        },
+        y2: {
+          min: -20,
+          max: 120
+        }
+      },
+      meta: {
+        y1: {
+          alias: '客流量'
+        },
+        y2: {
+          alias: '支付笔数'
+        },
+        x: {
+          formatter: v => dateFormat(v, 'HH:ss')
+        }
       },
       geometryOptions: [
         {

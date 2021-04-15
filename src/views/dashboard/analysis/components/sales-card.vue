@@ -37,7 +37,7 @@
             <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
               <div class="sales-bar">
                 <h4>{{ t('dashboard.analysis.sales-trend') }}</h4>
-                <v-column/>
+                <v-column :data="salesData"/>
               </div>
             </a-col>
             <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
@@ -67,7 +67,7 @@
             <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
               <div class="sales-bar">
                 <h4>{{ t('dashboard.analysis.visits-trend') }}</h4>
-                <v-column/>
+                <v-column :data="salesData"/>
               </div>
             </a-col>
             <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
@@ -102,6 +102,7 @@ import { defineComponent, reactive, watch, PropType, onMounted, computed } from 
 import { injectProProvider, VColumn } from '@/components'
 import { numberFormat } from '@/utils'
 import { useStore } from 'vuex'
+import { Moment } from 'moment'
 
 export interface RankingDataItem {
   title: string;
@@ -131,7 +132,7 @@ export default defineComponent({
       default: () => undefined
     },
     rangePickerValue: {
-      type: Array,
+      type: Array as PropType<Moment[]>,
       default: () => []
     },
     salesData: {
@@ -266,7 +267,7 @@ export default defineComponent({
       color: @primary-color;
     }
 
-    &.currentDate {
+    &.current-date {
       color: @primary-color;
     }
   }

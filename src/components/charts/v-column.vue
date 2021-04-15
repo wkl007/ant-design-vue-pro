@@ -11,20 +11,7 @@ export default defineComponent({
   props: {
     data: {
       type: Array as PropType<Record<string, any>[]>,
-      default: () => [
-        {
-          x: '家具家电',
-          y: 38
-        },
-        {
-          x: '粮油副食',
-          y: 52
-        },
-        {
-          x: '生鲜水果',
-          y: 61
-        }
-      ]
+      default: () => []
     },
     width: {
       type: Number,

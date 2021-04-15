@@ -176,10 +176,10 @@
     "@antv/util" "~2.0.5"
     tslib "^2.0.0"
 
-"@antv/g2plot@^2.3.17":
-  version "2.3.17"
-  resolved "https://registry.npm.taobao.org/@antv/g2plot/download/@antv/g2plot-2.3.17.tgz#8db889e083e77c49003e172320a350066807e28b"
-  integrity sha1-jbiJ4IPnfEkAPhcjIKNQBmgH4os=
+"@antv/g2plot@^2.3.18":
+  version "2.3.18"
+  resolved "https://registry.npm.taobao.org/@antv/g2plot/download/@antv/g2plot-2.3.18.tgz?cache=0&sync_timestamp=1618283925325&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Fg2plot%2Fdownload%2F%40antv%2Fg2plot-2.3.18.tgz#bfecd0bfc1bec33204898393d0fc8476c6ad4aae"
+  integrity sha1-v+zQv8G+wzIEiYOT0PyEdsatSq4=
   dependencies:
     "@antv/event-emitter" "^0.1.2"
     "@antv/g2" "^4.1.0"

@@ -34,14 +34,7 @@ export default defineComponent({
   props: {
     data: {
       type: Array as PropType<Record<string, any>[]>,
-      default: () => [
-        { type: '分类一', value: 27 },
-        { type: '分类二', value: 25 },
-        { type: '分类三', value: 18 },
-        { type: '分类四', value: 15 },
-        { type: '分类五', value: 10 },
-        { type: '其他', value: 5 }
-      ]
+      default: () => []
     },
     width: {
       type: Number,
@@ -63,10 +56,10 @@ export default defineComponent({
       height: props.height,
       theme: isRealDark.value ? 'dark' : 'default',
       autoFit: true,
-      angleField: 'value',
-      colorField: 'type',
+      angleField: 'y',
+      colorField: 'x',
       radius: 0.9,
-      innerRadius: 0.8,
+      innerRadius: 0.7,
       label: {
         type: 'inner',
         offset: '-50%',
@@ -83,18 +76,18 @@ export default defineComponent({
           customHtml: (container, view, datum) => {
             const { width, height } = container.getBoundingClientRect()
             const d = Math.sqrt(Math.pow(width / 2, 2) + Math.pow(height / 2, 2))
-            const text = datum ? datum.type : '总计'
+            const text = datum ? datum.x : '总计'
             return renderStatistic(d, text, { fontSize: 28 })
           }
         },
         content: {
           offsetY: 4,
           style: {
-            fontSize: '32px'
+            fontSize: '24px'
           },
           customHtml: (container, view, datum, data) => {
             const { width } = container.getBoundingClientRect()
-            const text = datum ? `¥ ${datum.value}` : `¥ ${data?.reduce((r, d) => r + d.value, 0)}`
+            const text = datum ? `¥ ${datum.y}` : `¥ ${data?.reduce((r, d) => r + d.y, 0)}`
             return renderStatistic(width, text, { fontSize: 26 })
           }
         }

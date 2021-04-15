@@ -66,7 +66,7 @@ export interface TableColumn {
   filters?: any[];
   fixed?: TableColumnFixed;
   customRender?: (item: TableColumnCustomRender) => any;
-  sorter?: ((record: any) => any) | boolean;
+  sorter?: ((a: any, b: any) => any) | boolean;
   sortOrder?: TableColumnSortOrder;
   sortDirections?: TableColumnSortDirections;
   width?: string | number;

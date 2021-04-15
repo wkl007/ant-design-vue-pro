@@ -58,3 +58,11 @@ export function wanFormat (number: number): [number, string] | null {
   }
   return result
 }
+
+/**
+ * 处理 零
+ * @param number
+ */
+export function fixedZero (number: number): string | number {
+  return number < 10 ? `0${number}` : number
+}
