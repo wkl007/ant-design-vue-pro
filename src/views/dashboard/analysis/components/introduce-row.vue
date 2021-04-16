@@ -123,7 +123,7 @@ import Yuan from './yuan.vue'
 import Trend from './trend.vue'
 import Field from './field.vue'
 import { VisitData } from '@/types/api/dashboard'
-import { injectProProvider, VTinyArea, VTinyColumn, VBullet } from '@/components'
+import { injectProProvider, VBullet, VTinyArea, VTinyColumn } from '@/components'
 import { numberFormat } from '@/utils'
 
 const gridLayout = {

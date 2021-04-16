@@ -73,10 +73,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, toRaw } from 'vue'
+import { computed, defineComponent, onMounted, reactive } from 'vue'
 import moment, { Moment } from 'moment'
-import { GridContent, VDualAxes, VPie } from '@/components'
-import { IntroduceRow, SalesCard, TopSearch, ProportionSales, OfflineData } from './components'
+import { GridContent } from '@/components'
+import { IntroduceRow, OfflineData, ProportionSales, SalesCard, TopSearch } from './components'
 import DashboardServer from '@/api/dashboard'
 import { ChartDataResp } from '@/types/api/dashboard'
 import { fixedZero } from '@/utils'

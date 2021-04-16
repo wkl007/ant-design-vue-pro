@@ -8,7 +8,7 @@ import { DualAxes, DualAxesOptions } from '@antv/g2plot'
 import { dateFormat } from '@/utils'
 
 export default defineComponent({
-  name: 'VLine',
+  name: 'VDualAxes',
   props: {
     data: {
       type: Array as PropType<Record<string, any>[]>,
@@ -62,12 +62,17 @@ export default defineComponent({
           formatter: v => dateFormat(v, 'HH:ss')
         }
       },
+      legend: {
+        position: 'top'
+      },
       geometryOptions: [
         {
+          smooth: true,
           geometry: 'line',
           color: '#5B8FF9'
         },
         {
+          smooth: true,
           geometry: 'line',
           color: '#5AD8A6'
         }

@@ -98,7 +98,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, watch, PropType, onMounted, computed } from 'vue'
+import { computed, defineComponent, onMounted, PropType, reactive, watch } from 'vue'
 import { injectProProvider, VColumn } from '@/components'
 import { numberFormat } from '@/utils'
 import { useStore } from 'vuex'
