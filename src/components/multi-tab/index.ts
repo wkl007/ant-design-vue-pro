@@ -20,7 +20,6 @@ export type CacheKey = string;
 export interface CacheItem {
   path: CacheKey;
   route: RouteLocationNormalized;
-  name?: string;
   key?: string;
   lock?: boolean;
 }
@@ -95,33 +94,30 @@ export const MultiTabStoreConsumer = defineComponent({
     }
 
     return () => {
-      const component = flattenChildren((slots.default && slots.default()) || [])[0]
+      const component = flattenChildren((slots.default && slots.default()) || [])[0] as any
       if (!component) return null
-      const comp: any = component.type
-      let name: any = comp.displayName || comp.name
-      const newVNode = component as any
-      if (!name && newVNode) {
-        // 没有设置组件名字
-        name = route.name
-      }
       // 是否存在cache
       let cacheItem = hasCache(route.path)
       if (!cacheItem) {
         cacheItem = {
           path: route.path,
           route: { ...route },
-          name,
           key: generateUuid(),
           lock: !!route.meta.lock
         }
         state.cacheList.push(cacheItem)
       }
-      newVNode.type.name = name
-      const key = `${name}-${cacheItem.key}-${route.fullPath}`
-      if (!route.meta.keepAlive && cacheItem.name && state.exclude.indexOf(cacheItem.name) < 0) {
-        state.exclude.push(cacheItem.name)
+      // 根据路由 meta 标签中是否有keepAlive来设置缓存
+      if (!route.meta.keepAlive && state.exclude.indexOf(cacheItem.key as string) < 0) {
+        state.exclude.push(cacheItem.key as string)
       }
-      return createVNode(KeepAlive, { exclude: state.exclude }, { default: () => cloneVNode(newVNode, { key }) }
+      component.type.name = cacheItem.key
+      return createVNode(
+        KeepAlive,
+        { exclude: state.exclude },
+        {
+          default: () => cloneVNode(component, { key: cacheItem?.key + route.fullPath })
+        }
       )
     }
   }
@@ -134,23 +130,26 @@ export function useMultiTab (): MultiTabType {
   const state = injectMultiTabStore()
 
   // 清除缓存
-  function clearCache (path: CacheKey): void {
-    const cacheItem = state.cacheList.find(item => item.path === path) || ({ name: '' } as CacheItem)
-    state.exclude = [cacheItem?.name as string]
-    setTimeout(() => {
-      state.exclude = []
+  async function clearCache (path: CacheKey): Promise<void> {
+    const cacheItem = state.cacheList.find(item => item.path === path)
+    state.exclude = [cacheItem?.key as string]
+    return new Promise<void>(resolve => {
+      setTimeout(() => {
+        state.exclude = []
+        resolve()
+      })
     })
   }
 
   // 关闭页签
-  function close (path?: CacheKey): void {
+  async function close (path?: CacheKey): Promise<void> {
     if (!path) path = state.current
     const currentPageIndex = state.cacheList.findIndex(item => item.path === path)
     if (state.cacheList.length === 1) {
       message.info('这是最后一个标签了, 无法被关闭')
       return
     }
-    clearCache(path)
+    await clearCache(path)
     if (path !== state.current) {
       state.cacheList.splice(currentPageIndex, 1)
       return
@@ -168,9 +167,9 @@ export function useMultiTab (): MultiTabType {
   }
 
   // 刷新页面
-  function refresh (path?: CacheKey | undefined): Promise<void> {
+  async function refresh (path?: CacheKey | undefined): Promise<void> {
     if (!path) path = state.current
-    clearCache(path)
+    await clearCache(path)
     const cacheItemIndex = state.cacheList.findIndex(item => item.path === path)
     const cacheItem = state.cacheList[cacheItemIndex]
 
