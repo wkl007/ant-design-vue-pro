@@ -62,11 +62,9 @@
           :side-width="sideWidth"
         />
         <router-view v-slot="{Component}">
-          <transition v-if="Component" :name="transitionName">
-            <wrap-content>
-              <component :is="Component"/>
-            </wrap-content>
-          </transition>
+          <wrap-content>
+            <component :is="Component"/>
+          </wrap-content>
         </router-view>
         <global-footer/>
       </a-layout>
