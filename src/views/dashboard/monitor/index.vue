@@ -244,11 +244,4 @@ export default defineComponent({
 .pie-card ::v-deep(.pie-stat) {
   font-size: 24px !important;
 }
-
-@media screen and (max-width: @screen-lg) {
-  .map-chart {
-    height: auto;
-  }
-}
-
 </style>
