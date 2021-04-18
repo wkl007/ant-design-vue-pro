@@ -87,7 +87,7 @@ export default defineComponent({
     /** 退出登录 */
     async function handleLogout (): Promise<void> {
       try {
-        await UserServer.logout()
+        // await UserServer.logout()
         await store.dispatch('setLoginStatus', 0)
         await store.dispatch('setAccessToken', '')
         await store.dispatch('setUserInfo', {})

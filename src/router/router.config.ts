@@ -164,7 +164,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/list/basic-list',
             name: 'BasicList',
-            component: () => import(/* webpackChunkName: "BasicList" */'@/views/list/basic-list/index.vue'),
+            component: () => import(/* webpackChunkName: "basicList" */'@/views/list/basic-list/index.vue'),
             meta: {
               title: 'pages.list.basicList.title'
             }
@@ -172,7 +172,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/list/card-list',
             name: 'CardList',
-            component: () => import(/* webpackChunkName: "CardList" */'@/views/list/card-list/index.vue'),
+            component: () => import(/* webpackChunkName: "cardList" */'@/views/list/card-list/index.vue'),
             meta: {
               title: 'pages.list.cardList.title'
             }
@@ -193,7 +193,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/profile/basic',
             name: 'BasicProfile',
-            component: () => import(/* webpackChunkName: "BasicProfile" */'@/views/profile/basic-profile/index.vue'),
+            component: () => import(/* webpackChunkName: "basicProfile" */'@/views/profile/basic-profile/index.vue'),
             meta: {
               title: 'pages.profile.basicProfile.title'
             }
@@ -201,7 +201,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/profile/advance',
             name: 'AdvanceProfile',
-            component: () => import(/* webpackChunkName: "AdvanceProfile" */'@/views/profile/advance-profile/index.vue'),
+            component: () => import(/* webpackChunkName: "advanceProfile" */'@/views/profile/advance-profile/index.vue'),
             meta: {
               title: 'pages.profile.advanceProfile.title'
             }
@@ -424,7 +424,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/examples/input',
             name: 'Input',
-            component: () => import(/* webpackChunkName: "button" */'@/views/examples/input/index.vue'),
+            component: () => import(/* webpackChunkName: "input" */'@/views/examples/input/index.vue'),
             meta: {
               title: 'pages.examples.input.title'
             }

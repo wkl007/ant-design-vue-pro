@@ -1,6 +1,12 @@
 import { v4 as uuidv4 } from 'uuid'
 import moment, { MomentInput } from 'moment'
 import numeral from 'numeral'
+import screenFull from 'screenfull'
+
+/**
+ * 全屏
+ */
+export const ScreenFull = screenFull
 
 /**
  * 生成独一无二标识符

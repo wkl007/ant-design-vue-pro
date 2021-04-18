@@ -1,5 +1,5 @@
 import { ComponentPublicInstance, onUnmounted, ref, Ref } from 'vue'
-import screenFull from 'screenfull'
+import { ScreenFull as screenFull } from '@/utils'
 import { getTargetElement } from '@/utils/dom'
 
 export interface Options {

@@ -77,7 +77,7 @@ module.exports = {
     })
   },
 
-  'POST /api/login': (req, res) => {
+  'POST /api/login/account': (req, res) => {
     const {
       password,
       username,
