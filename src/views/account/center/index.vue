@@ -2,7 +2,7 @@
   <grid-content>
     <a-row :gutter="24">
       <a-col :md="24" :lg="7">
-        <a-card :bordered="false">
+        <a-card :bordered="false" v-if="userInfo.extra">
           <div class="account-center-avatarHolder">
             <div class="avatar">
               <img :src="userInfo.avatar" alt="">

@@ -7,7 +7,7 @@
             早安，{{ userInfo.nickname }}
             <span class="welcome-text">，祝你开心每一天！</span>
           </h1>
-          <p class="desc">{{ userInfo.extra.group }}</p>
+          <p class="desc" v-if="userInfo.extra">{{ userInfo.extra.group }}</p>
         </a-card>
       </a-col>
     </a-row>

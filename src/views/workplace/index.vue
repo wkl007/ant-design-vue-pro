@@ -13,7 +13,7 @@
             早安，{{ userInfo.nickname }}
             <span class="welcome-text">，祝你开心每一天！</span>
           </div>
-          <div class="pb10">{{ userInfo.extra.group }}</div>
+          <div class="pb10" v-if="userInfo.extra">{{ userInfo.extra.group }}</div>
         </div>
       </div>
     </template>

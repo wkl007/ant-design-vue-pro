@@ -74,6 +74,8 @@ export default defineComponent({
       allowRouters.forEach(({ name }: { name: string }) => {
         router.removeRoute(name)
       })
+      // const route = router.getRoutes()
+      // console.log(route)
     }
 
     /** 新页面 */
