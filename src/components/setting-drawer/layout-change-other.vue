@@ -5,10 +5,11 @@
         <span style="opacity: 1;">
          {{ i18n('app.setting.transitionname') }}
         </span>
-        <template #action>
+        <template #actions>
           <a-select
             size="small"
             :value="transitionName"
+            style="width: 120px;"
             @select="handleChange('transition',$event)"
           >
             <a-select-option value="null">
@@ -122,7 +123,7 @@ export default defineComponent({
   setup (props, { emit }) {
     const { i18n } = injectProProvider()
 
-    // 选择更改
+    /** 选择更改 */
     function handleChange (type: string, value: string): void {
       emit('change', { type, value })
     }

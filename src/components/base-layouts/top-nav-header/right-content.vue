@@ -14,6 +14,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'RightContent',
   props: {
+    /** 宽度 */
     rightSize: {
       type: Number,
       default: 208

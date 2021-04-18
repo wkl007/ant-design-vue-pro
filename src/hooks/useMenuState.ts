@@ -10,58 +10,89 @@ import { isUrl } from '@/utils'
 import type { MultiTabStore } from '@/components/multi-tab'
 
 export interface MenuState {
+  /** 菜单是否收缩 */
   collapsed?: boolean;
+  /** 当前选中的菜单项 key 数组 */
   selectedKeys?: string[];
+  /** 当前展开的 SubMenu 菜单项 key 数组 */
   openKeys?: string[];
+  /** 当前路径 */
   current?: string;
+  /** 移动端模式 */
   isMobile?: Ref<boolean>;
 }
 
 export interface Breadcrumb {
+  /** 面包屑路径 */
   path: string;
+  /** 名称 */
   breadcrumbName: string;
 }
 
 type LayoutState = {
+  /** 导航模式 */
   layout: Ref<Layout>;
+  /** 菜单主题 */
   theme: Ref<MenuTheme>;
+  /** 内容区域宽度 */
   contentWidth: ComputedRef<ContentWidth>;
+  /** 固定侧边菜单 */
   fixedSidebar: Ref<boolean>;
+  /** 固定 header */
   fixedHeader: Ref<boolean>;
+  /** 自动分割菜单，只对 'mix' | 'side' 布局生效 */
   splitMenus: Ref<boolean>;
+  /** 路由动画 */
   transitionName: Ref<string>;
+  /** 多标签 */
   multiTab: Ref<boolean>;
+  /** 固定多标签 */
   multiTabFixed: Ref<boolean>;
 }
 
 interface MenuStated extends LayoutState {
+  /** 移动端模式 */
   isMobile: Ref<boolean>;
+  /** 有无侧边菜单 */
   hasSideMenu: ComputedRef<boolean>;
+  /** 是否是顶部菜单 */
   isTopMenu: ComputedRef<boolean>;
+  /** 侧边菜单宽度 */
   sideWidth: ComputedRef<number | undefined>;
+  /** 二级侧边菜单宽度 */
   secondSideWidth: Ref<number>;
+  /** 收缩状态菜单宽度 */
   collapsedWidth: number;
+  /** 面包屑 */
   breadcrumb: Ref<Breadcrumb[]>;
+  /** 菜单是否收缩 */
   collapsed: Ref<boolean | undefined> | undefined;
+  /** 当前选中的菜单项 key 数组 */
   selectedKeys: Ref<string[]> | undefined;
+  /** 当前展开的 SubMenu 菜单项 key 数组 */
   openKeys: Ref<string[]> | undefined;
+  /** 更新选中的菜单项 */
   updateSelectKeys: (keys: string[]) => void;
+  /** 更新收缩/展开 */
   updateCollapsed: (collapsed: boolean) => void;
 }
 
 interface MenuMap {
+  /** 菜单父级路径列表 */
   parentKeys?: string[];
 }
 
 type MenuKeyMap = Record<string, MenuMap>;
 
 interface MenuInfo {
+  /** 菜单数组 */
   menus: RouteProps[];
+  /** 菜单 keys 列表 */
   menuKeyMap: MenuKeyMap;
 }
 
-const sideWidth = 208 // 导航宽度
-const collapsedWidth = 48 // 收缩状态导航宽度
+const sideWidth = 208 // 侧边菜单宽度
+const collapsedWidth = 48 // 收缩状态菜单宽度
 const firstSideWidth = 140 // 左侧混合布局一级菜单宽度
 const secondSideWidth = 160 // 左侧混合布局二级菜单宽度
 

@@ -60,7 +60,7 @@ export default defineComponent({
     const store = useStore()
     const currentLang = computed(() => store.getters.lang)
 
-    // 菜单选择
+    /** 菜单选择 */
     function handleMenuClick ({ key }: MenuClick): void {
       store.dispatch('setLang', key)
     }

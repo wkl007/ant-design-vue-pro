@@ -77,14 +77,14 @@
 import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import {
-  SideMenu,
-  HeaderView,
   AvatarDropdown,
-  SelectLang,
-  WrapContent,
   GlobalFooter,
+  HeaderView,
   MultiTab,
-  SettingDrawer
+  SelectLang,
+  SettingDrawer,
+  SideMenu,
+  WrapContent
 } from '@/components'
 import { filterMenu, getMenuInfo, injectMenuState } from '@/hooks/useMenuState'
 

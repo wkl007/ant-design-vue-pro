@@ -37,9 +37,8 @@ import { defineComponent, inject } from 'vue'
 export default defineComponent({
   name: 'UserLayout',
   setup () {
-    const images = inject('images')
     return {
-      images
+      images: inject('images')
     }
   }
 })

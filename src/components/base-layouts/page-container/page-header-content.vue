@@ -15,23 +15,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { injectProProvider } from '@/components'
 
 export default defineComponent({
   name: 'PageHeaderContent',
-  props: {
-    prefixCls: {
-      type: String,
-      default: 'ant-pro'
-    }
-  },
   setup (props, { slots }) {
+    const { getPrefixCls } = injectProProvider()
     const hasContent = slots.content
     const hasExtraContent = slots.extraContent
 
     return {
       hasContent,
       hasExtraContent,
-      prefixedClassName: props.prefixCls
+      prefixedClassName: getPrefixCls('page-container')
     }
   }
 })

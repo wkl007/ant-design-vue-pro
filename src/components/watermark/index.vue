@@ -101,7 +101,7 @@ export default defineComponent({
       type: Number,
       default: -22
     },
-    /** ClassName 前缀 */
+    /** 类名前缀 */
     prefixCls: {
       type: String,
       default: ''

@@ -20,10 +20,12 @@ import { AVATAR_LIST_STORE_KEY } from './index.vue'
 export default defineComponent({
   name: 'AvatarListItem',
   props: {
+    /** 提示 */
     tips: {
       type: String,
       default: ''
     },
+    /** 头像路径 */
     src: {
       type: String,
       default: ''

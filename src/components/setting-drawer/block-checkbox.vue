@@ -40,7 +40,7 @@ export default defineComponent({
     const { i18n, getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer-block-checkbox')
 
-    // 更改
+    /** 更改 */
     function handleChange (disabled: boolean, key: string): void {
       if (disabled) return
       emit('change', key)

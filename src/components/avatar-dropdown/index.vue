@@ -52,10 +52,12 @@ import UserServer from '@/api/user'
 export default defineComponent({
   name: 'AvatarDropdown',
   props: {
+    /** 用户信息 */
     userInfo: {
       type: Object,
       default: () => {}
     },
+    /** 是否显示下拉菜单 */
     menu: {
       type: Boolean,
       default: true
@@ -66,7 +68,7 @@ export default defineComponent({
     const store = useStore()
     const { t } = useI18n()
 
-    // 路由重置
+    /** 路由重置 */
     function resetRouter () {
       const { allowRouters } = store.getters
       allowRouters.forEach(({ name }: { name: string }) => {
@@ -74,13 +76,13 @@ export default defineComponent({
       })
     }
 
-    // 新页面
+    /** 新页面 */
     function goPage (path: string): void {
       if (!path) return
       router.push({ path })
     }
 
-    // 退出登录
+    /** 退出登录 */
     async function handleLogout (): Promise<void> {
       try {
         await UserServer.logout()
@@ -93,7 +95,7 @@ export default defineComponent({
       } catch (e) {}
     }
 
-    // menu点击
+    /** menu点击 */
     function handleMenuClick ({ key }: { key: string }): void {
       switch (key) {
         case 'center':

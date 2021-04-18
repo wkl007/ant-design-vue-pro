@@ -17,6 +17,7 @@ import { injectMenuState } from '@/hooks/useMenuState'
 export default defineComponent({
   name: 'FooterToolbar',
   props: {
+    /** 额外元素 */
     extra: {
       type: [String, Object] as PropType<string | VNodeChild>,
       default: ''

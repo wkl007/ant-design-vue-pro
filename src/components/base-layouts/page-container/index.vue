@@ -28,10 +28,7 @@
             </a-tabs>
           </slot>
         </template>
-        <page-header-content
-          v-if="hasContent || hasExtraContent"
-          :prefix-cls="prefixedClassName"
-        >
+        <page-header-content v-if="hasContent || hasExtraContent">
           <template v-if="hasContent" #content>
             <slot name="content"/>
           </template>
@@ -60,12 +57,16 @@ import { injectMenuState } from '@/hooks/useMenuState'
 import PageHeaderContent from './page-header-content.vue'
 
 export interface Tab {
+  /** 选项卡 key */
   key: string;
+  /** 选项卡头显示文字 */
   tab: string | VNodeChild
 }
 
 export interface Route {
+  /** 路径 */
   path: string;
+  /** 面包屑名称 */
   breadcrumbName: string;
   children: Array<{
     path: string;
@@ -74,9 +75,13 @@ export interface Route {
 }
 
 export interface BreadcrumbItemRender {
+  /** 当前路由 */
   route: Route;
+  /** 路由参数 */
   params: Record<any, any>;
+  /** router 的路由栈信息 */
   routes: Route[];
+  /** 路径列表 */
   paths: string[];
 }
 
@@ -87,36 +92,43 @@ export default defineComponent({
     PageHeaderContent
   },
   props: {
-    // 注意：tabList 优先级低于 v-slot:footer
+    /**
+     * 标签页
+     * 注意：tabList 优先级低于 v-slot:footer
+     */
     tabList: {
       type: Array as PropType<any>,
       default: (): Tab[] => []
     },
-    // 支持 v-model:tabActiveKey
+    /**
+     * 标签页激活项
+     * 支持 v-model:tabActiveKey
+     */
     tabActiveKey: {
       type: String,
       default: ''
     },
+    /** 自定义标题文字 */
     title: {
       type: [String, Boolean],
       default: false
     },
+    /** 自定义的二级标题文字 */
     subTitle: {
       type: [String, Boolean],
       default: false
     },
+    /** pageHeader 的类型，将会改变背景颜色 */
     ghost: {
       type: Boolean,
       default: false
     },
+    /** 返回按钮的点击事件 */
     back: {
       type: Function,
       default: undefined
     },
-    prefixCls: {
-      type: String,
-      default: 'ant-pro'
-    },
+    /** 显示面包屑 */
     showBreadcrumb: {
       type: Boolean,
       default: true
@@ -144,7 +156,7 @@ export default defineComponent({
     // props 的 back 事件优先级高于 @back，需要注意
     const onBack = props.back || attrs.onBack
 
-    // 返回按钮点击
+    /** 返回按钮点击 */
     const handleBack =
       (onBack &&
         ((): void => {
@@ -154,13 +166,13 @@ export default defineComponent({
         })) ||
       undefined
 
-    // tab更改
+    /** tab更改 */
     function handleTabChange (activeKey: string): void {
       emit('tab-change', activeKey)
       emit('update:tab-active-key', activeKey)
     }
 
-    // 面包屑自定义渲染
+    /** 面包屑自定义渲染 */
     function customBreadcrumbRender ({ route, params, routes }: BreadcrumbItemRender): VNode {
       const breadcrumbName = route.breadcrumbName
       return (

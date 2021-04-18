@@ -64,8 +64,8 @@ export default defineComponent({
 
     provide('images', reactive(images))
     provide('isMobile', isMobile)
-    provide(MENU_STATE_STORE_KEY, menuState)
     provide('isRealDark', computed(() => theme.value === 'realDark'))
+    provide(MENU_STATE_STORE_KEY, menuState)
 
     return {
       locale

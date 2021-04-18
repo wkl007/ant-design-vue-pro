@@ -12,15 +12,10 @@ import { injectProProvider } from '@/components'
 
 export default defineComponent({
   name: 'GridContent',
-  props: {
-    prefixCls: {
-      type: String,
-      default: ''
-    }
-  },
-  setup (props) {
+  setup () {
     const { getPrefixCls, contentWidth } = injectProProvider()
-    const prefixedCls = props.prefixCls || getPrefixCls('grid-content')
+    const prefixedCls = getPrefixCls('grid-content')
+
     const wide = computed(() => (contentWidth.value) === 'Fixed')
     const childClassNames = ref(`${prefixedCls}-children`)
 

@@ -35,37 +35,39 @@
 <script lang="ts">
 import { computed, defineComponent, inject, PropType, toRefs } from 'vue'
 import { BaseMenu, injectProProvider } from '@/components'
-import { RouteProps } from '@/types/router'
+import type { RouteProps } from '@/types/router'
+import type { Layout, MenuTheme } from '@/types/store/app'
 import RightContent from './right-content.vue'
 
 export default defineComponent({
   name: 'TopNavHeader',
   props: {
-    prefixCls: {
-      type: String,
-      default: ''
-    },
+    /** 导航模式 */
     layout: {
-      type: String,
+      type: String as PropType<Layout>,
       default: 'side'
     },
+    /** 菜单主题 */
     theme: {
-      type: String,
+      type: String as PropType<MenuTheme>,
       default: 'dark'
     },
+    /** 内容区域宽度 */
     contentWidth: {
       type: String,
       default: 'Fluid'
     },
-    // menu
+    /** 菜单列表 */
     menus: {
       type: Array as PropType<RouteProps[]>,
       default: (): RouteProps[] => []
     },
+    /** 当前展开的 SubMenu 菜单项 key 数组 */
     openKeys: {
       type: Array as PropType<string[]>,
       default: (): string[] => []
     },
+    /** 当前选中的菜单项 key 数组 */
     selectedKeys: {
       type: Array as PropType<string[]>,
       default: (): string[] => []
@@ -77,9 +79,9 @@ export default defineComponent({
   },
   emits: ['update:openKeys', 'update:selectedKeys'],
   setup (props, { slots, emit }) {
-    const { theme, contentWidth, prefixCls: customizePrefixCls } = toRefs(props)
+    const { theme, contentWidth } = toRefs(props)
     const { i18n, getPrefixCls } = injectProProvider()
-    const prefixedClassName = customizePrefixCls.value || getPrefixCls('top-nav-header')
+    const prefixedClassName = getPrefixCls('top-nav-header')
     const hasMix = computed(() => props.layout === 'mix')
     const classNames = computed(() => {
       return {
@@ -95,12 +97,12 @@ export default defineComponent({
     })
     const { logo: hasLogoSlot } = slots
 
-    // menu 选中
+    /** menu 选中 */
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)
     }
 
-    // SubMenu 展开/关闭
+    /** SubMenu 展开/关闭 */
     function handleOpenKeys (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }

@@ -4,12 +4,16 @@ import { App, computed, ComputedRef, inject, provide, RenderFunction, SetupConte
 import type { ContentWidth } from '@/types/store/app'
 
 export interface ProProviderProps {
+  /** 类名前缀 */
   prefixCls: string;
 }
 
 export interface ProProviderData {
+  /** 获取类名前缀 */
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => string;
+  /** i18n 实例 */
   i18n: (t: string) => string;
+  /** 内容区域宽度 */
   contentWidth: ComputedRef<ContentWidth>;
 }
 
@@ -34,6 +38,7 @@ export const defaultProProvider: ProProviderData = {
 const ProProvider = {
   name: 'ProProvider',
   props: {
+    /** 类名前缀 */
     prefixCls: {
       type: String,
       default: 'ant-pro'

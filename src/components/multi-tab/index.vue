@@ -142,19 +142,19 @@ export default defineComponent({
 
     const { refresh, close, closeLeft, closeRight, closeOther } = useMultiTab()
 
-    // 切换面板的回调
+    /** 切换面板的回调 */
     function handleActiveKeyChange (key: string): void {
       menuState.selectedKeys && (menuState.selectedKeys.value = [key])
     }
 
-    // 刷新页面
+    /** 刷新页面 */
     async function handleReloadPage (key?: string) {
       spin.value = true
       await refresh(key)
       spin.value = false
     }
 
-    // 关闭单个标签
+    /** 关闭单个标签 */
     function handleClose (e: Event, target: string): void {
       e.stopPropagation()
       close(target)

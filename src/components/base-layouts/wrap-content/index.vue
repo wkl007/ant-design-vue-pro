@@ -13,6 +13,7 @@ export default defineComponent({
   setup () {
     const { getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('basic-layout')
+
     const classNames = ref({
       [`${prefixCls}-content`]: true,
       [`${prefixCls}-has-header`]: true

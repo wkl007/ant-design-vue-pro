@@ -5,7 +5,7 @@ import { GlobalLayout, RouteView, UserLayout } from '@/layouts'
 /**
  * 基础路由
  */
-export const constantRoutes: Array<MenuDataItem> = [
+export const constantRoutes: MenuDataItem[] = [
   {
     path: '/user',
     name: 'user',
@@ -40,6 +40,7 @@ export const constantRoutes: Array<MenuDataItem> = [
 ]
 
 const AsyncWorkplace = defineAsyncComponent(() => import(/* webpackChunkName: "workplace" */ '@/views/workplace/index.vue'))
+
 /**
  * 异步路由
  */

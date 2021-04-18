@@ -21,6 +21,7 @@ import { CSSProperties, defineComponent, PropType, provide, reactive, readonly, 
 import AvatarListItem from './item.vue'
 import { filterEmpty } from '@/utils/vnode-util'
 
+/** 头像尺寸 */
 export type SizeType = number | 'small' | 'default' | 'large'
 
 export const AVATAR_LIST_STORE_KEY = 'avatarListStore'
@@ -31,14 +32,17 @@ export default defineComponent({
     AvatarListItem
   },
   props: {
+    /** 头像尺寸 */
     size: {
       type: String as PropType<SizeType>,
       default: 'default'
     },
+    /** 最大数量 */
     maxLength: {
       type: Number,
       default: 5
     },
+    /** 头像组件样式 */
     excessItemsStyle: {
       type: Object as PropType<CSSProperties>,
       default: () => {}

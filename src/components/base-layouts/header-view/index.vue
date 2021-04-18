@@ -52,6 +52,7 @@
 import { computed, defineComponent, PropType, ref, toRefs } from 'vue'
 import { injectProProvider } from '@/components'
 import { getMenuFirstChildren } from '@/hooks/useMenuState'
+import type { Layout, MenuTheme } from '@/types/store/app'
 import type { RouteProps } from '@/types/router'
 import GlobalHeader from '../global-header/index.vue'
 import TopNavHeader from '../top-nav-header/index.vue'
@@ -63,72 +64,90 @@ export default defineComponent({
     TopNavHeader
   },
   props: {
+    /** 是否是移动端 */
     isMobile: {
       type: Boolean,
       default: false
     },
+    /** 固定 header */
     fixedHeader: {
       type: Boolean,
       default: false
     },
+    /** 导航模式 */
     layout: {
-      type: String,
+      type: String as PropType<Layout>,
       default: 'side'
     },
+    /** 菜单主题 */
     theme: {
-      type: String,
+      type: String as PropType<MenuTheme>,
       default: 'dark'
     },
+    /** 菜单列表 */
     menus: {
       type: Array as PropType<RouteProps[]>,
       default: (): RouteProps[] => []
     },
+    /** 当前展开的 SubMenu 菜单项 key 数组 */
     openKeys: {
       type: Array as PropType<string[]>,
       default: (): string[] => []
     },
+    /** 当前选中的菜单项 key 数组 */
     selectedKeys: {
       type: Array as PropType<string[]>,
       default: (): string[] => []
     },
+    /** 有无侧边菜单 */
     hasSideMenu: {
       type: Boolean,
       default: false
     },
+    /** 收缩菜单 */
     collapsed: {
       type: Boolean,
       default: (): boolean => false
     },
+    /** 侧边菜单宽度 */
     sideWidth: {
       type: Number,
       default: 208
     },
+    /** 收缩状态菜单宽度 */
     collapsedWidth: {
       type: Number,
       default: 48
     },
+    /** 是否展示收缩菜单 */
     collapsedButton: {
       type: Boolean,
       default: true
     },
+    /** header 高度 */
     headerHeight: {
       type: Number,
       default: 48
     },
+    /** 自动分割菜单，只对 'mix' | 'side' 布局生效 */
     splitMenus: {
       type: Boolean,
       default: false
-    },
-    prefixCls: {
-      type: String,
-      default: ''
     }
   },
   emits: ['update:openKeys', 'update:selectedKeys', 'update:collapsed'],
   setup (props, { emit }) {
-    const { prefixCls: propPrefixCls, collapsed, fixedHeader, hasSideMenu, sideWidth, collapsedWidth, splitMenus, isMobile } = toRefs(props)
+    const {
+      collapsed,
+      fixedHeader,
+      hasSideMenu,
+      sideWidth,
+      collapsedWidth,
+      splitMenus,
+      isMobile
+    } = toRefs(props)
     const { i18n, getPrefixCls } = injectProProvider()
-    const prefixCls = propPrefixCls.value || getPrefixCls()
+    const prefixCls = getPrefixCls()
     const isMix = computed(() => props.layout === 'mix')
     const isTop = computed(() => props.layout === 'top')
     const isLeft = computed(() => props.layout === 'left')
@@ -151,17 +170,17 @@ export default defineComponent({
     )
     const right = computed(() => (needFixedHeader.value ? 0 : undefined))
 
-    // menu 选中
+    /** menu 选中 */
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)
     }
 
-    // SubMenu 展开/关闭
+    /** SubMenu 展开/关闭 */
     function handleOpenKeys (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }
 
-    // 收缩展开按钮点击
+    /** 收缩展开按钮点击 */
     function handleCollapse (collapsed: boolean): void {
       emit('update:collapsed', collapsed)
     }

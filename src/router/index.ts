@@ -1,7 +1,7 @@
 import type { App } from 'vue'
+import type { MenuDataItem } from '@/types/router'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import { asyncRoutes, constantRoutes } from '@/router/router.config'
-import { MenuDataItem } from '@/types/router'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -27,11 +27,11 @@ export function setupRouter (app: App<Element>): void {
 }
 
 /**
- * 使用meta.role确定当前用户是否具有权限
+ * 使用 meta.role 确定当前用户是否具有权限
  * @param roles 角色数组
  * @param route 路由信息
  */
-export function hasPermission (roles: Array<string>, route: MenuDataItem): boolean {
+export function hasPermission (roles: string[], route: MenuDataItem): boolean {
   if (route.meta?.roles) {
     return roles.some(role => {
       return route.meta?.roles?.includes(role)
@@ -46,7 +46,7 @@ export function hasPermission (roles: Array<string>, route: MenuDataItem): boole
  * @param routes 异步路由
  * @param roles 角色数组
  */
-export function filterAsyncRoutes (routes: Array<RouteRecordRaw>, roles: Array<string>): Array<RouteRecordRaw> {
+export function filterAsyncRoutes (routes: RouteRecordRaw[], roles: string[]): RouteRecordRaw[] {
   const result: Array<RouteRecordRaw> = []
   routes.forEach(route => {
     const temp = { ...route }
@@ -62,7 +62,7 @@ export function filterAsyncRoutes (routes: Array<RouteRecordRaw>, roles: Array<s
  * 获取可访问的路由
  * @param roles
  */
-export function generateRoutes (roles: Array<string>): Promise<Array<RouteRecordRaw>> {
+export function generateRoutes (roles: string[]): Promise<RouteRecordRaw[]> {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     try {

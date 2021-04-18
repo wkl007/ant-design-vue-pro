@@ -1,4 +1,5 @@
 import type { ActionTree } from 'vuex'
+import type { RouteRecordRaw } from 'vue-router'
 import type { RootState } from '@/types/store'
 import type { UserInfo, UserState } from '@/types/store/user'
 import * as types from './mutationTypes'
@@ -35,7 +36,7 @@ export const actions: ActionTree<UserState, RootState> = {
    * @param commit
    * @param allowRouters
    */
-  setAllowRouters ({ commit }, allowRouters: Array<any>) {
+  setAllowRouters ({ commit }, allowRouters: RouteRecordRaw[]) {
     commit(types.SET_ALLOW_ROUTERS, allowRouters)
   }
 }

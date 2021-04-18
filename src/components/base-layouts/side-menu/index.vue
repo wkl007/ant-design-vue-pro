@@ -87,54 +87,67 @@ const SideMenuProps = Object.assign(
   {},
   BaseMenuProps,
   {
+    /** 类名前缀 */
     prefixCls: {
       type: String,
       default: ''
     },
+    /** 触发响应式布局的断点 */
     breakpoint: {
       type: String,
       default: 'lg'
     },
+    /** 侧边菜单宽度 */
     sideWidth: {
       type: Number,
       default: 208
     },
+    /** 自动分割菜单，只对 'mix' | 'side' 布局生效 */
     splitMenus: {
       type: Boolean,
       default: false
     },
+    /** 是否展示收缩按钮 */
     collapsedButton: {
       type: Boolean,
       default: true
     },
+    /** 收缩状态菜单宽度 */
     collapsedWidth: {
       type: Number,
       default: 48
     },
+    /** header 高度 */
     headerHeight: {
       type: Number,
       default: 48
     },
+    /** 菜单主题 */
     theme: {
       type: String as PropType<MenuTheme>,
       default: 'dark'
     },
+    /** 导航模式 */
     layout: {
       type: String as PropType<Layout>,
       default: 'side'
     },
+    /** 是否固定 */
     fixed: {
       type: Boolean,
       default: false
     },
+    /** 是否可收起 */
     collapsible: {
       type: Boolean,
       default: false
     },
+    /** 是否收缩 */
     collapsed: {
       type: Boolean,
       default: false
     },
+    /** 自定义 item */
     customItem: {
       type: Function,
       default: undefined
@@ -160,17 +173,17 @@ export default defineComponent({
     const runtimeSideWidth = computed(() => collapsed.value ? collapsedWidth.value : sideWidth.value)
     const computedMenus = computed(() => splitMenus.value ? findMenuChildren(props.menus as RouteProps[], route.matched[1].name as string) : props.menus)
 
-    // menu 选中
+    /** menu 选中 */
     function handleSelectedKeys (selectedKeys: string[]): void {
       emit('update:selectedKeys', selectedKeys)
     }
 
-    // SubMenu 展开/关闭
+    /** SubMenu 展开/关闭 */
     function handleOpenKeys (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }
 
-    // 展开收缩
+    /** 展开收缩 */
     function handleCollapse () {
       emit('update:collapsed', !collapsed.value)
     }

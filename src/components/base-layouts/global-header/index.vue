@@ -31,31 +31,34 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref } from 'vue'
+import { computed, defineComponent, inject, PropType, ref } from 'vue'
+import { injectProProvider } from '@/components'
+import type { Layout, MenuTheme } from '@/types/store/app'
 
 export default defineComponent({
   name: 'GlobalHeader',
   props: {
-    prefixCls: {
-      type: String,
-      default: 'ant-pro'
-    },
+    /** 导航模式 */
     layout: {
-      type: String,
+      type: String as PropType<Layout>,
       default: 'side'
     },
+    /** 主题 */
     theme: {
-      type: String,
+      type: String as PropType<MenuTheme>,
       default: 'dark'
     },
+    /** 是否是移动端 */
     isMobile: {
       type: Boolean,
       default: false
     },
+    /** 是否收缩 */
     collapsed: {
       type: Boolean,
       default: false
     },
+    /** 是否展示收缩按钮 */
     collapsedButton: {
       type: Boolean,
       default: true
@@ -63,15 +66,15 @@ export default defineComponent({
   },
   emits: ['collapse'],
   setup (props, { emit }) {
-    const baseClassName = `${props.prefixCls}-global-header`
+    const { getPrefixCls } = injectProProvider()
+    const baseClassName = getPrefixCls('global-header')
+
     const classNames = ref({
       [baseClassName]: true,
       [`${baseClassName}-layout-${props.layout}`]: props.layout
     })
-    const isSide = computed(() => props.layout === 'side')
-    const isLeft = computed(() => props.layout === 'left')
 
-    // 收缩展开按钮点击
+    /** 收缩展开按钮点击 */
     function handleClick (): void {
       emit('collapse', !props.collapsed)
     }
@@ -80,8 +83,6 @@ export default defineComponent({
       images: inject('images'),
       baseClassName,
       classNames,
-      isSide,
-      isLeft,
 
       handleClick
     }

@@ -54,30 +54,37 @@ import type { MenuTheme } from '@/types/store/app'
 import SubMenu from './sub-menu.vue'
 
 export const BaseMenuProps = {
+  /** 菜单列表 */
   menus: {
     type: Array as PropType<RouteProps[]>,
     default: (): RouteProps[] => []
   },
+  /** 菜单类型，现在支持垂直、水平、和内嵌模式三种 */
   mode: {
     type: String as PropType<'vertical' | 'vertical-right' | 'horizontal' | 'inline'>,
     default: 'inline'
   },
+  /** 主题颜色 */
   theme: {
     type: String as PropType<MenuTheme>,
     default: 'dark'
   },
+  /** 菜单收缩/展开 */
   collapsed: {
     type: Boolean,
     default: false
   },
+  /** 当前展开的 SubMenu 菜单项 key 数组 */
   openKeys: {
     type: Array as PropType<string[]>,
     default: (): string[] => []
   },
+  /** 当前选中的菜单项 key 数组 */
   selectedKeys: {
     type: Array as PropType<string[]>,
     default: (): string[] => []
   },
+  /** 自定义 item */
   customItem: {
     type: Function,
     default: undefined
@@ -100,18 +107,19 @@ export default defineComponent({
   setup (props, { emit }) {
     const dynamicProps = ref({ inlineCollapsed: props.mode === 'inline' ? props.collapsed : undefined })
 
-    // SubMenu 展开/关闭
+    /** SubMenu 展开/关闭 */
     function handleOpenChange (openKeys: string[]): void {
       emit('update:openKeys', openKeys)
     }
 
-    // menu 选中
+    /** menu 选中 */
     function handleSelect (ctx: { [key: string]: any }): void {
       emit('update:selectedKeys', ctx.selectedKeys)
     }
 
     return {
       dynamicProps,
+
       handleOpenChange,
       handleSelect
     }

@@ -49,14 +49,17 @@ import type { RouteProps } from '@/types/router'
 export default defineComponent({
   name: 'SubMenu',
   props: {
+    /** i18n 实例 */
     i18n: {
       type: Function,
       default: (t: any): any => t
     },
+    /** 菜单信息 */
     menu: {
       type: Object as PropType<RouteProps>,
       required: true
     },
+    /** 收缩菜单 */
     collapsed: {
       type: Boolean,
       default: false

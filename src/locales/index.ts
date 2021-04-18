@@ -4,15 +4,16 @@ import moment from 'moment'
 import type { Lang } from '@/types/store/app'
 import zhCN from './lang/zh-CN'
 
-export const locales: Array<Lang> = ['zh-CN', 'zh-TW', 'en-US', 'pt-BR']
+/** 语言列表 */
+export const locales: Lang[] = ['zh-CN', 'zh-TW', 'en-US', 'pt-BR']
 
-// 默认语言
+/** 默认语言 */
 export const defaultLang: Lang = 'zh-CN'
 
-// 用于缓存记录已加载的语言化内容
-const loadedLanguages = ref<Array<Lang>>([defaultLang])
+/** 用于缓存记录已加载的语言化内容 */
+const loadedLanguages = ref<Lang[]>([defaultLang])
 
-// i18n实例
+/** i18n实例 */
 export const i18n = createI18n({
   missingWarn: false,
   fallbackWarn: false,
