@@ -1,23 +1,32 @@
 name: Ant Design Vue Pro
-on: [ push ]
+
+on:
+  push:
+    branches:
+      - master
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
         with:
           ref: master
-      - name: Install
+      - name: install
         run: |
           npm install
           npm run-script lint
           npm run-script build
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: dist
-          CLEAN: true
+      - name: deploy
+        uses: easingthemes/ssh-deploy@v2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: '-avzr --delete'
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
