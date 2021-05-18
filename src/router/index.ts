@@ -1,10 +1,10 @@
 import type { App } from 'vue'
 import type { MenuDataItem } from '@/types/router'
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { asyncRoutes, constantRoutes } from '@/router/router.config'
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes: constantRoutes,
   scrollBehavior: (to, from, savedPosition) => {
     if (savedPosition) {
