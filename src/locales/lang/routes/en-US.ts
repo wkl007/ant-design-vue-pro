@@ -17,6 +17,7 @@ export default {
   'pages.list.tableList.title': 'Search Table',
   'pages.list.basicList.title': 'Basic List',
   'pages.list.cardList.title': 'Card List',
+  'pages.list.advanceTableList.title': 'High Performance Table',
 
   'pages.profile.title': 'Profile',
   'pages.profile.basicProfile.title': 'Basic Profile',

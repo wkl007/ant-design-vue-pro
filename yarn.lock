@@ -1788,6 +1788,17 @@
     remark "^13.0.0"
     unist-util-find-all-after "^3.0.2"
 
+"@surely-vue/table@^1.0.0-alpha.4":
+  version "1.0.0-alpha.4"
+  resolved "https://registry.nlark.com/@surely-vue/table/download/@surely-vue/table-1.0.0-alpha.4.tgz#a80ec975d53a688eb989878d249d1e48b4fecfaf"
+  integrity sha1-qA7JddU6aI65iYeNJJ0eSLT+z68=
+  dependencies:
+    "@ant-design/icons-vue" "^6.0.1"
+    "@vueuse/core" "^4.9.0"
+    ant-design-vue "^2.0.0"
+    lodash-es "^4.17.21"
+    vue "^3.0.10"
+
 "@surma/rollup-plugin-off-main-thread@^1.4.1":
   version "1.4.2"
   resolved "https://registry.npm.taobao.org/@surma/rollup-plugin-off-main-thread/download/@surma/rollup-plugin-off-main-thread-1.4.2.tgz?cache=0&sync_timestamp=1614181289201&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40surma%2Frollup-plugin-off-main-thread%2Fdownload%2F%40surma%2Frollup-plugin-off-main-thread-1.4.2.tgz#e6786b6af5799f82f7ab3a82e53f6182d2b91a58"
@@ -2656,7 +2667,7 @@
   resolved "https://registry.npm.taobao.org/@vue/web-component-wrapper/download/@vue/web-component-wrapper-1.3.0.tgz#b6b40a7625429d2bd7c2281ddba601ed05dc7f1a"
   integrity sha1-trQKdiVCnSvXwigd26YB7QXcfxo=
 
-"@vueuse/core@^4.11.0":
+"@vueuse/core@^4.11.0", "@vueuse/core@^4.9.0":
   version "4.11.0"
   resolved "https://registry.nlark.com/@vueuse/core/download/@vueuse/core-4.11.0.tgz#2fbfdbeafe7d0a975a901cb56de76226fc4bdf10"
   integrity sha1-L7/b6v59CpdakBy1bediJvxL3xA=
@@ -2957,7 +2968,7 @@ ansicolors@~0.2.1:
   resolved "https://registry.npm.taobao.org/ansicolors/download/ansicolors-0.2.1.tgz#be089599097b74a5c9c4a84a0cdbcdb62bd87aef"
   integrity sha1-vgiVmQl7dKXJxKhKDNvNtivYeu8=
 
-ant-design-vue@^2.1.6:
+ant-design-vue@^2.0.0, ant-design-vue@^2.1.6:
   version "2.1.6"
   resolved "https://registry.nlark.com/ant-design-vue/download/ant-design-vue-2.1.6.tgz#c51cdc858e1b1b8b569f5435eb487f53a3f1745e"
   integrity sha1-xRzchY4bG4tWn1Q160h/U6PxdF4=
@@ -12202,7 +12213,7 @@ vue@3.0.10:
     "@vue/runtime-dom" "3.0.10"
     "@vue/shared" "3.0.10"
 
-vue@^3.0.0:
+vue@^3.0.0, vue@^3.0.10:
   version "3.0.11"
   resolved "https://registry.npm.taobao.org/vue/download/vue-3.0.11.tgz?cache=0&sync_timestamp=1617321643721&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-3.0.11.tgz#c82f9594cbf4dcc869241d4c8dd3e08d9a8f4b5f"
   integrity sha1-yC+VlMv03MhpJB1MjdPgjZqPS18=

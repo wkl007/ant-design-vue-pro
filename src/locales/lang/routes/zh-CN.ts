@@ -17,6 +17,7 @@ export default {
   'pages.list.tableList.title': '查询表格',
   'pages.list.basicList.title': '标准列表',
   'pages.list.cardList.title': '卡片列表',
+  'pages.list.advanceTableList.title': '高性能表格',
 
   'pages.profile.title': '详情页',
   'pages.profile.basicProfile.title': '基础详情页',
