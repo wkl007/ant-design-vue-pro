@@ -55,7 +55,53 @@
       </a-row>
     </a-form>
     <br/>
-    <!--<s-table></s-table>-->
+    <!--<s-table
+      ref="tableRef"
+      stripe
+      sticky
+      virtual
+      :height="400"
+      :bordered="modelRef.bordered"
+      :size="modelRef.size"
+      :auto-row-height="modelRef.autoRowHeight"
+      :loading="modelRef.loading"
+      :row-selection="rowSelection"
+      :row-height="rowHeight"
+      :wrap-text="modelRef.autoRowHeight"
+      :data-source="dataSource"
+      v-model:columns="columns"
+      v-model:pagination="pagination"
+      v-model:selected-row-keys="selectedRowKeys"
+    >
+      <template #filterIcon="{ filtered }">
+        <search-outlined :style="{ color: filtered ? '#1890ff' : undefined }"/>
+      </template>
+      <template #cell="{ column, text }">
+        <template v-if="column.key === 'operation'">
+          <a>Action</a>
+        </template>
+        <template v-else>
+          {{ text }}
+        </template>
+      </template>
+      <template #summary>
+        <s-table-summary-row>
+          <s-table-summary-cell :index="0">Total</s-table-summary-cell>
+          <s-table-summary-cell :index="1">
+            <template #default="{ total }">{{ total }}</template>
+          </s-table-summary-cell>
+        </s-table-summary-row>
+        <s-table-summary-row>
+          <s-table-summary-cell :index="0">Blance</s-table-summary-cell>
+          <s-table-summary-cell :index="1">
+            <template #default="{ total }">{{ total + 999 }}</template>
+          </s-table-summary-cell>
+          <s-table-summary-cell :index="2" :colSpan="3">
+            <template #default="{ total }">{{ total }}</template>
+          </s-table-summary-cell>
+        </s-table-summary-row>
+      </template>
+    </s-table>-->
   </page-container>
 </template>
 
@@ -194,6 +240,9 @@ export default defineComponent({
       autoRowHeight: false,
       type: 'checkbox'
     })
+    const rowHeight = ref<RowHeight>((_data, baseHeight) => modelRef.autoRowHeight ? undefined : baseHeight)
+
+    const selectedRowKeys = ref([])
 
     const dataSource = computed<DataItem[]>(() => {
       const data = []
@@ -208,11 +257,35 @@ export default defineComponent({
       return data
     })
 
+    const rowSelection = computed(() => {
+      return {
+        type: modelRef.type,
+        getCheckboxProps: (record: any, index: number) => {
+          if (index === 3) {
+            return { disabled: true }
+          }
+          return { disabled: false }
+        }
+      }
+    })
+
+    const pageSizeOptions = ['5', '10', '50']
+    const pagination = ref({
+      current: 1,
+      pageSize: dataSource.value.length,
+      showSizeChanger: true,
+      pageSizeOptions: [...pageSizeOptions]
+    })
+
     return {
       tableRef,
       modelRef,
       dataSource,
-      columns
+      columns: ref(columns),
+      rowHeight,
+      selectedRowKeys,
+      rowSelection,
+      pagination
     }
   }
 })

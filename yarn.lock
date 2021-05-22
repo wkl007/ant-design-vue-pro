@@ -1788,10 +1788,10 @@
     remark "^13.0.0"
     unist-util-find-all-after "^3.0.2"
 
-"@surely-vue/table@^1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://registry.nlark.com/@surely-vue/table/download/@surely-vue/table-1.0.0-alpha.4.tgz#a80ec975d53a688eb989878d249d1e48b4fecfaf"
-  integrity sha1-qA7JddU6aI65iYeNJJ0eSLT+z68=
+"@surely-vue/table@1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "https://registry.nlark.com/@surely-vue/table/download/@surely-vue/table-1.0.0-alpha.3.tgz#669b3b44e9f74bb19d9fccb711a4c91023a7e7f0"
+  integrity sha1-Zps7ROn3S7Gdn8y3EaTJECOn5/A=
   dependencies:
     "@ant-design/icons-vue" "^6.0.1"
     "@vueuse/core" "^4.9.0"

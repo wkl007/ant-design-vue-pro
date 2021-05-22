@@ -20,13 +20,3 @@ jobs:
         run: |
           npm install
           npm run-script lint
-          npm run-script build
-      - name: deploy
-        uses: easingthemes/ssh-deploy@v2
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: '-avzr --delete'
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
