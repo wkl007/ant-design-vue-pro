@@ -48,7 +48,7 @@
         <template #tab>
           <a-dropdown :trigger="['contextmenu']">
             <span class="ant-pro-multi-tab-title">
-              {{ t(`${item.route.meta.title}`) }}
+              {{ item.tabTitle ? t(`${item.tabTitle}`) : t(`${item.route.meta.title}`) }}
               <reload-outlined
                 key="reload"
                 v-if="store.current === item.route.path"

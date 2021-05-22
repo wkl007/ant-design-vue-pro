@@ -10,7 +10,8 @@ import {
   UnwrapRef,
   watch
 } from 'vue'
-import { RouteLocationNormalized, useRoute, useRouter } from 'vue-router'
+import { RouteLocationNormalized, RouteRecordNormalized, useRoute, useRouter } from 'vue-router'
+import { findLast } from 'lodash-es'
 import { message } from 'ant-design-vue'
 import { flattenChildren } from '@/utils/vnode-util'
 import { generateUuid } from '@/utils'
@@ -26,6 +27,10 @@ export interface CacheItem {
   key?: string;
   /** 是否锁定页签 */
   lock?: boolean;
+  /** 标签标题 */
+  tabTitle?: string;
+  /** 标签路径 */
+  tabPath?: string;
 }
 
 export interface MultiTabStore {
@@ -57,6 +62,15 @@ export type CallerFunction = {
 }
 
 export type MultiTabType = CallerFunction;
+
+/**
+ * 查找匹配路由
+ * @param route
+ */
+function findMatchedRoute (route: RouteLocationNormalized): RouteRecordNormalized {
+  const matched: RouteRecordNormalized[] = route.matched || []
+  return (findLast(matched, m => m.meta?.mergeTab) as RouteRecordNormalized) || route
+}
 
 // const MULTI_TAB_STORE_KEY: InjectionKey<MultiTabStore> = Symbol('multiTabStore')
 const MULTI_TAB_STORE_KEY = 'multiTabStore'
@@ -111,22 +125,35 @@ export const MultiTabStoreConsumer = defineComponent({
 
     /** 是否有缓存 */
     function hasCache (path: CacheKey): CacheItem | undefined {
-      return state.cacheList.find(item => item.path === path)
+      return state.cacheList.find(item => item.tabPath === path)
     }
 
     return () => {
       const component = flattenChildren((slots.default && slots.default()) || [])[0] as any
       if (!component) return null
-      // 是否存在cache
-      let cacheItem = hasCache(route.path)
+      const tabRoute = findMatchedRoute(route)
+      // 是否存在 cache
+      let cacheItem = hasCache(tabRoute.path)
       if (!cacheItem) {
         cacheItem = {
           path: route.path,
           route: { ...route },
           key: generateUuid(),
-          lock: !!route.meta.lock
+          lock: !!route.meta.lock,
+          tabTitle: tabRoute?.meta?.title as string,
+          tabPath: tabRoute?.path
         }
         state.cacheList.push(cacheItem)
+      } else if (cacheItem.path !== route.path) {
+        // 处理 mergeTab 逻辑
+        Object.assign(cacheItem, {
+          path: route.path,
+          route: { ...route },
+          key: generateUuid(),
+          lock: !!route.meta.lock,
+          tabTitle: tabRoute?.meta?.title as string,
+          tabPath: tabRoute?.path
+        })
       }
       // 根据路由 meta 标签中是否有keepAlive来设置缓存
       if (!route.meta.keepAlive && state.exclude.indexOf(cacheItem.key as string) < 0) {

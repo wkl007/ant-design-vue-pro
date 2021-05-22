@@ -20,6 +20,8 @@ export interface MenuRouteMeta {
   keepAlive?: boolean;
   /** 是否固定多页标签 */
   lock?: boolean;
+  /** 合并标签 */
+  mergeTab?: boolean;
 }
 
 /** 路由 */

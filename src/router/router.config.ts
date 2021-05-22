@@ -296,7 +296,8 @@ export const asyncRoutes: Array<MenuDataItem> = [
             redirect: '/account/settings/base',
             meta: {
               title: 'pages.account.settings.title',
-              hideChildrenInMenu: true
+              hideChildrenInMenu: true,
+              mergeTab: true
             },
             children: [
               {
