@@ -1,6 +1,7 @@
 import { defineAsyncComponent, h } from 'vue'
 import type { MenuDataItem } from '@/types/router'
 import { GlobalLayout, RouteView, UserLayout } from '@/layouts'
+import { IconFont } from '@/components'
 
 /**
  * 基础路由
@@ -56,7 +57,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
         name: 'Workplace',
         component: h(RouteView, {}, () => h(AsyncWorkplace)), // 一级菜单并且开启多标签需要作此处理
         meta: {
-          icon: 'HistoryOutlined',
+          icon: h(IconFont, { type: 'icon-facebook' }),
           title: 'pages.workplace.title',
           lock: true
         }

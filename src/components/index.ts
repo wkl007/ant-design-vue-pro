@@ -1,3 +1,4 @@
+import IconFont from './icon-font'
 import AvatarDropdown from './avatar-dropdown/index.vue'
 import BaseMenu from './base-layouts/base-menu/index.vue'
 import SubMenu from './base-layouts/base-menu/sub-menu.vue'
@@ -38,6 +39,7 @@ import {
 } from './charts'
 
 export {
+  IconFont,
   AvatarList,
   AvatarListItem,
   AvatarDropdown,
