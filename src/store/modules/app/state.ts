@@ -13,7 +13,7 @@ export const state: AppState = {
   title: 'Admin Pro',
   primaryColor: '#1890ff',
   colorWeak: false,
-  transitionName: '',
+  transitionName: 'zoom-fadein',
   multiTab: true,
   multiTabFixed: false
 }
