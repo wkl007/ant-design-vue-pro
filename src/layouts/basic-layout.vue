@@ -52,6 +52,7 @@
           v-model:selected-keys="selectedKeys"
         >
           <div style="text-align: right;">
+            <notice-icon/>
             <avatar-dropdown :user-info="userInfo"/>
             <select-lang/>
           </div>
@@ -84,7 +85,8 @@ import {
   SelectLang,
   SettingDrawer,
   SideMenu,
-  WrapContent
+  WrapContent,
+  NoticeIcon
 } from '@/components'
 import { filterMenu, getMenuInfo, injectMenuState } from '@/hooks/useMenuState'
 
@@ -98,7 +100,8 @@ export default defineComponent({
     WrapContent,
     GlobalFooter,
     MultiTab,
-    SettingDrawer
+    SettingDrawer,
+    NoticeIcon
   },
   setup () {
     const store = useStore()

@@ -23,6 +23,7 @@ import TableToolbar from './table-toolbar/index.vue'
 import TableTotal from './table-total/index'
 import AvatarList from './avatar-list/index.vue'
 import AvatarListItem from './avatar-list/item.vue'
+import NoticeIcon from './notice-icon/index.vue'
 import {
   VBullet,
   VColumn,
@@ -79,5 +80,6 @@ export {
   VDualAxes,
   VPie,
   VTinyColumn,
-  VMap
+  VMap,
+  NoticeIcon
 }

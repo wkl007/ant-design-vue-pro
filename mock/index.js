@@ -7,6 +7,7 @@ const workplace = require('./dashboard/workplace')
 const cardList = require('./list/cardList')
 const tableList = require('./list/tableList')
 const permission = require('./permission')
+const notices = require('./notices.js')
 
 module.exports = {
   ...user,
@@ -17,5 +18,6 @@ module.exports = {
   ...workplace,
   ...cardList,
   ...tableList,
-  ...permission
+  ...permission,
+  ...notices
 }
