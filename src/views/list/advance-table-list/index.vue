@@ -55,7 +55,7 @@
       </a-row>
     </a-form>
     <br/>
-    <!--<s-table
+    <s-table
       ref="tableRef"
       stripe
       sticky
@@ -101,7 +101,7 @@
           </s-table-summary-cell>
         </s-table-summary-row>
       </template>
-    </s-table>-->
+    </s-table>
   </page-container>
 </template>
 
@@ -269,7 +269,7 @@ export default defineComponent({
       }
     })
 
-    const pageSizeOptions = ['5', '10', '50']
+    const pageSizeOptions = ['5', '10', '50', '1000', '10000']
     const pagination = ref({
       current: 1,
       pageSize: dataSource.value.length,
