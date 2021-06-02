@@ -29,7 +29,7 @@ export const constantRoutes: MenuDataItem[] = [
       {
         path: '/user/registerResult',
         name: 'registerResult',
-        component: () => import(/* webpackChunkName: "registerResult" */'@/views/user/register-result.vue'),
+        component: () => import(/* webpackChunkName: "register-result" */'@/views/user/register-result.vue'),
         meta: { title: 'pages.login.registerAccount' }
       }
     ]
@@ -117,7 +117,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/form/basic-form',
             name: 'BasicForm',
-            component: () => import(/* webpackChunkName: "basicForm" */ '@/views/form/basic-form/index.vue'),
+            component: () => import(/* webpackChunkName: "basic-form" */ '@/views/form/basic-form/index.vue'),
             meta: {
               title: 'pages.form.basicForm.title',
               keepAlive: false
@@ -126,7 +126,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/form/step-form',
             name: 'StepForm',
-            component: () => import(/* webpackChunkName: "stepForm" */ '@/views/form/step-form/index.vue'),
+            component: () => import(/* webpackChunkName: "step-form" */ '@/views/form/step-form/index.vue'),
             meta: {
               title: 'pages.form.stepForm.title',
               keepAlive: false
@@ -135,7 +135,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/form/advance-form',
             name: 'AdvanceForm',
-            component: () => import(/* webpackChunkName: "advanceForm" */ '@/views/form/advance-form/index.vue'),
+            component: () => import(/* webpackChunkName: "advance-form" */ '@/views/form/advance-form/index.vue'),
             meta: {
               title: 'pages.form.advanceForm.title',
               keepAlive: false
@@ -157,7 +157,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/list/table-list',
             name: 'TableList',
-            component: () => import(/* webpackChunkName: "tableList" */'@/views/list/table-list/index.vue'),
+            component: () => import(/* webpackChunkName: "table-list" */'@/views/list/table-list/index.vue'),
             meta: {
               title: 'pages.list.tableList.title'
             }
@@ -165,7 +165,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/list/basic-list',
             name: 'BasicList',
-            component: () => import(/* webpackChunkName: "basicList" */'@/views/list/basic-list/index.vue'),
+            component: () => import(/* webpackChunkName: "basic-list" */'@/views/list/basic-list/index.vue'),
             meta: {
               title: 'pages.list.basicList.title'
             }
@@ -173,7 +173,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/list/card-list',
             name: 'CardList',
-            component: () => import(/* webpackChunkName: "cardList" */'@/views/list/card-list/index.vue'),
+            component: () => import(/* webpackChunkName: "card-list" */'@/views/list/card-list/index.vue'),
             meta: {
               title: 'pages.list.cardList.title'
             }
@@ -202,7 +202,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/profile/basic',
             name: 'BasicProfile',
-            component: () => import(/* webpackChunkName: "basicProfile" */'@/views/profile/basic-profile/index.vue'),
+            component: () => import(/* webpackChunkName: "basic-profile" */'@/views/profile/basic-profile/index.vue'),
             meta: {
               title: 'pages.profile.basicProfile.title'
             }
@@ -210,7 +210,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/profile/advance',
             name: 'AdvanceProfile',
-            component: () => import(/* webpackChunkName: "advanceProfile" */'@/views/profile/advance-profile/index.vue'),
+            component: () => import(/* webpackChunkName: "advance-profile" */'@/views/profile/advance-profile/index.vue'),
             meta: {
               title: 'pages.profile.advanceProfile.title'
             }
@@ -367,7 +367,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/system/role-list',
             name: 'RoleList',
-            component: () => import(/* webpackChunkName: "roleList" */'@/views/system/role-list/index.vue'),
+            component: () => import(/* webpackChunkName: "role-list" */'@/views/system/role-list/index.vue'),
             meta: {
               title: 'pages.system.roleList.title'
             }
@@ -375,7 +375,7 @@ export const asyncRoutes: Array<MenuDataItem> = [
           {
             path: '/system/permission-list',
             name: 'PermissionList',
-            component: () => import(/* webpackChunkName: "permissionList" */'@/views/system/permission-list/index.vue'),
+            component: () => import(/* webpackChunkName: "permission-list" */'@/views/system/permission-list/index.vue'),
             meta: {
               title: 'pages.system.permissionList.title'
             }
