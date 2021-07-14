@@ -1,1 +1,0 @@
-(self.webpackChunkant_design_vue_pro=self.webpackChunkant_design_vue_pro||[]).push([[5150],{38445:function(n,e,a){"use strict";a.r(e),a.d(e,{default:function(){return u}});var r=a(66252);var t=(0,r.aZ)({name:"Binding"});t.render=function(n,e,a,t,u,i){var o=(0,r.up)("a-list");return(0,r.wg)(),(0,r.j4)(o,{"item-layout":"horizontal","data-source":[]})};var u=t}}]);
