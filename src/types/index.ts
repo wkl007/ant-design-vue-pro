@@ -33,7 +33,7 @@ export type TableColumnAlign = 'left' | 'right' | 'center';
 
 export type TableColumnFixed = boolean | 'left' | 'right';
 
-export type TableColumnSortDirections = 'ascend' | 'descend';
+export type TableColumnSortDirections = 'ascend' | 'descend' | null;
 
 export type TableColumnSortOrder = boolean | TableColumnSortDirections;
 

@@ -1,12 +1,10 @@
 <template>
-  <a-alert type="success">
-    <template #message>
-      <h2>Menu 1-1</h2>
-      <div style="padding: 24px;">
-        <strong>嵌套路由页面内容</strong>
-      </div>
-    </template>
-  </a-alert>
+  <div style="padding: 20px; background-color: #fffbe6; border: 1px solid #ffe58f;">
+    <h2>Menu 1-1</h2>
+    <div style="padding: 24px;">
+      <strong>嵌套路由页面内容</strong>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

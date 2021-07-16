@@ -11,7 +11,7 @@
             <a-button type="primary">Primary</a-button>
             <a-button>Default</a-button>
             <a-button type="dashed">Dashed</a-button>
-            <a-button type="danger">Danger</a-button>
+            <a-button danger>Danger</a-button>
             <a-config-provider :auto-insert-space-in-button="false">
               <a-button type="primary">按钮</a-button>
             </a-config-provider>
@@ -109,7 +109,7 @@
             <br/>
             <a-button type="primary" loading/>
             <a-button type="primary" shape="circle" loading/>
-            <a-button type="danger" shape="round" loading/>
+            <a-button danger shape="round" loading/>
           </a-card>
         </a-col>
       </a-row>
@@ -139,7 +139,7 @@
             <a-button type="primary" block>Primary</a-button>
             <a-button block>Default</a-button>
             <a-button type="dashed" block>Dashed</a-button>
-            <a-button type="danger" block>Danger</a-button>
+            <a-button danger block>Danger</a-button>
             <a-button type="link" block>Link</a-button>
           </a-card>
         </a-col>
@@ -155,7 +155,7 @@
             <a-button type="primary" :size="state.size">Primary</a-button>
             <a-button :size="state.size">Normal</a-button>
             <a-button type="dashed" :size="state.size">Dashed</a-button>
-            <a-button type="danger" :size="state.size">Danger</a-button>
+            <a-button danger :size="state.size">Danger</a-button>
             <a-button type="link" :size="state.size">Link</a-button>
             <br/>
             <a-button type="primary" :size="state.size">

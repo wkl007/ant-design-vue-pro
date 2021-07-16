@@ -51,7 +51,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, reactive } from 'vue'
-import { useForm } from '@ant-design-vue/use'
+import { useForm } from 'ant-design-vue/es/form'
 import { Permission } from '@/types/store/user'
 
 const formLayout = {

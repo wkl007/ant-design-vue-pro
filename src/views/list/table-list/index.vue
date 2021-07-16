@@ -4,22 +4,22 @@
       <div class="ant-pro-table-search">
         <a-form layout="horizontal">
           <a-row :gutter="16" type="flex" justfy="start">
-            <a-col :xs="24" :sm="24" :md="12">
+            <a-col :xs="24" :sm="24" :md="12" :lg="7">
               <a-form-item label="规则名称">
                 <a-input v-model:value="queryParams.ruleName" placeholder="规则名称"/>
               </a-form-item>
             </a-col>
-            <a-col :xs="24" :sm="24" :md="12">
+            <a-col :xs="24" :sm="24" :md="12" :lg="7">
               <a-form-item label="描述">
                 <a-input v-model:value="queryParams.desc" placeholder="描述"/>
               </a-form-item>
             </a-col>
-            <a-col :xs="24" :sm="24" :md="12">
+            <a-col :xs="24" :sm="24" :md="12" :lg="7">
               <a-form-item label="服务调用次数">
                 <a-input v-model:value="queryParams.callNo" placeholder="服务调用次数"/>
               </a-form-item>
             </a-col>
-            <a-col :xs="24" :sm="24" :md="12">
+            <a-col :xs="24" :sm="24" :md="12" :lg="7">
               <a-form-item>
                 <a-button @click="handleSearch">搜索</a-button>
               </a-form-item>
@@ -76,7 +76,8 @@
             pageSize: state.pageSize,
             total: state.total,
           }"
-          :getPopupContainer="trigger => trigger.parentNode"
+          ref="tableRef"
+          :getPopupContainer="trigger => tableRef.$el"
           @change="handleTableChange"
         >
           <template #rowIndex="{ index }">
@@ -105,7 +106,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRaw, toRefs } from 'vue'
+import { defineComponent, reactive, toRaw, toRefs, ref } from 'vue'
 import { TableToolbar } from '@/components'
 import { useFetchData, useFullscreen, useTableDynamicColumns } from '@/hooks'
 import { Pagination, TableColumn, TableFilters } from '@/types'
@@ -185,6 +186,7 @@ export default defineComponent({
     TableToolbar
   },
   setup () {
+    const tableRef = ref()
     const {
       state: columnState,
       dynamicColumns,
@@ -238,6 +240,7 @@ export default defineComponent({
     }
 
     return {
+      tableRef,
       stripe,
       statusMap,
       queryParams,

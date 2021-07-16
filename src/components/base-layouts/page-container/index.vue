@@ -157,14 +157,7 @@ export default defineComponent({
     const onBack = props.back || attrs.onBack
 
     /** 返回按钮点击 */
-    const handleBack =
-      (onBack &&
-        ((): void => {
-          // this.$emit('back')
-          // call props back func
-          onBack()
-        })) ||
-      undefined
+    const handleBack = onBack || undefined
 
     /** tab更改 */
     function handleTabChange (activeKey: string): void {

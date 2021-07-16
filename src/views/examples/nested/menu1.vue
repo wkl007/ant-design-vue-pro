@@ -1,13 +1,9 @@
 <template>
   <page-container :title="t('pages.nested.menu1.title')">
-    <a-alert type="success">
-      <template #message>
-        <h2>Menu 1</h2>
-        <router-view v-slot="{Component}">
-          <component :is="Component"/>
-        </router-view>
-      </template>
-    </a-alert>
+    <div style="padding: 20px; background-color: #f6ffed; border: 1px solid #b7eb8f;">
+      <h2>Menu 1</h2>
+      <router-view/>
+    </div>
   </page-container>
 </template>
 

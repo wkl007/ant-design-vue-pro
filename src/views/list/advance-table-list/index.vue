@@ -260,8 +260,8 @@ export default defineComponent({
     const rowSelection = computed(() => {
       return {
         type: modelRef.type,
-        getCheckboxProps: (record: any, index: number) => {
-          if (index === 3) {
+        getCheckboxProps: (record: any) => {
+          if (record.rowKey === 3) {
             return { disabled: true }
           }
           return { disabled: false }

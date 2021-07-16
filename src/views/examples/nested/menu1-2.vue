@@ -1,12 +1,8 @@
 <template>
-  <a-alert type="success">
-    <template #message>
-      <h2>Menu 1-2</h2>
-      <router-view v-slot="{Component}">
-        <component :is="Component"/>
-      </router-view>
-    </template>
-  </a-alert>
+  <div style="padding: 20px; background-color: #e6f7ff; border: 1px solid #91d5ff;">
+    <h2>Menu 1-2</h2>
+    <router-view/>
+  </div>
 </template>
 
 <script lang="ts">

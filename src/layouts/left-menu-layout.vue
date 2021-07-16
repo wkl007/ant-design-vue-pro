@@ -36,7 +36,7 @@
             <select-lang/>
           </div>
         </header-view>
-        <a-layout>
+        <a-layout style="width: auto;">
           <side-menu
             :style="{
               zIndex: 7,

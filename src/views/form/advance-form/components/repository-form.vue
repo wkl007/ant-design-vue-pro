@@ -59,7 +59,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
-import { useForm } from '@ant-design-vue/use'
+import { useForm } from 'ant-design-vue/es/form'
 
 export default defineComponent({
   name: 'RepositoryForm',

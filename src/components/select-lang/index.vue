@@ -1,6 +1,7 @@
 <template>
   <a-dropdown
-    class="ant-pro-dropdown ant-pro-dropdown-action" placement="bottomRight"
+    class="ant-pro-dropdown ant-pro-dropdown-action"
+    placement="bottomRight"
   >
     <global-outlined/>
     <template #overlay>
@@ -14,9 +15,14 @@
           :key="locale"
           :disabled="!languageSupports[locale]"
         >
-          <span role="img" :aria-label="languageLabels[locale]">
+          <template #icon>
+           <span
+             role="img"
+             :aria-label="languageLabels[locale]"
+           >
             {{ languageIcons[locale] }}
           </span>
+          </template>
           {{ languageLabels[locale] }}
         </a-menu-item>
       </a-menu>

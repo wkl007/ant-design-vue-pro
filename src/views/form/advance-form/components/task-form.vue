@@ -57,7 +57,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRaw } from 'vue'
-import { useForm } from '@ant-design-vue/use'
+import { useForm } from 'ant-design-vue/es/form'
 import { notification } from 'ant-design-vue'
 
 export default defineComponent({

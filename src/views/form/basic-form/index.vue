@@ -129,7 +129,7 @@
 import { defineComponent, reactive } from 'vue'
 import moment from 'moment'
 import { useRoute } from 'vue-router'
-import { useForm } from '@ant-design-vue/use'
+import { useForm } from 'ant-design-vue/es/form'
 import { message } from 'ant-design-vue'
 import { injectProProvider } from '@/components'
 import FormServer from '@/api/form'

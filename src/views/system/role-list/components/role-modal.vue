@@ -57,7 +57,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, reactive, ref } from 'vue'
-import { useForm } from '@ant-design-vue/use'
+import { useForm } from 'ant-design-vue/es/form'
 import { Role } from '@/types/api/user'
 import { Action, Permission } from '@/types/store/user'
 

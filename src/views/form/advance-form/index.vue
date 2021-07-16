@@ -49,7 +49,7 @@ import { FooterToolbar, injectProProvider } from '@/components'
 import RepositoryForm from './components/repository-form.vue'
 import TaskForm from './components/task-form.vue'
 import MemberList from './components/member-list.vue'
-import { validateInfos } from '@ant-design-vue/use/es/useForm'
+import { validateInfos } from 'ant-design-vue/es/form/useForm'
 
 export interface ErrorItem {
   key: string;

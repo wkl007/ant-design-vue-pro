@@ -2,16 +2,6 @@
 # yarn lockfile v1
 
 
-"@ant-design-vue/use@^0.0.1-0", "@ant-design-vue/use@^0.0.1-alpha.9":
-  version "0.0.1-alpha.10"
-  resolved "https://registry.nlark.com/@ant-design-vue/use/download/@ant-design-vue/use-0.0.1-alpha.10.tgz#14697ced4aa3e6d76a63008e87dbf6d3ef3e07da"
-  integrity sha1-FGl87Uqj5tdqYwCOh9v20+8+B9o=
-  dependencies:
-    async-validator "^3.4.0"
-    lodash-es "^4.17.15"
-    resize-observer-polyfill "^1.5.1"
-    vue "^3.0.0"
-
 "@ant-design/colors@^5.0.0":
   version "5.1.1"
   resolved "https://registry.npm.taobao.org/@ant-design/colors/download/@ant-design/colors-5.1.1.tgz?cache=0&sync_timestamp=1612936022469&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ant-design%2Fcolors%2Fdownload%2F%40ant-design%2Fcolors-5.1.1.tgz#800b2186b1e27e66432e67d03ed96af3e21d8940"
@@ -2239,17 +2229,6 @@
     semver "^7.3.4"
     strip-ansi "^6.0.0"
 
-"@vue/compiler-core@3.0.11":
-  version "3.0.11"
-  resolved "https://registry.nlark.com/@vue/compiler-core/download/@vue/compiler-core-3.0.11.tgz#5ef579e46d7b336b8735228758d1c2c505aae69a"
-  integrity sha1-XvV55G17M2uHNSKHWNHCxQWq5po=
-  dependencies:
-    "@babel/parser" "^7.12.0"
-    "@babel/types" "^7.12.0"
-    "@vue/shared" "3.0.11"
-    estree-walker "^2.0.1"
-    source-map "^0.6.1"
-
 "@vue/compiler-core@3.1.4":
   version "3.1.4"
   resolved "https://registry.nlark.com/@vue/compiler-core/download/@vue/compiler-core-3.1.4.tgz#a3a74cf52e8f01af386d364ac8a099cbeb260424"
@@ -2260,14 +2239,6 @@
     "@vue/shared" "3.1.4"
     estree-walker "^2.0.1"
     source-map "^0.6.1"
-
-"@vue/compiler-dom@3.0.11":
-  version "3.0.11"
-  resolved "https://registry.nlark.com/@vue/compiler-dom/download/@vue/compiler-dom-3.0.11.tgz#b15fc1c909371fd671746020ba55b5dab4a730ee"
-  integrity sha1-sV/ByQk3H9ZxdGAgulW12rSnMO4=
-  dependencies:
-    "@vue/compiler-core" "3.0.11"
-    "@vue/shared" "3.0.11"
 
 "@vue/compiler-dom@3.1.4":
   version "3.1.4"
@@ -2324,7 +2295,12 @@
   optionalDependencies:
     prettier "^1.18.2"
 
-"@vue/devtools-api@^6.0.0-beta.10", "@vue/devtools-api@^6.0.0-beta.7":
+"@vue/devtools-api@^6.0.0-beta.11", "@vue/devtools-api@^6.0.0-beta.14":
+  version "6.0.0-beta.15"
+  resolved "https://registry.nlark.com/@vue/devtools-api/download/@vue/devtools-api-6.0.0-beta.15.tgz?cache=0&sync_timestamp=1624900514906&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fdevtools-api%2Fdownload%2F%40vue%2Fdevtools-api-6.0.0-beta.15.tgz#ad7cb384e062f165bcf9c83732125bffbc2ad83d"
+  integrity sha1-rXyzhOBi8WW8+cg3MhJb/7wq2D0=
+
+"@vue/devtools-api@^6.0.0-beta.7":
   version "6.0.0-beta.11"
   resolved "https://registry.nlark.com/@vue/devtools-api/download/@vue/devtools-api-6.0.0-beta.11.tgz#4fb4161ee41ba75f3f5198d4bfd80e4ffb7f2462"
   integrity sha1-T7QWHuQbp18/UZjUv9gOT/t/JGI=
@@ -2345,27 +2321,12 @@
   dependencies:
     vue-eslint-parser "^7.0.0"
 
-"@vue/reactivity@3.0.11":
-  version "3.0.11"
-  resolved "https://registry.nlark.com/@vue/reactivity/download/@vue/reactivity-3.0.11.tgz#07b588349fd05626b17f3500cbef7d4bdb4dbd0b"
-  integrity sha1-B7WINJ/QViaxfzUAy+99S9tNvQs=
-  dependencies:
-    "@vue/shared" "3.0.11"
-
 "@vue/reactivity@3.1.4":
   version "3.1.4"
   resolved "https://registry.nlark.com/@vue/reactivity/download/@vue/reactivity-3.1.4.tgz?cache=0&sync_timestamp=1625229863815&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Freactivity%2Fdownload%2F%40vue%2Freactivity-3.1.4.tgz#d926ed46fb0d48582ccf8665b062d37b5d35ba99"
   integrity sha1-2SbtRvsNSFgsz4ZlsGLTe101upk=
   dependencies:
     "@vue/shared" "3.1.4"
-
-"@vue/runtime-core@3.0.11":
-  version "3.0.11"
-  resolved "https://registry.nlark.com/@vue/runtime-core/download/@vue/runtime-core-3.0.11.tgz#c52dfc6acf3215493623552c1c2919080c562e44"
-  integrity sha1-xS38as8yFUk2I1UsHCkZCAxWLkQ=
-  dependencies:
-    "@vue/reactivity" "3.0.11"
-    "@vue/shared" "3.0.11"
 
 "@vue/runtime-core@3.1.4":
   version "3.1.4"
@@ -2375,15 +2336,6 @@
     "@vue/reactivity" "3.1.4"
     "@vue/shared" "3.1.4"
 
-"@vue/runtime-dom@3.0.11":
-  version "3.0.11"
-  resolved "https://registry.nlark.com/@vue/runtime-dom/download/@vue/runtime-dom-3.0.11.tgz#7a552df21907942721feb6961c418e222a699337"
-  integrity sha1-elUt8hkHlCch/raWHEGOIippkzc=
-  dependencies:
-    "@vue/runtime-core" "3.0.11"
-    "@vue/shared" "3.0.11"
-    csstype "^2.6.8"
-
 "@vue/runtime-dom@3.1.4":
   version "3.1.4"
   resolved "https://registry.nlark.com/@vue/runtime-dom/download/@vue/runtime-dom-3.1.4.tgz?cache=0&sync_timestamp=1625229856831&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fruntime-dom%2Fdownload%2F%40vue%2Fruntime-dom-3.1.4.tgz#acfeee200d5c45fc2cbdf7058cda1498f9b45849"
@@ -2392,11 +2344,6 @@
     "@vue/runtime-core" "3.1.4"
     "@vue/shared" "3.1.4"
     csstype "^2.6.8"
-
-"@vue/shared@3.0.11":
-  version "3.0.11"
-  resolved "https://registry.nlark.com/@vue/shared/download/@vue/shared-3.0.11.tgz#20d22dd0da7d358bb21c17f9bde8628152642c77"
-  integrity sha1-INIt0Np9NYuyHBf5vehigVJkLHc=
 
 "@vue/shared@3.1.4":
   version "3.1.4"
@@ -2730,30 +2677,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-ant-design-vue@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.nlark.com/ant-design-vue/download/ant-design-vue-2.1.2.tgz#2065d7e63199c0c584919458af57b6a0b597f677"
-  integrity sha1-IGXX5jGZwMWEkZRYr1e2oLWX9nc=
-  dependencies:
-    "@ant-design-vue/use" "^0.0.1-0"
-    "@ant-design/icons-vue" "^6.0.0"
-    "@babel/runtime" "^7.10.5"
-    "@simonwep/pickr" "~1.8.0"
-    array-tree-filter "^2.1.0"
-    async-validator "^3.3.0"
-    dom-align "^1.10.4"
-    dom-scroll-into-view "^2.0.0"
-    is-mobile "^2.2.1"
-    lodash-es "^4.17.15"
-    moment "^2.27.0"
-    omit.js "^2.0.0"
-    resize-observer-polyfill "^1.5.1"
-    scroll-into-view-if-needed "^2.2.25"
-    shallow-equal "^1.0.0"
-    vue-types "^3.0.0"
-    warning "^4.0.0"
-
-ant-design-vue@^2.2.0:
+ant-design-vue@^2.2.0, ant-design-vue@^2.2.2:
   version "2.2.2"
   resolved "https://registry.nlark.com/ant-design-vue/download/ant-design-vue-2.2.2.tgz?cache=0&sync_timestamp=1626009944812&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fant-design-vue%2Fdownload%2Fant-design-vue-2.2.2.tgz#197388583c4e0b8ccd9c50ed19831ede27c2b919"
   integrity sha1-GXOIWDxOC4zNnFDtGYMe3ifCuRk=
@@ -2941,7 +2865,7 @@ async-limiter@~1.0.0:
   resolved "https://registry.nlark.com/async-limiter/download/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
   integrity sha1-3TeelPDbgxCwgpH51kwyCXZmF/0=
 
-async-validator@^3.3.0, async-validator@^3.4.0:
+async-validator@^3.3.0:
   version "3.5.2"
   resolved "https://registry.nlark.com/async-validator/download/async-validator-3.5.2.tgz?cache=0&sync_timestamp=1619755974429&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fasync-validator%2Fdownload%2Fasync-validator-3.5.2.tgz#68e866a96824e8b2694ff7a831c1a25c44d5e500"
   integrity sha1-aOhmqWgk6LJpT/eoMcGiXETV5QA=
@@ -4431,7 +4355,7 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-dom-align@^1.10.4, dom-align@^1.12.1:
+dom-align@^1.12.1:
   version "1.12.2"
   resolved "https://registry.nlark.com/dom-align/download/dom-align-1.12.2.tgz?cache=0&sync_timestamp=1621853133882&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdom-align%2Fdownload%2Fdom-align-1.12.2.tgz#0f8164ebd0c9c21b0c790310493cd855892acd4b"
   integrity sha1-D4Fk69DJwhsMeQMQSTzYVYkqzUs=
@@ -6474,11 +6398,6 @@ is-interactive@^1.0.0:
   version "1.0.0"
   resolved "https://registry.nlark.com/is-interactive/download/is-interactive-1.0.0.tgz#cea6e6ae5c870a7b0a0004070b7b587e0252912e"
   integrity sha1-zqbmrlyHCnsKAAQHC3tYfgJSkS4=
-
-is-mobile@^2.2.1:
-  version "2.2.2"
-  resolved "https://registry.nlark.com/is-mobile/download/is-mobile-2.2.2.tgz#f6c9c5d50ee01254ce05e739bdd835f1ed4e9954"
-  integrity sha1-9snF1Q7gElTOBec5vdg18e1OmVQ=
 
 is-module@^1.0.0:
   version "1.0.0"
@@ -9235,11 +9154,6 @@ requires-port@^1.0.0:
   resolved "https://registry.npm.taobao.org/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
-resize-observer-polyfill@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.npm.taobao.org/resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=
-
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/resolve-cwd/download/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -11090,12 +11004,12 @@ vue-loader@^16.1.2:
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
-vue-router@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.8.tgz#55d4290a3122444edbc91a3cd2492bb1d0cef494"
-  integrity sha1-VdQpCjEiRE7byRo80kkrsdDO9JQ=
+vue-router@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.10.tgz#ec8fda032949b2a31d3273170f8f376e86eb52ac"
+  integrity sha1-7I/aAylJsqMdMnMXD483bobrUqw=
   dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.10"
+    "@vue/devtools-api" "^6.0.0-beta.14"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
   version "4.1.3"
@@ -11117,16 +11031,7 @@ vue-types@^3.0.0:
   dependencies:
     is-plain-object "3.0.1"
 
-vue@^3.0.0, vue@^3.0.11:
-  version "3.0.11"
-  resolved "https://registry.nlark.com/vue/download/vue-3.0.11.tgz?cache=0&sync_timestamp=1622236078655&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvue%2Fdownload%2Fvue-3.0.11.tgz#c82f9594cbf4dcc869241d4c8dd3e08d9a8f4b5f"
-  integrity sha1-yC+VlMv03MhpJB1MjdPgjZqPS18=
-  dependencies:
-    "@vue/compiler-dom" "3.0.11"
-    "@vue/runtime-dom" "3.0.11"
-    "@vue/shared" "3.0.11"
-
-vue@^3.1.0:
+vue@^3.1.0, vue@^3.1.4:
   version "3.1.4"
   resolved "https://registry.nlark.com/vue/download/vue-3.1.4.tgz#120d6818c51eaa35d0879e5bc1cff60135bc69fd"
   integrity sha1-Eg1oGMUeqjXQh55bwc/2ATW8af0=
@@ -11143,10 +11048,12 @@ vuex-persistedstate@^4.0.0-beta.3:
     deepmerge "^4.2.2"
     shvl "^2.0.2"
 
-vuex@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.nlark.com/vuex/download/vuex-4.0.0.tgz?cache=0&sync_timestamp=1621868918134&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvuex%2Fdownload%2Fvuex-4.0.0.tgz#ac877aa76a9c45368c979471e461b520d38e6cf5"
-  integrity sha1-rId6p2qcRTaMl5Rx5GG1INOObPU=
+vuex@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.nlark.com/vuex/download/vuex-4.0.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvuex%2Fdownload%2Fvuex-4.0.2.tgz#f896dbd5bf2a0e963f00c67e9b610de749ccacc9"
+  integrity sha1-+Jbb1b8qDpY/AMZ+m2EN50nMrMk=
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.11"
 
 warning@^4.0.0:
   version "4.0.3"
