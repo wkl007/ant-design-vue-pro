@@ -210,7 +210,7 @@ export default defineComponent({
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 24px;
+    padding: 24px;
   }
 
   .menu-header-title {
