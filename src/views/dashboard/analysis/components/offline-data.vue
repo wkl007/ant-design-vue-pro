@@ -40,10 +40,10 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-
+import { useI18n } from 'vue-i18n'
 import NumberInfo from './number-info.vue'
 import { OfflineChartData, OfflineData } from '@/types/api/dashboard'
-import { injectProProvider, VDualAxes } from '@/components'
+import { VDualAxes } from '@/components'
 
 export default defineComponent({
   name: 'OfflineData',
@@ -74,7 +74,7 @@ export default defineComponent({
     }
   },
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
 
     return {
       t

@@ -56,7 +56,7 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { i18n, getPrefixCls } = injectProProvider()
+    const { getPrefixCls } = injectProProvider()
     const baseClassName = getPrefixCls('checkbox-item')
 
     const disableStyle = { cursor: 'not-allowed' }
@@ -72,8 +72,7 @@ export default defineComponent({
     return {
       baseClassName,
       className,
-      disableStyle,
-      i18n
+      disableStyle
     }
   }
 })

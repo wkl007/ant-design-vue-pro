@@ -53,7 +53,6 @@ import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
-import UserServer from '@/api/user'
 
 export default defineComponent({
   name: 'AvatarDropdown',

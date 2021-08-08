@@ -3,7 +3,7 @@
     <a-tooltip>
       <a-list-item>
         <span style="opacity: 1;">
-         {{ i18n('app.setting.transitionname') }}
+         {{ t('app.setting.transitionname') }}
         </span>
         <template #actions>
           <a-select
@@ -35,7 +35,7 @@
     <a-tooltip>
       <a-list-item>
         <span style="opacity: 1;">
-          {{ i18n('app.setting.multitab') }}
+          {{ t('app.setting.multitab') }}
         </span>
         <template #actions>
           <a-switch
@@ -49,11 +49,11 @@
 
     <a-tooltip
       placement="left"
-      :title="i18n('app.setting.multitab.fixed.hit')"
+      :title="t('app.setting.multitab.fixed.hit')"
     >
       <a-list-item>
         <span :style="{opacity:!multiTab ? 0.5 : 1 }">
-          {{ i18n('app.setting.multitab.fixed') }}
+          {{ t('app.setting.multitab.fixed') }}
         </span>
         <template #actions>
           <a-switch
@@ -68,11 +68,11 @@
 
     <a-tooltip
       placement="left"
-      :title="layout === 'mix' ? '' : i18n('app.setting.layout.mix.hint')"
+      :title="layout === 'mix' ? '' : t('app.setting.layout.mix.hint')"
     >
       <a-list-item>
         <span style="opacity: 1;">
-          {{ i18n('app.setting.weakmode') }}
+          {{ t('app.setting.weakmode') }}
         </span>
         <template #actions>
           <a-switch
@@ -88,7 +88,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
 import { Layout } from '@/types/store/app'
 
 export default defineComponent({
@@ -121,7 +121,7 @@ export default defineComponent({
   },
   emits: ['change'],
   setup (props, { emit }) {
-    const { i18n } = injectProProvider()
+    const { t } = useI18n()
 
     /** 选择更改 */
     function handleChange (type: string, value: string): void {
@@ -129,7 +129,7 @@ export default defineComponent({
     }
 
     return {
-      i18n,
+      t,
       handleChange
     }
   }

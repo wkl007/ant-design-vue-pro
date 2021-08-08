@@ -36,14 +36,13 @@
               :key="menu.meta.collapsedIcon"
             />
           </template>
-          {{ i18n ? i18n(menu.meta.title) : menu.meta.title }}
+          {{ t ? t(menu.meta.title) : menu.meta.title }}
         </a-menu-item>
       </transform-v-node>
       <sub-menu
         v-else-if="menu.children?.length"
         :menu="menu"
         :key="menu.path"
-        :i18n="i18n"
         :collapsed="collapsed"
         @itemHover="$emit('itemHover',$event)"
       />
@@ -53,6 +52,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import type { RouteProps } from '@/types/router'
 import type { MenuTheme } from '@/types/store/app'
 import SubMenu from './sub-menu.vue'
@@ -101,14 +101,11 @@ export default defineComponent({
     SubMenu
   },
   props: {
-    i18n: {
-      type: Function,
-      default: (t: any): any => t
-    },
     ...BaseMenuProps
   },
   emits: ['update:openKeys', 'update:selectedKeys', 'mouseenter', 'mouseleave', 'itemHover'],
   setup (props, { emit }) {
+    const { t } = useI18n()
     const dynamicProps = ref({ inlineCollapsed: props.mode === 'inline' ? props.collapsed : undefined })
 
     /** SubMenu 展开/关闭 */
@@ -122,6 +119,7 @@ export default defineComponent({
     }
 
     return {
+      t,
       dynamicProps,
 
       handleOpenChange,

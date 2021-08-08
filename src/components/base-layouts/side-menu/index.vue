@@ -33,7 +33,6 @@
       <div style="flex: 1; overflow: hidden auto;">
         <slot name="header"/>
         <base-menu
-          :i18n="i18n"
           :theme="runtimeTheme"
           :menus="computedMenus"
           :collapsed="collapsed"
@@ -168,7 +167,7 @@ export default defineComponent({
   setup (props, { emit }) {
     const { prefixCls: propPrefixCls, theme, layout, collapsed, collapsedWidth, sideWidth, splitMenus } = toRefs(props)
     const route = useRoute()
-    const { i18n, getPrefixCls } = injectProProvider()
+    const { getPrefixCls } = injectProProvider()
     const prefixCls = propPrefixCls.value || getPrefixCls('sider')
     const isMix = computed(() => layout.value === 'mix')
     const runtimeTheme = computed(() => (layout.value === 'mix' && 'light') || theme.value)
@@ -192,7 +191,6 @@ export default defineComponent({
 
     return {
       images: inject('images'),
-      i18n,
       prefixCls,
       isMix,
       runtimeTheme,

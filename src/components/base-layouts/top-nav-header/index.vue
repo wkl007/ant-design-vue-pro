@@ -16,7 +16,6 @@
         <base-menu
           v-if="menus.length"
           mode="horizontal"
-          :i18n="i18n"
           :theme="theme"
           :menus="menus"
           :open-keys="openKeys"
@@ -80,7 +79,7 @@ export default defineComponent({
   emits: ['update:openKeys', 'update:selectedKeys'],
   setup (props, { slots, emit }) {
     const { theme, contentWidth } = toRefs(props)
-    const { i18n, getPrefixCls } = injectProProvider()
+    const { getPrefixCls } = injectProProvider()
     const prefixedClassName = getPrefixCls('top-nav-header')
     const hasMix = computed(() => props.layout === 'mix')
     const classNames = computed(() => {
@@ -109,7 +108,6 @@ export default defineComponent({
 
     return {
       images: inject('images'),
-      i18n,
       classNames,
       headerClassName,
       prefixedClassName,

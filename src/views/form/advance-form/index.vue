@@ -45,7 +45,8 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, RendererElement, toRaw } from 'vue'
 import scrollIntoView from 'scroll-into-view-if-needed'
-import { FooterToolbar, injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
+import { FooterToolbar } from '@/components'
 import RepositoryForm from './components/repository-form.vue'
 import TaskForm from './components/task-form.vue'
 import MemberList from './components/member-list.vue'
@@ -81,7 +82,7 @@ export default defineComponent({
     FooterToolbar
   },
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const state = reactive({
       errors: [] as ErrorItem[]
     })

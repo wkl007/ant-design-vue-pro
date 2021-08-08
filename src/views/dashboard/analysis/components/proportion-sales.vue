@@ -35,8 +35,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { SalesData } from '@/types/api/dashboard'
-import { injectProProvider, VPie } from '@/components'
+import { VPie } from '@/components'
 
 type SalesType = 'all' | 'online' | 'stores' | string;
 
@@ -67,7 +68,7 @@ export default defineComponent({
     }
   },
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
 
     return {
       t

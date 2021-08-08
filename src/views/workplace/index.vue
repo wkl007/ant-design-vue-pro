@@ -161,6 +161,7 @@
 <script lang="ts">
 import { computed, defineComponent, reactive } from 'vue'
 import { useStore } from 'vuex'
+import { useI18n } from 'vue-i18n'
 import { useFetchData } from '@/hooks'
 import { injectProProvider, VRadar } from '@/components'
 import DashboardServer from '@/api/dashboard'
@@ -172,7 +173,7 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const state = reactive({
       loading: true,
       radarLoading: true,

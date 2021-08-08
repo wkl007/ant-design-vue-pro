@@ -1,5 +1,4 @@
 import { useStore } from 'vuex'
-import { useI18n } from 'vue-i18n'
 import { App, computed, ComputedRef, defineComponent, inject, provide, RenderFunction, SetupContext, toRefs } from 'vue'
 import { withInstall } from '@/utils'
 import type { ContentWidth } from '@/types/store/app'
@@ -12,8 +11,6 @@ export interface ProProviderProps {
 export interface ProProviderData {
   /** 获取类名前缀 */
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => string;
-  /** i18n 实例 */
-  i18n: (t: string) => string;
   /** 内容区域宽度 */
   contentWidth: ComputedRef<ContentWidth>;
 }
@@ -29,7 +26,6 @@ export const defaultProProvider: ProProviderData = {
     if (customizePrefixCls) return customizePrefixCls
     return `ant-pro-${suffixCls}`
   },
-  i18n: (t: string): string => t,
   contentWidth: computed(() => 'Fluid')
 }
 
@@ -47,7 +43,6 @@ const ProProvider = defineComponent({
   },
   setup (props, { slots }: SetupContext): RenderFunction | void {
     const store = useStore()
-    const { t } = useI18n()
     const { prefixCls } = toRefs(props)
     const contentWidth = computed(() => store.getters.contentWidth)
 
@@ -58,7 +53,6 @@ const ProProvider = defineComponent({
     }
 
     const proConfigProvider = {
-      i18n: t,
       contentWidth,
       getPrefixCls
     }

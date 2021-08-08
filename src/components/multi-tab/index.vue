@@ -103,8 +103,9 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { injectMenuState } from '@/hooks/useMenuState'
-import { injectMultiTabStore, injectProProvider, useMultiTab } from '@/components'
+import { injectMultiTabStore, useMultiTab } from '@/components'
 
 export default defineComponent({
   name: 'MultiTab',
@@ -121,8 +122,8 @@ export default defineComponent({
   },
   setup (props) {
     const route = useRoute()
+    const { t } = useI18n()
     const store = injectMultiTabStore()
-    const { i18n: t } = injectProProvider()
     const menuState = injectMenuState()
     const { isMobile } = menuState
     const cacheListLength = computed(() => (store ? store.cacheList.length : 0))

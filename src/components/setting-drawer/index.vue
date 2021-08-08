@@ -17,7 +17,7 @@
     </template>
 
     <div :class="`${prefixCls}-content`">
-      <body-wrapper :title="i18n('app.setting.pagestyle')">
+      <body-wrapper :title="t('app.setting.pagestyle')">
         <block-checkbox
           :value="navTheme"
           :list="themeList"
@@ -27,7 +27,7 @@
 
       <a-divider/>
 
-      <body-wrapper :title="i18n('app.setting.navigationmode')">
+      <body-wrapper :title="t('app.setting.navigationmode')">
         <block-checkbox
           :value="layout"
           :list="layoutList"
@@ -46,7 +46,7 @@
 
       <a-divider/>
 
-      <body-wrapper :title="i18n('app.setting.othersettings')">
+      <body-wrapper :title="t('app.setting.othersettings')">
         <layout-change-other
           :fixed-header="fixedHeader"
           :transition-name="transitionName"
@@ -63,6 +63,7 @@
 <script lang="ts">
 import { computed, defineComponent, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
+import { useI18n } from 'vue-i18n'
 import { injectProProvider } from '@/components'
 import { injectMenuState } from '@/hooks/useMenuState'
 import * as types from '@/store/modules/app/mutationTypes'
@@ -87,8 +88,9 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
+    const { t } = useI18n()
     const menuState = injectMenuState()
-    const { i18n, getPrefixCls } = injectProProvider()
+    const { getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer')
     const visible = ref(false)
     const navTheme = computed(() => store.getters.navTheme)
@@ -187,7 +189,7 @@ export default defineComponent({
     return {
       navTheme,
       ...menuState,
-      i18n,
+      t,
       prefixCls,
       iconStyle,
       layoutList,

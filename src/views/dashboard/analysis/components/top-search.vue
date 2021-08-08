@@ -80,8 +80,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { SearchData, VisitData2 } from '@/types/api/dashboard'
-import { injectProProvider, VTinyArea } from '@/components'
+import { VTinyArea } from '@/components'
 import Trend from './trend.vue'
 import NumberInfo from './number-info.vue'
 import { numberFormat } from '@/utils'
@@ -108,7 +109,7 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
 
     const columns: TableColumn[] = [
       {

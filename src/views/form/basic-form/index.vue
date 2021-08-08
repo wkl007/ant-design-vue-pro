@@ -129,16 +129,16 @@
 import { defineComponent, reactive } from 'vue'
 import moment from 'moment'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useForm } from 'ant-design-vue/es/form'
 import { message } from 'ant-design-vue'
-import { injectProProvider } from '@/components'
 import FormServer from '@/api/form'
 
 export default defineComponent({
   name: 'BaseForm',
   setup () {
     const route = useRoute()
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const state = reactive({
       submitting: false
     })

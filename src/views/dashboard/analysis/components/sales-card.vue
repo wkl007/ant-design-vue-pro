@@ -99,7 +99,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, PropType, reactive, watch } from 'vue'
-import { injectProProvider, VColumn } from '@/components'
+import { useI18n } from 'vue-i18n'
+import { VColumn } from '@/components'
 import { numberFormat } from '@/utils'
 import { useStore } from 'vuex'
 import { Moment } from 'moment'
@@ -142,7 +143,7 @@ export default defineComponent({
   },
   setup (props) {
     const store = useStore()
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const lang = computed(() => store.getters.lang)
 
     const state = reactive({

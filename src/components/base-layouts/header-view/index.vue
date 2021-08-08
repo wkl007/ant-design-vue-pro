@@ -146,7 +146,7 @@ export default defineComponent({
       splitMenus,
       isMobile
     } = toRefs(props)
-    const { i18n, getPrefixCls } = injectProProvider()
+    const { getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls()
     const isMix = computed(() => props.layout === 'mix')
     const isTop = computed(() => props.layout === 'top')
@@ -186,7 +186,6 @@ export default defineComponent({
     }
 
     return {
-      i18n,
       classNames,
       width,
       right,

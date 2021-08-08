@@ -6,9 +6,9 @@
         :loading="loading"
         :content-height="46"
       >
-        <template #title>{{ $t('dashboard.analysis.total-sales') }}</template>
+        <template #title>{{ t('dashboard.analysis.total-sales') }}</template>
         <template #action>
-          <a-tooltip :title="$t('dashboard.analysis.introduce')">
+          <a-tooltip :title="t('dashboard.analysis.introduce')">
             <info-circle-outlined/>
           </a-tooltip>
         </template>
@@ -16,16 +16,16 @@
           <yuan :value="126560"/>
         </template>
         <trend flag="up" style="margin-right: 16px;">
-          {{ $t('dashboard.analysis.week') }}
+          {{ t('dashboard.analysis.week') }}
           <span class="trendText">12%</span>
         </trend>
         <trend flag="down">
-          {{ $t('dashboard.analysis.day') }}
+          {{ t('dashboard.analysis.day') }}
           <span class="trendText">11%</span>
         </trend>
         <template #footer>
           <field
-            :label="$t('dashboard.analysis.day-sales')"
+            :label="t('dashboard.analysis.day-sales')"
             :value="`${numberFormat(12423,'0,0')}`"
           />
         </template>
@@ -37,9 +37,9 @@
         :loading="loading"
         :content-height="46"
       >
-        <template #title>{{ $t('dashboard.analysis.visits') }}</template>
+        <template #title>{{ t('dashboard.analysis.visits') }}</template>
         <template #action>
-          <a-tooltip :title="$t('dashboard.analysis.introduce')">
+          <a-tooltip :title="t('dashboard.analysis.introduce')">
             <info-circle-outlined/>
           </a-tooltip>
         </template>
@@ -48,7 +48,7 @@
         </template>
         <template #footer>
           <field
-            :label="$t('dashboard.analysis.day-visits')"
+            :label="t('dashboard.analysis.day-visits')"
             :value="`${numberFormat(12423,'0,0')}`"
           />
         </template>
@@ -66,9 +66,9 @@
         :loading="loading"
         :content-height="46"
       >
-        <template #title>{{ $t('dashboard.analysis.payments') }}</template>
+        <template #title>{{ t('dashboard.analysis.payments') }}</template>
         <template #action>
-          <a-tooltip :title="$t('dashboard.analysis.introduce')">
+          <a-tooltip :title="t('dashboard.analysis.introduce')">
             <info-circle-outlined/>
           </a-tooltip>
         </template>
@@ -76,7 +76,7 @@
           <yuan :value="numberFormat(6560,'0,0')"/>
         </template>
         <template #footer>
-          <field :label="$t('dashboard.analysis.conversion-rate')" value="60%"/>
+          <field :label="t('dashboard.analysis.conversion-rate')" value="60%"/>
         </template>
         <v-tiny-column :data="areaData" :height="40"/>
       </chart-card>
@@ -88,20 +88,20 @@
         :content-height="46"
         total="78%"
       >
-        <template #title>{{ $t('dashboard.analysis.operational-effect') }}</template>
+        <template #title>{{ t('dashboard.analysis.operational-effect') }}</template>
         <template #action>
-          <a-tooltip :title="$t('dashboard.analysis.introduce')">
+          <a-tooltip :title="t('dashboard.analysis.introduce')">
             <info-circle-outlined/>
           </a-tooltip>
         </template>
         <template #footer>
           <div style=" overflow: hidden; white-space: nowrap;">
             <trend flag="up" style="margin-right: 16px;">
-              {{ $t('dashboard.analysis.week') }}
+              {{ t('dashboard.analysis.week') }}
               <span class="trendText">12%</span>
             </trend>
             <trend flag="down">
-              {{ $t('dashboard.analysis.day') }}
+              {{ t('dashboard.analysis.day') }}
               <span class="trendText">11%</span>
             </trend>
           </div>
@@ -118,6 +118,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
+import { useI18n } from 'vue-i18n'
 import ChartCard from './chart-card.vue'
 import Yuan from './yuan.vue'
 import Trend from './trend.vue'
@@ -156,7 +157,7 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const areaData = computed(() => props.data.map(item => item.y))
 
     return {

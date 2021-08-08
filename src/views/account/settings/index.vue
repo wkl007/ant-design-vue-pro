@@ -44,7 +44,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject, onMounted, reactive, ref, toRefs, watch } from 'vue'
-import { GridContent, injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
+import { GridContent } from '@/components'
 import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -55,7 +56,7 @@ export default defineComponent({
   setup () {
     const route = useRoute()
     const router = useRouter()
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const isMobile = inject('isMobile', ref(false))
     const state = reactive<{ selectedKeys: string[] }>({
       selectedKeys: []

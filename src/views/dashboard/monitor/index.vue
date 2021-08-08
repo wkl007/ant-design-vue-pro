@@ -107,16 +107,8 @@
 
 <script lang="ts">
 import { defineComponent, nextTick, onMounted, onUnmounted, ref } from 'vue'
-import {
-  GridContent,
-  injectProProvider,
-  VGauge,
-  VLiquid,
-  VMap,
-  VRingProgress,
-  VTinyArea,
-  VWordCloud
-} from '@/components'
+import { useI18n } from 'vue-i18n'
+import { GridContent, VGauge, VLiquid, VMap, VRingProgress, VTinyArea, VWordCloud } from '@/components'
 import { useFetchData } from '@/hooks'
 import DashboardServer from '@/api/dashboard'
 import { numberFormat } from '@/utils'
@@ -183,7 +175,7 @@ export default defineComponent({
     VMap
   },
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const { context } = useFetchData(
       () => DashboardServer.getTags().then(res => {
         return {

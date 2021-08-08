@@ -22,7 +22,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
 import Step1 from './components/step1.vue'
 import Step2 from './components/step2.vue'
 import Step3 from './components/step3.vue'
@@ -36,7 +36,7 @@ export default defineComponent({
   },
   setup () {
     const route = useRoute()
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const current = ref(0)
 
     function nextStep (): void {

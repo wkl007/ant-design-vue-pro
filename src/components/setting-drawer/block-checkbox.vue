@@ -8,7 +8,7 @@
         :theme="item.key"
         :checked="item.key === value"
         :disabled="item.disabled"
-        :title="i18n(item.title)"
+        :title="t(item.title)"
         @click="handleChange(item.disabled,item.key)"
       />
     </template>
@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { injectProProvider } from '@/components'
 import LayoutBlock from './layout-block.vue'
 
@@ -37,7 +38,8 @@ export default defineComponent({
   },
   emits: ['change'],
   setup (props, { emit }) {
-    const { i18n, getPrefixCls } = injectProProvider()
+    const { t } = useI18n()
+    const { getPrefixCls } = injectProProvider()
     const prefixCls = getPrefixCls('setting-drawer-block-checkbox')
 
     /** 更改 */
@@ -47,7 +49,7 @@ export default defineComponent({
     }
 
     return {
-      i18n,
+      t,
       prefixCls,
       handleChange
     }

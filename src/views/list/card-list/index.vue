@@ -84,7 +84,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, ref } from 'vue'
-import { injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
 import { useFetchData } from '@/hooks'
 import { FakeListResp } from '@/types/api/list'
 import ListServer from '@/api/list'
@@ -92,7 +92,7 @@ import ListServer from '@/api/list'
 export default defineComponent({
   name: 'TableList',
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
 
     const nullData: Partial<FakeListResp> = {}
 

@@ -54,9 +54,10 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { goodsData, scheduleData } from './mockData'
 import { useFetchData } from '@/hooks'
-import { injectProProvider, TableTotal } from '@/components'
+import { TableTotal } from '@/components'
 import { RequestData } from '@/hooks/useFetchData'
 
 interface ListItem {
@@ -172,7 +173,7 @@ const scheduleColumns = [
 export default defineComponent({
   name: 'BasicProfile',
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const { context } = useFetchData<RequestData<ListItem>>(() => new Promise(resolve => {
       resolve({
         data: goodsData,

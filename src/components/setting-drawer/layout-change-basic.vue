@@ -3,7 +3,7 @@
     <a-tooltip>
       <a-list-item>
         <span style="opacity: 1;">
-          {{ i18n('app.setting.content-width') }}
+          {{ t('app.setting.content-width') }}
         </span>
         <template #actions>
           <a-select
@@ -15,10 +15,10 @@
               v-if="layout === 'side'"
               value="Fixed"
             >
-              {{ i18n('app.setting.content-width.fixed') }}
+              {{ t('app.setting.content-width.fixed') }}
             </a-select-option>
             <a-select-option value="Fluid">
-              {{ i18n('app.setting.content-width.fluid') }}
+              {{ t('app.setting.content-width.fluid') }}
             </a-select-option>
           </a-select>
         </template>
@@ -27,11 +27,11 @@
 
     <a-tooltip
       placement="left"
-      :title="layout === 'mix' ? i18n('app.setting.fixedheader.hint') : ''"
+      :title="layout === 'mix' ? t('app.setting.fixedheader.hint') : ''"
     >
       <a-list-item>
         <span style="opacity: 1;">
-          {{ i18n('app.setting.fixedheader') }}
+          {{ t('app.setting.fixedheader') }}
         </span>
         <template #actions>
           <a-switch
@@ -46,11 +46,11 @@
 
     <a-tooltip
       placement="left"
-      :title="layout === 'top' ? i18n('app.setting.fixedsidebar.hint') : ''"
+      :title="layout === 'top' ? t('app.setting.fixedsidebar.hint') : ''"
     >
       <a-list-item>
         <span style="opacity: 1;">
-          {{ i18n('app.setting.fixedsidebar') }}
+          {{ t('app.setting.fixedsidebar') }}
         </span>
         <template #actions>
           <a-switch
@@ -65,11 +65,11 @@
 
     <a-tooltip
       placement="left"
-      :title="layout === 'mix' ? '' : i18n('app.setting.layout.mix.hint')"
+      :title="layout === 'mix' ? '' : t('app.setting.layout.mix.hint')"
     >
       <a-list-item>
         <span style="opacity: 1;">
-          {{ i18n('app.setting.split.menus') }}
+          {{ t('app.setting.split.menus') }}
         </span>
         <template #actions>
           <a-switch
@@ -86,7 +86,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
 import { ContentWidth, Layout } from '@/types/store/app'
 
 export default defineComponent({
@@ -115,7 +115,7 @@ export default defineComponent({
   },
   emits: ['change'],
   setup (props, { emit }) {
-    const { i18n } = injectProProvider()
+    const { t } = useI18n()
 
     /** 选择更改 */
     function handleChange (type: string, value: string): void {
@@ -123,7 +123,7 @@ export default defineComponent({
     }
 
     return {
-      i18n,
+      t,
       handleChange
     }
   }

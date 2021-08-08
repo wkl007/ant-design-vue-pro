@@ -9,12 +9,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'Menu3',
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     return {
       t
     }

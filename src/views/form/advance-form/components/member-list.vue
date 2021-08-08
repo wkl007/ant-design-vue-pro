@@ -61,7 +61,7 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
 import { message } from 'ant-design-vue'
-import { injectProProvider } from '@/components'
+import { useI18n } from 'vue-i18n'
 import { TableColumn } from '@/types'
 
 export interface DataFields {
@@ -129,7 +129,7 @@ const dataSource: DataFields[] = [
 export default defineComponent({
   name: 'MemberList',
   setup () {
-    const { i18n: t } = injectProProvider()
+    const { t } = useI18n()
     const state = reactive({
       loading: false,
       dataSource
