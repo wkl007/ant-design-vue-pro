@@ -32,14 +32,6 @@
   */
 
 /*!
- * JavaScript Cookie v2.2.1
- * https://github.com/js-cookie/js-cookie
- *
- * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
- * Released under the MIT license
- */
-
-/*!
 * screenfull
 * v5.1.0 - 2020-12-24
 * (c) Sindre Sorhus; MIT License
@@ -67,6 +59,8 @@ PERFORMANCE OF THIS SOFTWARE.
  * license : MIT
  * http://adamwdraper.github.com/Numeral-js/
  */
+
+/*! js-cookie v3.0.0 | MIT */
 
 //! moment.js
 
