@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkant_design_vue_pro=self.webpackChunkant_design_vue_pro||[]).push([[956],{54031:function(t,e,i){i.r(e),e.default={submit:"Submit","submit.ok":"Submitted","submit.error":"Submit Failed","confirm.ok":"Yes","confirm.cancel":"No","global.setting.title":"Settings"}}}]);
