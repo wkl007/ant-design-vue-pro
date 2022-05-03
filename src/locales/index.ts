@@ -46,6 +46,7 @@ export function loadLanguageAsync (lang: Lang = defaultLang): Promise<Lang> {
     // 如果语言已经加载
     if (loadedLanguages.value.includes(lang)) return resolve(setI18nLanguage(lang))
     // 如果语言尚未加载
+    // 根据所用文件后缀(ts、js、vue)，自行添加后缀
     return import(/* webpackChunkName: "lang-[request]" */`./lang/${lang}`).then(res => {
       const loadedLang = res.default
       // 设置语言环境的 locale 信息
