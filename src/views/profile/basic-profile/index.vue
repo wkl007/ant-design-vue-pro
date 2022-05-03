@@ -58,7 +58,7 @@ import { useI18n } from 'vue-i18n'
 import { goodsData, scheduleData } from './mockData'
 import { useFetchData } from '@/hooks'
 import { TableTotal } from '@/components'
-import { RequestData } from '@/hooks/useFetchData'
+import { ReponseData } from '@/hooks/useFetchData'
 
 interface ListItem {
   id: string;
@@ -174,14 +174,14 @@ export default defineComponent({
   name: 'BasicProfile',
   setup () {
     const { t } = useI18n()
-    const { context } = useFetchData<RequestData<ListItem>>(() => new Promise(resolve => {
+    const { context } = useFetchData<ReponseData<ListItem>>(() => new Promise(resolve => {
       resolve({
         data: goodsData,
         total: 5
       })
     }))
 
-    const { context: context2 } = useFetchData<RequestData<ListItem2>>(() => new Promise(resolve => {
+    const { context: context2 } = useFetchData<ReponseData<ListItem2>>(() => new Promise(resolve => {
       resolve({
         data: scheduleData,
         total: 5
