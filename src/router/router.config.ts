@@ -177,15 +177,15 @@ export const asyncRoutes: Array<MenuDataItem> = [
             meta: {
               title: 'pages.list.cardList.title'
             }
-          },
-          {
+          }
+          /* {
             path: '/list/advance-table-list',
             name: 'AdvanceTableList',
-            component: () => import(/* webpackChunkName: "advance-table-list" */'@/views/list/advance-table-list/index.vue'),
+            component: () => import(/!* webpackChunkName: "advance-table-list" *!/'@/views/list/advance-table-list/index.vue'),
             meta: {
               title: 'pages.list.advanceTableList.title'
             }
-          }
+          } */
         ]
       },
       // profile
